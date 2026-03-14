@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/Browse%20Skills-cloudthinker.io%2Fskills-ec4899?style=for-the-badge" alt="Browse Skills" />
   </a>
   &nbsp;
-  <img src="https://img.shields.io/badge/skills-880+-10b981?style=for-the-badge" alt="880+ skills" />
+  <img src="https://img.shields.io/badge/skills-1000+-10b981?style=for-the-badge" alt="1000+ skills" />
   &nbsp;
   <img src="https://img.shields.io/badge/license-MIT-6366f1?style=for-the-badge" alt="MIT" />
   &nbsp;
@@ -39,7 +39,7 @@ Skills are composable, guardrailed, and ready to deploy. They encode tribal know
 
 ## Skill Categories
 
-### Cloud Connection Skills (728+)
+### Cloud Connection Skills (804+)
 
 Skills that operate on your connected cloud infrastructure and services.
 
@@ -69,7 +69,7 @@ Skills that operate on your connected cloud infrastructure and services.
 | **Storage & Backup** | MinIO, Ceph, Velero, S3, Cloudflare R2, Backblaze B2 | 15+ |
 | **Package Registries** | npm, PyPI, Cargo, NuGet, Docker Hub, Harbor, Artifactory | 15+ |
 
-### Template Skills (159+)
+### Template Skills (200+)
 
 Reusable workflow templates for common cloud engineering processes.
 

@@ -1,109 +1,103 @@
 ---
 name: managing-hubspot
-description: HubSpot CRM management - search and retrieve contacts, companies, deals, tickets, and other CRM objects. Use when working with HubSpot data, analyzing sales pipelines, or querying customer information.
+description: |
+  HubSpot CRM and marketing platform management including contacts, companies, deals, tickets, pipelines, email campaigns, workflows, forms, and analytics. Covers pipeline health, deal velocity, contact engagement, marketing performance, and integration monitoring via the HubSpot API.
 connection_type: hubspot
 preload: false
 ---
 
-# Managing HubSpot
+# HubSpot Management Skill
 
-Tools for interacting with HubSpot CRM via the official MCP server.
+Monitor and manage HubSpot CRM, marketing, and sales operations.
 
-**Important:** All tools require a parameter object. Pass `{}` for tools with no required parameters.
+## MANDATORY: Discovery-First Pattern
 
-## Supported CRM Objects
+**Always discover account info and object schemas before querying CRM data.**
 
-Read-only access to: contacts, companies, deals, tickets, carts, products, orders, line items, invoices, quotes, and subscriptions.
+### Phase 1: Discovery
 
-## Tools
+```bash
+#!/bin/bash
+HS_API="https://api.hubapi.com"
+AUTH="Authorization: Bearer ${HUBSPOT_ACCESS_TOKEN}"
 
-### User & Account
+echo "=== Account Info ==="
+curl -s -H "$AUTH" "$HS_API/account-info/v3/details" | \
+  jq -r '"Portal ID: \(.portalId)\nCompany: \(.companyName // "N/A")\nTimezone: \(.timeZone)\nCurrency: \(.companyCurrency)"'
 
-| Tool | Description |
-|------|-------------|
-| `get_user_details({})` | Get authenticated user info, account details, and available objects/tools |
+echo ""
+echo "=== CRM Object Counts ==="
+for obj in contacts companies deals tickets; do
+  count=$(curl -s -H "$AUTH" "$HS_API/crm/v3/objects/$obj?limit=1" | jq '.total // 0')
+  echo "$obj: $count"
+done
 
-### Contacts
+echo ""
+echo "=== Deal Pipelines ==="
+curl -s -H "$AUTH" "$HS_API/crm/v3/pipelines/deals" | \
+  jq -r '.results[] | "\(.label) | ID: \(.id) | Stages: \(.stages | length)"'
 
-| Tool | Description |
-|------|-------------|
-| `search_contacts({ query, count?, propertyList? })` | Search contacts by query string |
-| `get_contact({ id, properties? })` | Get contact by ID |
+echo ""
+echo "=== Ticket Pipelines ==="
+curl -s -H "$AUTH" "$HS_API/crm/v3/pipelines/tickets" | \
+  jq -r '.results[] | "\(.label) | ID: \(.id) | Stages: \(.stages | length)"'
 
-### Companies
-
-| Tool | Description |
-|------|-------------|
-| `search_companies({ query, count?, propertyList? })` | Search companies by query string |
-| `get_company({ id, properties? })` | Get company by ID |
-
-### Deals
-
-| Tool | Description |
-|------|-------------|
-| `search_deals({ query, count?, propertyList? })` | Search deals by query string |
-| `get_deal({ id, properties? })` | Get deal by ID |
-
-### Tickets
-
-| Tool | Description |
-|------|-------------|
-| `search_tickets({ query, count?, propertyList? })` | Search tickets by query string |
-| `get_ticket({ id, properties? })` | Get ticket by ID |
-
-### Associations
-
-| Tool | Description |
-|------|-------------|
-| `list_associations({ objectType, objectId, toObjectType })` | List associations between objects |
-
-## Examples
-
-### Search Contacts
-
-```typescript
-import { search_contacts } from '@connections/hubspot';
-
-const contacts = await search_contacts({
-  query: 'john@example.com',
-  count: 10,
-  propertyList: ['email', 'firstname', 'lastname', 'company']
-});
+echo ""
+echo "=== Workflows ==="
+curl -s -H "$AUTH" "$HS_API/automation/v4/flows" | \
+  jq -r '.results[:10] | .[] | "\(.name) | Enabled: \(.enabled) | Type: \(.type)"' 2>/dev/null || echo "Check workflows via dashboard"
 ```
 
-### Analyze Deal Pipeline
+**Phase 1 outputs:** Account info, object counts, pipelines, workflows
 
-```typescript
-import { search_deals } from '@connections/hubspot';
+### Phase 2: Analysis
 
-const deals = await search_deals({
-  query: 'Decision Maker Bought In',
-  propertyList: ['dealname', 'amount', 'dealstage', 'closedate']
-});
+```bash
+#!/bin/bash
+echo "=== Deal Pipeline Summary ==="
+curl -s -H "$AUTH" "$HS_API/crm/v3/objects/deals?limit=100&properties=dealstage,amount,pipeline" | \
+  jq -r '[.results[] | {stage: .properties.dealstage, amount: (.properties.amount // "0" | tonumber)}] | group_by(.stage) | map({stage: .[0].stage, count: length, total: [.[].amount] | add}) | .[] | "\(.stage): \(.count) deals (\(.total))"'
+
+echo ""
+echo "=== Recent Contacts (last 7 days) ==="
+curl -s -H "$AUTH" "$HS_API/crm/v3/objects/contacts?limit=1&sorts=-createdate&filterGroups=[{\"filters\":[{\"propertyName\":\"createdate\",\"operator\":\"GTE\",\"value\":\"$(date -v-7d +%s000 2>/dev/null || date -d '7 days ago' +%s000)\"}]}]" | \
+  jq -r '"New Contacts (7d): \(.total // "N/A")"' 2>/dev/null
+
+echo ""
+echo "=== Email Campaign Performance ==="
+curl -s -H "$AUTH" "$HS_API/marketing/v3/emails/statistics?limit=5&orderBy=-sendDate" | \
+  jq -r '.results[:5] | .[] | "\(.name[:40]) | Sent: \(.counters.sent) | Opens: \(.counters.open) | Clicks: \(.counters.click)"' 2>/dev/null || echo "Check marketing email stats via dashboard"
+
+echo ""
+echo "=== Forms ==="
+curl -s -H "$AUTH" "$HS_API/marketing/v3/forms" | \
+  jq -r '.results[:10] | .[] | "\(.name) | Type: \(.formType) | Submissions: \(.submissions // "N/A")"' 2>/dev/null
+
+echo ""
+echo "=== Integration Health ==="
+curl -s -H "$AUTH" "$HS_API/integrations/v1/me" | \
+  jq -r '"App ID: \(.appId // "direct token")\nScopes: \(.scopes // [] | join(", "))"' 2>/dev/null
 ```
 
-### Get Contact with Company Association
+## Output Format
 
-```typescript
-import { get_contact, list_associations } from '@connections/hubspot';
-
-const contact = await get_contact({
-  id: 'contact-id',
-  properties: ['email', 'firstname', 'lastname']
-});
-
-const companies = await list_associations({
-  objectType: 'contacts',
-  objectId: 'contact-id',
-  toObjectType: 'companies'
-});
+```
+HUBSPOT STATUS
+==============
+Portal: {id} ({company})
+Contacts: {count} | Companies: {count}
+Deals: {count} | Tickets: {count}
+Deal Pipelines: {count}
+Pipeline Value: {total_amount}
+Active Workflows: {count}
+New Contacts (7d): {count}
+Issues: {list_of_warnings}
 ```
 
-## Common Errors
+## Common Pitfalls
 
-| Error | Solution |
-|-------|----------|
-| Authentication failed | Re-authenticate via OAuth flow |
-| Object not found | Verify object ID and permissions |
-| Rate limited | Reduce request frequency |
-| 422 | Pass `{}` for tools with no required params |
+- **Rate limits**: 100 requests per 10 seconds for OAuth apps — use batch endpoints
+- **API versions**: CRM v3 is current — v1/v2 endpoints are deprecated
+- **Property limits**: Only 10 properties returned by default — specify properties parameter
+- **Associations**: Objects are linked via associations API — separate from object queries
+- **OAuth scopes**: Each API endpoint requires specific scopes — check token permissions

@@ -1,5 +1,5 @@
 {
-  "version": "0.6.0",
+  "version": "1.0.0",
   "updated_at": "2026-03-14",
   "skills": [
     {
@@ -9118,6 +9118,1054 @@
       "category": "operational",
       "section": "templates",
       "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/war-room-protocol/SKILL.md"
+    },
+    {
+      "id": "managing-100ms",
+      "name": "Managing 100ms",
+      "description": "100ms live video and audio infrastructure management for video conferencing, live streaming, and interactive sessions. Use when monitoring active rooms, analyzing session quality, reviewing usage metr",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-100ms/SKILL.md"
+    },
+    {
+      "id": "managing-ably",
+      "name": "Managing Ably",
+      "description": "Ably real-time messaging platform management covering channels, presence, connections, usage analytics, and account health. Use when monitoring active channels, analyzing connection metrics, reviewing",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-ably/SKILL.md"
+    },
+    {
+      "id": "managing-adobe-sign",
+      "name": "Managing Adobe Sign",
+      "description": "Adobe Acrobat Sign (formerly Adobe Sign) eSignature platform management covering agreements, templates, workflows, users, and audit trails. Use when monitoring agreement status, analyzing signing comp",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-adobe-sign/SKILL.md"
+    },
+    {
+      "id": "managing-adyen",
+      "name": "Managing Adyen",
+      "description": "Adyen payment platform management including merchant accounts, payment methods, terminal configuration, risk management, settlement reports, and webhook notifications. Covers authorization rates, paym",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-adyen/SKILL.md"
+    },
+    {
+      "id": "managing-agora",
+      "name": "Managing Agora",
+      "description": "Agora real-time engagement platform management for video/voice calling, interactive live streaming, and real-time messaging. Use when monitoring active channels, analyzing call quality metrics, review",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-agora/SKILL.md"
+    },
+    {
+      "id": "managing-alchemy",
+      "name": "Managing Alchemy",
+      "description": "Alchemy Web3 development platform management including app configuration, RPC endpoint health, webhook notifications, NFT API usage, Enhanced APIs, gas optimization, and usage analytics. Covers reques",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-alchemy/SKILL.md"
+    },
+    {
+      "id": "managing-algolia-deep",
+      "name": "Managing Algolia Deep",
+      "description": "Advanced Algolia search platform management including indices, search analytics, A/B tests, query rules, synonyms, API key audit, and infrastructure monitoring. Covers search performance metrics, rele",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-algolia-deep/SKILL.md"
+    },
+    {
+      "id": "managing-anthropic-api",
+      "name": "Managing Anthropic API",
+      "description": "Anthropic API platform management covering models, usage tracking, rate limits, and message analytics. Use when monitoring API usage and costs, analyzing model request patterns, reviewing rate limit h",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-anthropic-api/SKILL.md"
+    },
+    {
+      "id": "managing-anyscale",
+      "name": "Managing Anyscale",
+      "description": "Anyscale platform management covering Ray clusters, services, model deployments, jobs, and usage analytics. Use when monitoring deployed services, analyzing cluster utilization, reviewing job status, ",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-anyscale/SKILL.md"
+    },
+    {
+      "id": "managing-aws-gamelift",
+      "name": "Managing AWS Gamelift",
+      "description": "AWS GameLift fleet management including game server deployments, fleet scaling, matchmaking configuration, game session monitoring, and player session tracking. Covers fleet health, capacity utilizati",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-aws-gamelift/SKILL.md"
+    },
+    {
+      "id": "managing-aws-iot-core",
+      "name": "Managing AWS IoT Core",
+      "description": "AWS IoT Core management including things, thing groups, certificates, policies, rules, topic monitoring, device shadows, and fleet indexing. Covers device connectivity health, message throughput, rule",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-aws-iot-core/SKILL.md"
+    },
+    {
+      "id": "managing-aws-ses-deep",
+      "name": "Managing AWS Ses Deep",
+      "description": "Advanced AWS SES management including sending quotas, identity verification, configuration sets, dedicated IPs, reputation dashboard, suppression list, email receiving rules, and deliverability adviso",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-aws-ses-deep/SKILL.md"
+    },
+    {
+      "id": "managing-azure-iot-hub",
+      "name": "Managing Azure IoT Hub",
+      "description": "Azure IoT Hub management including device registry, device twins, message routing, endpoints, jobs, and IoT Edge deployments. Covers device connectivity status, message throughput, routing health, quo",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-azure-iot-hub/SKILL.md"
+    },
+    {
+      "id": "managing-balena",
+      "name": "Managing Balena",
+      "description": "balena IoT fleet management including applications, devices, releases, services, environment variables, and device diagnostics. Covers fleet deployment status, device connectivity, container health, u",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-balena/SKILL.md"
+    },
+    {
+      "id": "managing-bandwidth",
+      "name": "Managing Bandwidth",
+      "description": "Bandwidth communications platform management for voice calls, SMS/MMS messaging, phone number ordering, and 911 services. Use when managing phone number inventory, analyzing message delivery, monitori",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-bandwidth/SKILL.md"
+    },
+    {
+      "id": "managing-bigcommerce",
+      "name": "Managing Bigcommerce",
+      "description": "BigCommerce store management including products, orders, customers, channels, shipping, inventory, storefront themes, and webhooks. Covers sales analytics, order fulfillment rates, inventory health, a",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-bigcommerce/SKILL.md"
+    },
+    {
+      "id": "managing-bloomreach",
+      "name": "Managing Bloomreach",
+      "description": "Bloomreach commerce search and merchandising platform management including catalog feeds, search configuration, autosuggest, category pages, SEO, A/B testing, pixel tracking, and recommendation widget",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-bloomreach/SKILL.md"
+    },
+    {
+      "id": "managing-box",
+      "name": "Managing Box",
+      "description": "Box cloud content management platform covering files, folders, users, collaborations, metadata, and usage analytics. Use when monitoring storage usage, analyzing file activity, reviewing collaboration",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-box/SKILL.md"
+    },
+    {
+      "id": "managing-braintree",
+      "name": "Managing Braintree",
+      "description": "Braintree payment gateway management including transactions, subscriptions, customers, payment methods, disputes, settlements, and merchant account configuration. Covers transaction success rates, dec",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-braintree/SKILL.md"
+    },
+    {
+      "id": "managing-cal-com",
+      "name": "Managing Cal Com",
+      "description": "Cal.com open-source scheduling platform management covering event types, bookings, availability, teams, and analytics. Use when monitoring booking rates, analyzing event type usage, reviewing team ava",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-cal-com/SKILL.md"
+    },
+    {
+      "id": "managing-calendly",
+      "name": "Managing Calendly",
+      "description": "Calendly scheduling platform management covering event types, scheduled events, invitees, users, and booking analytics. Use when monitoring booking rates, analyzing event type performance, reviewing u",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-calendly/SKILL.md"
+    },
+    {
+      "id": "managing-clerk",
+      "name": "Managing Clerk",
+      "description": "Clerk authentication and user management platform covering users, sessions, organizations, invitations, and sign-in methods. Use when analyzing user growth, monitoring authentication health, reviewing",
+      "category": "security",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-clerk/SKILL.md"
+    },
+    {
+      "id": "managing-close-crm",
+      "name": "Managing Close CRM",
+      "description": "Close CRM management including leads, contacts, opportunities, activities, sequences, smart views, and custom fields. Covers pipeline velocity, calling metrics, email outreach performance, sequence en",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-close-crm/SKILL.md"
+    },
+    {
+      "id": "managing-cohere",
+      "name": "Managing Cohere",
+      "description": "Cohere AI platform management covering models, embeddings, reranking, datasets, fine-tuning, and connectors. Use when monitoring API usage, analyzing model performance, reviewing fine-tuning jobs, man",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-cohere/SKILL.md"
+    },
+    {
+      "id": "managing-constructor-io",
+      "name": "Managing Constructor IO",
+      "description": "Constructor.io product search and discovery platform management including catalog sync, search configuration, autosuggest, browse, recommendations, quizzes, and A/B testing. Covers catalog health, sea",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-constructor-io/SKILL.md"
+    },
+    {
+      "id": "managing-convertkit",
+      "name": "Managing Convertkit",
+      "description": "ConvertKit (Kit) creator marketing platform management including subscriber management, forms, sequences, broadcasts, tags, and automation rules. Covers subscriber growth, email deliverability, sequen",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-convertkit/SKILL.md"
+    },
+    {
+      "id": "managing-courier",
+      "name": "Managing Courier",
+      "description": "Courier notification orchestration platform management covering messages, templates, brands, users, and delivery analytics. Use when monitoring notification delivery, analyzing template performance, r",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-courier/SKILL.md"
+    },
+    {
+      "id": "managing-coveo",
+      "name": "Managing Coveo",
+      "description": "Coveo enterprise search platform management including sources, indexes, query pipelines, machine learning models, usage analytics, and security providers. Covers indexing health, query performance, ML",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-coveo/SKILL.md"
+    },
+    {
+      "id": "managing-cronofy",
+      "name": "Managing Cronofy",
+      "description": "Cronofy calendar API platform management covering calendars, events, availability, scheduling, and account sync health. Use when monitoring calendar integrations, analyzing scheduling patterns, review",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-cronofy/SKILL.md"
+    },
+    {
+      "id": "managing-daily-co",
+      "name": "Managing Daily Co",
+      "description": "Daily.co video and audio API platform management for real-time video calls, rooms, recordings, and usage analytics. Use when monitoring active rooms, analyzing meeting quality, reviewing usage and bil",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-daily-co/SKILL.md"
+    },
+    {
+      "id": "managing-descope",
+      "name": "Managing Descope",
+      "description": "Descope authentication and identity management platform covering users, tenants, access keys, flows, and audit logs. Use when analyzing user authentication patterns, monitoring tenant health, reviewin",
+      "category": "security",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-descope/SKILL.md"
+    },
+    {
+      "id": "managing-docusign",
+      "name": "Managing Docusign",
+      "description": "DocuSign eSignature platform management covering envelopes, templates, users, signing workflows, and account analytics. Use when monitoring envelope status, analyzing signing completion rates, reviewi",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-docusign/SKILL.md"
+    },
+    {
+      "id": "managing-dropbox-business",
+      "name": "Managing Dropbox Business",
+      "description": "Dropbox Business file storage and collaboration platform management covering files, folders, team members, sharing, and usage analytics. Use when monitoring storage usage, analyzing file activity, rev",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-dropbox-business/SKILL.md"
+    },
+    {
+      "id": "managing-elastic-cloud",
+      "name": "Managing Elastic Cloud",
+      "description": "Elastic Cloud (Elasticsearch Service) management including deployments, cluster health, index management, ILM policies, snapshot repositories, Kibana spaces, and APM configuration. Covers cluster perf",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-elastic-cloud/SKILL.md"
+    },
+    {
+      "id": "managing-filestack",
+      "name": "Managing Filestack",
+      "description": "Filestack file upload, transformation, and delivery platform management covering uploads, transformations, CDN delivery, security policies, and usage analytics. Use when monitoring upload health, anal",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-filestack/SKILL.md"
+    },
+    {
+      "id": "managing-firebase-messaging",
+      "name": "Managing Firebase Messaging",
+      "description": "Firebase Cloud Messaging (FCM) management covering message sending, topic subscriptions, device groups, and delivery analytics. Use when monitoring message delivery, analyzing notification performance",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-firebase-messaging/SKILL.md"
+    },
+    {
+      "id": "managing-fireworks-ai",
+      "name": "Managing Fireworks AI",
+      "description": "Fireworks AI inference platform management covering models, deployments, fine-tuning, and usage analytics. Use when monitoring API usage, analyzing model performance, reviewing fine-tuning jobs, check",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-fireworks-ai/SKILL.md"
+    },
+    {
+      "id": "managing-frontegg",
+      "name": "Managing Frontegg",
+      "description": "Frontegg authentication and user management platform covering users, tenants, roles, permissions, SSO, and audit logs. Use when analyzing tenant health, monitoring user authentication, reviewing role ",
+      "category": "security",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-frontegg/SKILL.md"
+    },
+    {
+      "id": "managing-gcp-iot-core",
+      "name": "Managing GCP IoT Core",
+      "description": "Google Cloud IoT platform management using Pub/Sub, Cloud Functions, and device management patterns that replaced the deprecated IoT Core. Covers device telemetry via Pub/Sub, command delivery, device",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-gcp-iot-core/SKILL.md"
+    },
+    {
+      "id": "managing-google-drive-api",
+      "name": "Managing Google Drive API",
+      "description": "Google Drive API management covering files, folders, shared drives, permissions, storage quotas, and activity analytics. Use when monitoring storage usage, analyzing file sharing patterns, reviewing p",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-google-drive-api/SKILL.md"
+    },
+    {
+      "id": "managing-google-maps-platform",
+      "name": "Managing Google Maps Platform",
+      "description": "Google Maps Platform management including API key configuration, usage metrics, billing, quota monitoring, and service health across Maps, Routes, Places, and Geocoding APIs. Covers cost analysis, quo",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-google-maps-platform/SKILL.md"
+    },
+    {
+      "id": "managing-groq-cloud",
+      "name": "Managing Groq Cloud",
+      "description": "Groq Cloud inference platform management covering models, API usage, rate limits, and performance metrics. Use when monitoring API health, analyzing inference latency, reviewing available models, chec",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-groq-cloud/SKILL.md"
+    },
+    {
+      "id": "managing-hellosign",
+      "name": "Managing Hellosign",
+      "description": "HelloSign (Dropbox Sign) eSignature platform management covering signature requests, templates, teams, and account analytics. Use when monitoring signature request status, analyzing completion rates, ",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-hellosign/SKILL.md"
+    },
+    {
+      "id": "managing-here-maps",
+      "name": "Managing Here Maps",
+      "description": "HERE Maps platform management including project configuration, API key management, usage statistics, service health, and quota monitoring across Geocoding, Routing, Map Tile, and Search APIs. Covers r",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-here-maps/SKILL.md"
+    },
+    {
+      "id": "managing-infura",
+      "name": "Managing Infura",
+      "description": "Infura Web3 infrastructure management including project configuration, RPC endpoint health, IPFS gateway, usage statistics, and multi-chain support. Covers request volume monitoring, error tracking, b",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-infura/SKILL.md"
+    },
+    {
+      "id": "managing-klaviyo",
+      "name": "Managing Klaviyo",
+      "description": "Klaviyo marketing automation platform management including email and SMS campaigns, flows, lists, segments, metrics, and revenue attribution. Covers deliverability monitoring, flow performance, list g",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-klaviyo/SKILL.md"
+    },
+    {
+      "id": "managing-knock",
+      "name": "Managing Knock",
+      "description": "Knock notification infrastructure management covering workflows, channels, users, messages, and delivery analytics. Use when monitoring notification delivery, analyzing workflow performance, reviewing",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-knock/SKILL.md"
+    },
+    {
+      "id": "managing-livekit",
+      "name": "Managing Livekit",
+      "description": "LiveKit real-time video and audio infrastructure management for WebRTC-based video conferencing, live streaming, and data channels. Use when monitoring active rooms, analyzing participant quality, rev",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-livekit/SKILL.md"
+    },
+    {
+      "id": "managing-mailchimp",
+      "name": "Managing Mailchimp",
+      "description": "Mailchimp email marketing platform management including audience lists, campaigns, automations, templates, and analytics. Covers list health, campaign performance, subscriber engagement, bounce and un",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-mailchimp/SKILL.md"
+    },
+    {
+      "id": "managing-mailgun",
+      "name": "Managing Mailgun",
+      "description": "Mailgun email service management including domain configuration, sending statistics, deliverability monitoring, bounce and complaint tracking, route management, and mailing list administration. Covers",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-mailgun/SKILL.md"
+    },
+    {
+      "id": "managing-mapbox",
+      "name": "Managing Mapbox",
+      "description": "Mapbox platform management including map styles, tilesets, datasets, tokens, usage statistics, and geocoding. Covers API usage monitoring, tileset processing status, token permission auditing, and rat",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-mapbox/SKILL.md"
+    },
+    {
+      "id": "managing-moralis",
+      "name": "Managing Moralis",
+      "description": "Moralis Web3 data platform management including EVM and Solana API endpoints, Streams (webhooks), token and NFT APIs, wallet APIs, and usage monitoring. Covers API health, compute unit usage, stream d",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-moralis/SKILL.md"
+    },
+    {
+      "id": "managing-novu",
+      "name": "Managing Novu",
+      "description": "Novu open-source notification infrastructure management covering workflows, subscribers, messages, integrations, and delivery analytics. Use when monitoring notification delivery, analyzing workflow p",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-novu/SKILL.md"
+    },
+    {
+      "id": "managing-nylas",
+      "name": "Managing Nylas",
+      "description": "Nylas calendar and email API platform management covering calendars, events, messages, contacts, and scheduling pages. Use when monitoring calendar sync health, analyzing email delivery, reviewing sch",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-nylas/SKILL.md"
+    },
+    {
+      "id": "managing-onesignal",
+      "name": "Managing Onesignal",
+      "description": "OneSignal push notification and messaging platform management covering notifications, segments, users, templates, and delivery analytics. Use when monitoring notification delivery rates, analyzing use",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-onesignal/SKILL.md"
+    },
+    {
+      "id": "managing-openai-api",
+      "name": "Managing Openai API",
+      "description": "OpenAI API platform management covering models, usage, fine-tuning jobs, files, assistants, and billing. Use when monitoring API usage and costs, analyzing model performance, reviewing fine-tuning sta",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-openai-api/SKILL.md"
+    },
+    {
+      "id": "managing-openstreetmap-api",
+      "name": "Managing Openstreetmap API",
+      "description": "OpenStreetMap API and related services management including Nominatim geocoding, Overpass API queries, tile server health, changeset monitoring, and data quality checks. Covers API endpoint health, us",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-openstreetmap-api/SKILL.md"
+    },
+    {
+      "id": "managing-paddle",
+      "name": "Managing Paddle",
+      "description": "Paddle billing and payments platform management including products, prices, subscriptions, transactions, customers, discounts, and payouts. Covers MRR tracking, churn analysis, subscription health, re",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-paddle/SKILL.md"
+    },
+    {
+      "id": "managing-pandadoc",
+      "name": "Managing Pandadoc",
+      "description": "PandaDoc document automation platform management covering documents, templates, contacts, workspaces, and analytics. Use when monitoring document status, analyzing completion rates, reviewing template",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-pandadoc/SKILL.md"
+    },
+    {
+      "id": "managing-particle-io",
+      "name": "Managing Particle IO",
+      "description": "Particle IoT platform management including device fleet, firmware, products, events, integrations, and SIM cards. Covers device connectivity monitoring, OTA firmware deployment status, data usage trac",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-particle-io/SKILL.md"
+    },
+    {
+      "id": "managing-passage",
+      "name": "Managing Passage",
+      "description": "Passage by 1Password passwordless authentication management covering users, devices, WebAuthn credentials, and app configuration. Use when analyzing passkey adoption, monitoring user authentication he",
+      "category": "security",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-passage/SKILL.md"
+    },
+    {
+      "id": "managing-perplexity-api",
+      "name": "Managing Perplexity API",
+      "description": "Perplexity AI API management covering models, search-augmented generation, usage analytics, and rate limits. Use when monitoring API health, analyzing query performance, reviewing available models, ch",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-perplexity-api/SKILL.md"
+    },
+    {
+      "id": "managing-photon-engine",
+      "name": "Managing Photon Engine",
+      "description": "Photon Engine real-time multiplayer services management including Photon Realtime, PUN, Fusion, Quantum, Chat, and Voice. Covers CCU monitoring, room statistics, region health, bandwidth usage, and ap",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-photon-engine/SKILL.md"
+    },
+    {
+      "id": "managing-pipedrive",
+      "name": "Managing Pipedrive",
+      "description": "Pipedrive CRM management including deals, persons, organizations, pipelines, activities, products, and email integration. Covers pipeline health, deal velocity, activity completion rates, revenue fore",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-pipedrive/SKILL.md"
+    },
+    {
+      "id": "managing-playfab",
+      "name": "Managing Playfab",
+      "description": "PlayFab backend services management including player data, title configuration, economy, matchmaking, multiplayer servers, and LiveOps. Covers player analytics, server fleet health, economy balance mo",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-playfab/SKILL.md"
+    },
+    {
+      "id": "managing-plivo",
+      "name": "Managing Plivo",
+      "description": "Plivo cloud communications platform management for voice calls, SMS messaging, phone number management, and usage analytics. Use when analyzing message delivery rates, monitoring call quality, reviewi",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-plivo/SKILL.md"
+    },
+    {
+      "id": "managing-postmark",
+      "name": "Managing Postmark",
+      "description": "Postmark transactional email service management including server configuration, message streams, delivery statistics, bounce tracking, template management, and sender signature verification. Covers de",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-postmark/SKILL.md"
+    },
+    {
+      "id": "managing-pusher",
+      "name": "Managing Pusher",
+      "description": "Pusher real-time messaging platform management covering channels, presence, usage analytics, and webhook configuration. Use when monitoring active channels, analyzing connection metrics, reviewing usa",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-pusher/SKILL.md"
+    },
+    {
+      "id": "managing-salesforce-deep",
+      "name": "Managing Salesforce Deep",
+      "description": "Advanced Salesforce CRM management including objects, SOQL queries, reports, dashboards, flows, Apex triggers, API usage, org limits, deployment status, and user management. Covers org health monitori",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-salesforce-deep/SKILL.md"
+    },
+    {
+      "id": "managing-sendbird",
+      "name": "Managing Sendbird",
+      "description": "Sendbird messaging platform management covering group channels, open channels, users, messages, moderation, and usage analytics. Use when monitoring chat health, analyzing message volumes, reviewing u",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-sendbird/SKILL.md"
+    },
+    {
+      "id": "managing-sendinblue",
+      "name": "Managing Sendinblue",
+      "description": "Brevo (formerly Sendinblue) marketing platform management including transactional email, SMS campaigns, contact management, automation workflows, and landing pages. Covers sending quotas, deliverabili",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-sendinblue/SKILL.md"
+    },
+    {
+      "id": "managing-shopify-deep",
+      "name": "Managing Shopify Deep",
+      "description": "Advanced Shopify store management including products, inventory, orders, customers, analytics, fulfillment, shipping, themes, apps, and webhooks. Covers sales performance, inventory health, fulfillmen",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-shopify-deep/SKILL.md"
+    },
+    {
+      "id": "managing-sparkpost",
+      "name": "Managing Sparkpost",
+      "description": "SparkPost email delivery service management including sending domains, IP pools, message events, deliverability metrics, templates, webhooks, and suppression lists. Covers bounce classification, engag",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-sparkpost/SKILL.md"
+    },
+    {
+      "id": "managing-square",
+      "name": "Managing Square",
+      "description": "Square payment and commerce platform management including locations, catalog, orders, payments, subscriptions, invoices, team members, and devices. Covers payment volume metrics, location performance,",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-square/SKILL.md"
+    },
+    {
+      "id": "managing-stream-chat",
+      "name": "Managing Stream Chat",
+      "description": "Stream Chat messaging platform management covering channels, users, messages, moderation, and usage analytics. Use when monitoring chat health, analyzing message volumes, reviewing user activity, mana",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-stream-chat/SKILL.md"
+    },
+    {
+      "id": "managing-stripe-deep",
+      "name": "Managing Stripe Deep",
+      "description": "Advanced Stripe payment platform management including payment intents, subscriptions, invoices, disputes, payouts, Connect accounts, radar fraud rules, and billing portal. Covers revenue analytics, di",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-stripe-deep/SKILL.md"
+    },
+    {
+      "id": "managing-stytch",
+      "name": "Managing Stytch",
+      "description": "Stytch authentication and identity platform management covering users, sessions, magic links, OTPs, OAuth, and organization management. Use when analyzing user authentication patterns, monitoring sess",
+      "category": "security",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-stytch/SKILL.md"
+    },
+    {
+      "id": "managing-thirdweb",
+      "name": "Managing Thirdweb",
+      "description": "thirdweb Web3 development platform management including contract deployments, Engine instances, embedded wallets, auth sessions, RPC usage, and storage (IPFS). Covers contract interaction health, wall",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-thirdweb/SKILL.md"
+    },
+    {
+      "id": "managing-together-ai",
+      "name": "Managing Together AI",
+      "description": "Together AI inference platform management covering models, fine-tuning jobs, usage analytics, and billing. Use when monitoring API usage and costs, analyzing model performance, reviewing fine-tuning s",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-together-ai/SKILL.md"
+    },
+    {
+      "id": "managing-twilio-deep",
+      "name": "Managing Twilio Deep",
+      "description": "Deep Twilio management covering voice calls, SMS/MMS messaging, SIP trunking, phone number provisioning, usage records, and account health. Use when analyzing Twilio call quality, messaging delivery r",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-twilio-deep/SKILL.md"
+    },
+    {
+      "id": "managing-unity-cloud",
+      "name": "Managing Unity Cloud",
+      "description": "Unity Cloud services management including Unity Gaming Services (UGS), build automation, cloud content delivery, multiplayer relay, matchmaking, and player authentication. Covers project health monito",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-unity-cloud/SKILL.md"
+    },
+    {
+      "id": "managing-unreal-cloud",
+      "name": "Managing Unreal Cloud",
+      "description": "Unreal Engine cloud services management including Epic Online Services (EOS), matchmaking, lobbies, player data storage, analytics, and anti-cheat. Covers deployment health, player session metrics, ti",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-unreal-cloud/SKILL.md"
+    },
+    {
+      "id": "managing-vonage",
+      "name": "Managing Vonage",
+      "description": "Vonage (formerly Nexmo) communications platform management covering SMS, voice, video, and messaging APIs. Use when analyzing message delivery, monitoring voice call quality, reviewing account balance",
+      "category": "code",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-vonage/SKILL.md"
+    },
+    {
+      "id": "managing-woocommerce",
+      "name": "Managing Woocommerce",
+      "description": "WooCommerce store management via REST API including products, orders, customers, coupons, shipping, taxes, reports, and system status. Covers sales analytics, inventory monitoring, order fulfillment, ",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-woocommerce/SKILL.md"
+    },
+    {
+      "id": "managing-zoho-crm",
+      "name": "Managing Zoho CRM",
+      "description": "Zoho CRM management including leads, contacts, accounts, deals, activities, reports, workflows, and blueprints. Covers pipeline analytics, lead conversion tracking, activity completion, workflow execu",
+      "category": "operational",
+      "section": "connections",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-zoho-crm/SKILL.md"
+    },
+    {
+      "id": "ai-ethics-review",
+      "name": "AI Ethics Review",
+      "description": "Conducts an ethical review of AI/ML systems covering fairness, transparency, accountability, privacy, and safety. Evaluates potential harms, bias in training data and model outputs, explainability req",
+      "category": "database",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/ai-ethics-review/SKILL.md"
+    },
+    {
+      "id": "api-latency-investigation",
+      "name": "API Latency Investigation",
+      "description": "Provides a systematic investigation framework for diagnosing and resolving API latency issues. Covers distributed tracing analysis, bottleneck identification across the request path, database query im",
+      "category": "performance",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/api-latency-investigation/SKILL.md"
+    },
+    {
+      "id": "aws-to-gcp-migration",
+      "name": "AWS To GCP Migration",
+      "description": "Guides a structured migration from AWS to Google Cloud Platform, covering service mapping, data transfer strategies, IAM reconfiguration, networking changes, and validation testing. Produces a phased ",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/aws-to-gcp-migration/SKILL.md"
+    },
+    {
+      "id": "ccpa-compliance-check",
+      "name": "Ccpa Compliance Check",
+      "description": "Evaluates organizational compliance with the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA). Covers consumer rights implementation, data inventory, privacy notice requ",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/ccpa-compliance-check/SKILL.md"
+    },
+    {
+      "id": "cdn-optimization-review",
+      "name": "CDN Optimization Review",
+      "description": "Reviews and optimizes CDN configuration for maximum cache hit ratio, minimal latency, and cost efficiency. Covers cache policy tuning, origin shield configuration, edge function optimization, security",
+      "category": "performance",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/cdn-optimization-review/SKILL.md"
+    },
+    {
+      "id": "ci-cd-pipeline-review",
+      "name": "CI CD Pipeline Review",
+      "description": "Reviews CI/CD pipeline configuration for reliability, speed, security, and best practices. Covers build optimization, test strategy, deployment patterns, secret management, artifact handling, and pipe",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/ci-cd-pipeline-review/SKILL.md"
+    },
+    {
+      "id": "cloud-billing-alert-setup",
+      "name": "Cloud Billing Alert Setup",
+      "description": "Configures comprehensive billing alerts and budget notifications across cloud accounts. Covers budget threshold alerts, anomaly detection, per-service spending limits, team-level notifications, and es",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/cloud-billing-alert-setup/SKILL.md"
+    },
+    {
+      "id": "cloud-commitment-calculator",
+      "name": "Cloud Commitment Calculator",
+      "description": "Calculates the optimal mix of reserved instances, savings plans, and committed use discounts based on historical usage data. Produces a purchase plan that maximizes savings while maintaining flexibili",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/cloud-commitment-calculator/SKILL.md"
+    },
+    {
+      "id": "cloud-cost-allocation-model",
+      "name": "Cloud Cost Allocation Model",
+      "description": "Designs a cost allocation and chargeback model for cloud spending across teams, projects, and environments. Covers tagging strategy, allocation rules for shared services, showback/chargeback reporting",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/cloud-cost-allocation-model/SKILL.md"
+    },
+    {
+      "id": "cmmc-readiness-check",
+      "name": "Cmmc Readiness Check",
+      "description": "Assesses organizational readiness for Cybersecurity Maturity Model Certification (CMMC 2.0) at the target level. Covers CUI identification, NIST SP 800-171 control implementation, gap analysis against",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/cmmc-readiness-check/SKILL.md"
+    },
+    {
+      "id": "connection-pool-tuning",
+      "name": "Connection Pool Tuning",
+      "description": "Guides the analysis and optimization of connection pools for databases, HTTP clients, and message brokers. Covers pool sizing calculations, timeout configuration, leak detection, monitoring setup, and",
+      "category": "performance",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/connection-pool-tuning/SKILL.md"
+    },
+    {
+      "id": "cpu-profiling-guide",
+      "name": "Cpu Profiling Guide",
+      "description": "Guides systematic CPU profiling to identify and resolve CPU-bound performance bottlenecks. Covers profiler selection and setup, flame graph analysis, hot path identification, optimization strategies, ",
+      "category": "performance",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/cpu-profiling-guide/SKILL.md"
+    },
+    {
+      "id": "data-catalog-setup",
+      "name": "Data Catalog Setup",
+      "description": "Guides the setup and implementation of a data catalog to enable data discovery, documentation, lineage tracking, and governance. Covers tool selection, metadata extraction, automated cataloging, owner",
+      "category": "database",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/data-catalog-setup/SKILL.md"
+    },
+    {
+      "id": "data-governance-framework",
+      "name": "Data Governance Framework",
+      "description": "Establishes a comprehensive data governance framework covering data ownership, quality standards, classification, lineage tracking, access policies, and stewardship roles. Produces actionable policies",
+      "category": "database",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/data-governance-framework/SKILL.md"
+    },
+    {
+      "id": "data-quality-assessment",
+      "name": "Data Quality Assessment",
+      "description": "Conducts a systematic assessment of data quality across key dimensions including completeness, accuracy, consistency, timeliness, uniqueness, and validity. Identifies data quality issues, quantifies t",
+      "category": "database",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/data-quality-assessment/SKILL.md"
+    },
+    {
+      "id": "database-cloud-migration",
+      "name": "Database Cloud Migration",
+      "description": "Guides the migration of databases to cloud-managed services, covering schema compatibility analysis, data transfer methods, replication setup, cutover procedures, and post-migration validation. Suppor",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/database-cloud-migration/SKILL.md"
+    },
+    {
+      "id": "database-performance-tuning",
+      "name": "Database Performance Tuning",
+      "description": "Provides a systematic approach to diagnosing and resolving database performance issues. Covers query analysis, index optimization, schema review, configuration tuning, connection management, and capac",
+      "category": "performance",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/database-performance-tuning/SKILL.md"
+    },
+    {
+      "id": "devops-maturity-assessment",
+      "name": "Devops Maturity Assessment",
+      "description": "Assesses an organization's DevOps maturity across key dimensions including culture, automation, measurement, and sharing (CALMS). Produces a current maturity score, identifies improvement areas, and g",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/devops-maturity-assessment/SKILL.md"
+    },
+    {
+      "id": "documentation-audit",
+      "name": "Documentation Audit",
+      "description": "Audits the state of technical documentation across an engineering organization. Covers documentation inventory, freshness assessment, gap identification, quality scoring, ownership assignment, and a r",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/documentation-audit/SKILL.md"
+    },
+    {
+      "id": "etl-pipeline-review",
+      "name": "Etl Pipeline Review",
+      "description": "Reviews ETL/ELT pipeline architecture for reliability, performance, data quality, and maintainability. Covers pipeline design patterns, error handling, idempotency, monitoring, testing strategies, and",
+      "category": "database",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/etl-pipeline-review/SKILL.md"
+    },
+    {
+      "id": "fedramp-readiness-assessment",
+      "name": "Fedramp Readiness Assessment",
+      "description": "Assesses an organization's readiness for FedRAMP authorization, covering the 325+ NIST 800-53 controls required at Low, Moderate, or High baselines. Includes system boundary definition, control implem",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/fedramp-readiness-assessment/SKILL.md"
+    },
+    {
+      "id": "gitops-maturity-assessment",
+      "name": "Gitops Maturity Assessment",
+      "description": "Assesses an organization's GitOps adoption maturity across declarative configuration, version control practices, automated reconciliation, and observability. Evaluates adherence to GitOps principles a",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/gitops-maturity-assessment/SKILL.md"
+    },
+    {
+      "id": "incident-response-tabletop",
+      "name": "Incident Response Tabletop",
+      "description": "Plans and facilitates a tabletop exercise to test incident response procedures without impacting production systems. Covers scenario design, participant preparation, exercise facilitation, response ev",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/incident-response-tabletop/SKILL.md"
+    },
+    {
+      "id": "iso27001-audit-checklist",
+      "name": "Iso27001 Audit Checklist",
+      "description": "Provides a comprehensive audit checklist aligned with ISO 27001:2022 Annex A controls for information security management systems. Covers all 93 controls across organizational, people, physical, and t",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/iso27001-audit-checklist/SKILL.md"
+    },
+    {
+      "id": "legacy-api-modernization",
+      "name": "Legacy API Modernization",
+      "description": "Guides the modernization of legacy APIs (SOAP, XML-RPC, proprietary protocols) to modern RESTful or GraphQL interfaces. Covers API discovery, contract analysis, versioning strategy, backward compatibi",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/legacy-api-modernization/SKILL.md"
+    },
+    {
+      "id": "llm-evaluation-framework",
+      "name": "LLM Evaluation Framework",
+      "description": "Provides a structured framework for evaluating large language models (LLMs) for production use. Covers task-specific benchmarking, safety testing, cost analysis, latency measurement, prompt engineerin",
+      "category": "database",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/llm-evaluation-framework/SKILL.md"
+    },
+    {
+      "id": "load-testing-plan",
+      "name": "Load Testing Plan",
+      "description": "Designs a comprehensive load testing plan covering test scenario definition, workload modeling, environment preparation, tool selection, execution strategy, and results analysis. Supports stress testi",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/load-testing-plan/SKILL.md"
+    },
+    {
+      "id": "mainframe-to-cloud",
+      "name": "Mainframe To Cloud",
+      "description": "Provides a structured methodology for migrating mainframe workloads (COBOL, JCL, CICS, IMS) to cloud-native platforms. Covers code analysis, automated conversion, data migration from hierarchical and ",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/mainframe-to-cloud/SKILL.md"
+    },
+    {
+      "id": "meeting-effectiveness-review",
+      "name": "Meeting Effectiveness Review",
+      "description": "Conducts a review of team meeting practices to identify waste, improve effectiveness, and reclaim productive time. Covers meeting inventory, cost analysis, attendee optimization, agenda quality, decis",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/meeting-effectiveness-review/SKILL.md"
+    },
+    {
+      "id": "memory-leak-investigation",
+      "name": "Memory Leak Investigation",
+      "description": "Provides a systematic methodology for detecting, diagnosing, and resolving memory leaks in production applications. Covers heap analysis, allocation profiling, leak pattern identification, garbage col",
+      "category": "performance",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/memory-leak-investigation/SKILL.md"
+    },
+    {
+      "id": "ml-model-deployment-checklist",
+      "name": "ML Model Deployment Checklist",
+      "description": "Provides a comprehensive checklist for deploying machine learning models to production, covering model validation, infrastructure setup, serving configuration, monitoring, A/B testing, and rollback pr",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/ml-model-deployment-checklist/SKILL.md"
+    },
+    {
+      "id": "monolith-to-serverless",
+      "name": "Monolith To Serverless",
+      "description": "Guides the decomposition of a monolithic application into serverless functions and managed services. Covers domain boundary identification, function extraction, event-driven architecture design, state",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/monolith-to-serverless/SKILL.md"
+    },
+    {
+      "id": "multi-cloud-cost-comparison",
+      "name": "Multi Cloud Cost Comparison",
+      "description": "Provides a structured framework for comparing costs across multiple cloud providers for equivalent workloads. Covers service-level price comparison, TCO analysis, hidden cost identification, discount ",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/multi-cloud-cost-comparison/SKILL.md"
+    },
+    {
+      "id": "nist-csf-assessment",
+      "name": "Nist Csf Assessment",
+      "description": "Conducts an assessment against the NIST Cybersecurity Framework (CSF 2.0), evaluating organizational maturity across all six core functions: Govern, Identify, Protect, Detect, Respond, and Recover. Pr",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/nist-csf-assessment/SKILL.md"
+    },
+    {
+      "id": "observability-maturity-check",
+      "name": "Observability Maturity Check",
+      "description": "Evaluates an organization's observability maturity across the three pillars (metrics, logs, traces) plus alerting, dashboards, and AIOps capabilities. Identifies gaps in visibility, assesses signal qu",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/observability-maturity-check/SKILL.md"
+    },
+    {
+      "id": "on-prem-to-cloud-migration",
+      "name": "On Prem To Cloud Migration",
+      "description": "Provides a comprehensive framework for migrating on-premises infrastructure to a cloud provider. Covers workload assessment, network connectivity, data migration, security posture translation, and pha",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/on-prem-to-cloud-migration/SKILL.md"
+    },
+    {
+      "id": "pen-test-planning",
+      "name": "Pen Test Planning",
+      "description": "Plans and scopes a penetration test engagement, covering target identification, rules of engagement, testing methodology selection, team coordination, communication protocols, and findings remediation",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/pen-test-planning/SKILL.md"
+    },
+    {
+      "id": "platform-engineering-assessment",
+      "name": "Platform Engineering Assessment",
+      "description": "Assesses the maturity and effectiveness of an organization's internal developer platform (IDP). Covers self-service capabilities, developer experience, golden paths, platform team structure, adoption ",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/platform-engineering-assessment/SKILL.md"
+    },
+    {
+      "id": "reserved-instance-planning",
+      "name": "Reserved Instance Planning",
+      "description": "Analyzes current cloud compute usage patterns to recommend optimal reserved instance or savings plan purchases. Covers utilization analysis, commitment term selection, payment option comparison, cover",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/reserved-instance-planning/SKILL.md"
+    },
+    {
+      "id": "security-devops-assessment",
+      "name": "Security Devops Assessment",
+      "description": "Assesses the integration of security practices into DevOps workflows (DevSecOps). Covers shift-left security, automated security testing in CI/CD, supply chain security, runtime protection, security c",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/security-devops-assessment/SKILL.md"
+    },
+    {
+      "id": "sox-it-controls-audit",
+      "name": "Sox IT Controls Audit",
+      "description": "Conducts an IT general controls audit for Sarbanes-Oxley (SOX) compliance, covering access management, change management, computer operations, and program development controls for systems involved in ",
+      "category": "security",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/sox-it-controls-audit/SKILL.md"
+    },
+    {
+      "id": "spot-instance-strategy",
+      "name": "Spot Instance Strategy",
+      "description": "Designs a spot instance strategy for fault-tolerant and flexible workloads to achieve significant cost savings. Covers workload suitability assessment, instance diversification, interruption handling,",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/spot-instance-strategy/SKILL.md"
+    },
+    {
+      "id": "sre-maturity-model",
+      "name": "SRE Maturity Model",
+      "description": "Evaluates an organization's Site Reliability Engineering maturity across SLO management, incident response, toil reduction, capacity planning, and reliability culture. Produces a maturity scorecard an",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/sre-maturity-model/SKILL.md"
+    },
+    {
+      "id": "tech-radar-update",
+      "name": "Tech Radar Update",
+      "description": "Guides the process of creating or updating a technology radar that tracks the adoption status of technologies, tools, frameworks, and practices across the organization. Covers technology assessment, r",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/tech-radar-update/SKILL.md"
+    },
+    {
+      "id": "vm-to-container-migration",
+      "name": "Vm To Container Migration",
+      "description": "Provides a structured approach for migrating VM-based workloads to containers, covering application analysis, Dockerfile creation, orchestration setup, storage and networking adaptation, and progressi",
+      "category": "operational",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/vm-to-container-migration/SKILL.md"
+    },
+    {
+      "id": "waste-elimination-sprint",
+      "name": "Waste Elimination Sprint",
+      "description": "Runs a focused sprint to identify and eliminate cloud resource waste. Covers idle resource detection, rightsizing opportunities, orphaned resource cleanup, storage optimization, and quick-win cost red",
+      "category": "cost",
+      "section": "templates",
+      "url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/templates/waste-elimination-sprint/SKILL.md"
     }
   ]
 }
