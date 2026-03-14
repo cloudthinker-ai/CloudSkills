@@ -1,0 +1,422 @@
+{
+  "version": "1",
+  "updated_at": "2026-03-13T16:15:06Z",
+  "skills": [
+    {
+      "id": "analytics-cloudflare",
+      "display_name": "Cloudflare Analytics",
+      "description": "Cloudflare GraphQL Analytics for zone traffic, firewall events, Workers metrics, and schema exploration. Use when querying Cloudflare analytics data or exploring the GraphQL API.",
+      "category": "performance",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "cloudflare",
+        "cdn",
+        "analytics"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/analytics-cloudflare/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/analytics-cloudflare",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "analyzing-postgres",
+      "display_name": "PostgreSQL",
+      "description": "PostgreSQL database analysis, performance tuning, and health monitoring. You MUST read this entire skill document before executing any PostgreSQL operations \u2014 it contains mandatory workflows, safety constraints, and two-phase execution rules that prevent common errors like hallucinated column names and unsafe queries.",
+      "category": "database",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "postgres",
+        "database",
+        "sql"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/analyzing-postgres/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/analyzing-postgres",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "analyzing-sonarqube",
+      "display_name": "SonarQube",
+      "description": "SonarQube code quality and security analysis. Use when working with code quality metrics, security hotspots, quality gates, or issue tracking in SonarQube Cloud or Server.",
+      "category": "code",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "sonarqube",
+        "code-quality"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/analyzing-sonarqube/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/analyzing-sonarqube",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "aws",
+      "display_name": "AWS",
+      "description": "MANDATORY parallel execution patterns (30x speedup), CloudWatch statistics syntax, Cost Explorer aggregation, output token limits, and common pitfalls",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "aws",
+        "cloud",
+        "cost"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/aws/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/aws",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "aws-billing",
+      "display_name": "AWS Billing",
+      "description": "Analyze, break down, and report AWS costs and bills. Covers cost breakdown by service, account, or usage type; monthly/daily billing trends; cost anomaly detection; RI/SP utilization; cost forecasting; credit/discount analysis; and multi-account cost comparison. Uses anti-hallucination rules, mandatory currency/credit detection workflow, and reusable Cost Explorer functions.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "aws",
+        "billing",
+        "cost"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/aws-billing/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/aws-billing",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "aws-idle-resources",
+      "display_name": "AWS Idle Resources",
+      "description": "Detect unused and idle AWS resources that incur cost without providing value. Covers detached EBS volumes, idle load balancers, unused Elastic IPs, stopped EC2 instances, idle NAT Gateways, old snapshots, and unused ENIs. Includes estimated monthly waste per resource and anti-hallucination rules for safe detection.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "aws",
+        "cost",
+        "optimization"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/aws-idle-resources/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/aws-idle-resources",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "aws-pricing",
+      "display_name": "AWS Pricing",
+      "description": "AWS pricing helper for cost queries. ALWAYS use get_aws_cost script for pricing questions.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "aws",
+        "pricing"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/aws-pricing/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/aws-pricing",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "aws-rightsizing",
+      "display_name": "AWS Rightsizing",
+      "description": "Analyze EC2, RDS, EBS, and Lambda resource utilization to identify right-sizing opportunities. Uses CloudWatch metrics with anti-hallucination rules for burstable instances, memory metrics, peak vs average analysis, and estimated monthly savings calculations.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "aws",
+        "rightsizing",
+        "cost",
+        "ec2"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/aws-rightsizing/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/aws-rightsizing",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "azure",
+      "display_name": "Azure",
+      "description": "MANDATORY parallel execution patterns (30x speedup), monitor metrics aggregation, --output tsv formatting, and common pitfalls",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "azure",
+        "cloud",
+        "cost"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/azure/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/azure",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "bitbucket",
+      "display_name": "Bitbucket",
+      "description": "REQUIRED helper functions (never raw curl), workspace/repo_slug patterns, suggestion block syntax for code review",
+      "category": "code",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "bitbucket",
+        "git"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/bitbucket/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/bitbucket",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "gcp",
+      "display_name": "GCP",
+      "description": "Cost anti-hallucination rules, MANDATORY parallel execution patterns (30x speedup), monitoring aligners, reusable billing/pricing scripts, VAT/tax handling, and filtering/pagination",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "gcp",
+        "cloud",
+        "cost"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/gcp/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/gcp",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "gcp-idle-resources",
+      "display_name": "GCP Idle Resources",
+      "description": "Detect unused and idle GCP resources that incur cost without providing value.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "gcp",
+        "cost",
+        "optimization"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/gcp-idle-resources/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/gcp-idle-resources",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "gcp-rightsizing",
+      "display_name": "GCP Rightsizing",
+      "description": "Analyze Compute Engine VM, Cloud SQL, Persistent Disk, and serverless (Cloud Functions/Cloud Run) utilization to identify right-sizing opportunities. Uses Cloud Monitoring metrics with anti-hallucination rules for E2 shared-core instances, sole-tenant nodes, preemptible/spot VMs, SUD eligibility, peak vs average analysis, CUD-aware savings, and estimated monthly savings calculations.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "gcp",
+        "rightsizing"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/gcp-rightsizing/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/gcp-rightsizing",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "github",
+      "display_name": "Github",
+      "description": "REQUIRED --repo flag for all commands, helper functions for code review comments, suggestion block syntax rules",
+      "category": "code",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "github",
+        "git",
+        "code-review"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/github/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/github",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "gitlab",
+      "display_name": "Gitlab",
+      "description": "REQUIRED helper functions (never raw curl), project_id patterns, suggestion block syntax with offset notation",
+      "category": "code",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "gitlab",
+        "git",
+        "ci-cd"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/gitlab/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/gitlab",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "k8s",
+      "display_name": "Kubernetes",
+      "description": "MANDATORY parallel execution patterns, cluster overview script, -o json with jq filtering, batch operations, and common pitfalls",
+      "category": "operational",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "kubernetes",
+        "k8s",
+        "containers",
+        "helm"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/k8s/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/k8s",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "managing-hubspot",
+      "display_name": "HubSpot",
+      "description": "HubSpot CRM management - search and retrieve contacts, companies, deals, tickets, and other CRM objects. Use when working with HubSpot data, analyzing sales pipelines, or querying customer information.",
+      "category": "operational",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "hubspot",
+        "crm"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-hubspot/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/managing-hubspot",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "managing-notion",
+      "display_name": "Notion",
+      "description": "Notion workspace management - pages, databases, blocks, and content. Use when searching, creating, updating, or organizing Notion content.",
+      "category": "operational",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "notion",
+        "documentation"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-notion/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/managing-notion",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "managing-supabase",
+      "display_name": "Supabase",
+      "description": "Supabase project management - databases, Edge Functions, branches, and migrations. Use when working with Supabase infrastructure, executing SQL, or deploying serverless functions.",
+      "category": "database",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "supabase",
+        "database"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-supabase/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/managing-supabase",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "monitoring-dynatrace",
+      "display_name": "Dynatrace Monitoring",
+      "description": "Dynatrace observability, problem management, and DQL queries. Use when working with Dynatrace problems, vulnerabilities, entities, logs, metrics, spans, or events.",
+      "category": "observability",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "dynatrace",
+        "apm",
+        "observability"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/monitoring-dynatrace/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/monitoring-dynatrace",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "monitoring-elasticsearch",
+      "display_name": "Elasticsearch Monitoring",
+      "description": "Elasticsearch cluster monitoring, log analytics, and search optimization. Use when working with Elasticsearch indices, mappings, DSL queries, ES|QL analytics, or shard health.",
+      "category": "observability",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "elasticsearch",
+        "logs"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/monitoring-elasticsearch/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/monitoring-elasticsearch",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "monitoring-grafana",
+      "display_name": "Grafana Monitoring",
+      "description": "Grafana monitoring, visualization, and alerting. Use when working with Grafana datasources, Prometheus metrics, Loki logs, dashboards, or alerts.",
+      "category": "observability",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "grafana",
+        "monitoring",
+        "dashboards"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/monitoring-grafana/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/monitoring-grafana",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "tracking-confluence",
+      "display_name": "Confluence",
+      "description": "Confluence page management, space administration, and content collaboration. Use when working with Confluence pages, spaces, comments, or Atlassian connections.",
+      "category": "operational",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "confluence",
+        "documentation"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/tracking-confluence/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/tracking-confluence",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "tracking-jira",
+      "display_name": "Jira",
+      "description": "Jira issue tracking, project management, and workflow automation. Use when working with Jira issues, projects, sprints, or Atlassian connections.",
+      "category": "operational",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "jira",
+        "project-management"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/tracking-jira/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/tracking-jira",
+      "published_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "zabbix",
+      "display_name": "Zabbix",
+      "description": "Zabbix monitoring platform CLI. Use when working with Zabbix hosts, templates, triggers, events, logs, maintenance, dashboards, or configuration export/import.",
+      "category": "observability",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "zabbix",
+        "monitoring"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/zabbix/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/zabbix",
+      "published_at": "2026-01-01T00:00:00Z"
+    }
+  ]
+}
