@@ -1,0 +1,90 @@
+---
+name: managing-amplitude
+description: |
+  Amplitude analytics management — monitor event ingestion, user activity, chart dashboards, cohorts, and data taxonomy. Use when reviewing event volumes, inspecting user funnels, auditing taxonomy health, or debugging ingestion issues.
+connection_type: amplitude
+preload: false
+---
+
+# Managing Amplitude
+
+Manage and monitor Amplitude product analytics — event ingestion, taxonomy, cohorts, and dashboards.
+
+## Discovery Phase
+
+```bash
+#!/bin/bash
+
+AMP_API="https://amplitude.com/api/2"
+AUTH="-u $AMPLITUDE_API_KEY:$AMPLITUDE_SECRET_KEY"
+
+echo "=== Event Taxonomy ==="
+curl -s $AUTH "$AMP_API/taxonomy/event" \
+  | jq -r '.data[:20][] | [.event_type, .category // "uncategorized", .description // ""] | @tsv' | column -t
+
+echo ""
+echo "=== User Properties ==="
+curl -s $AUTH "$AMP_API/taxonomy/user-property" \
+  | jq -r '.data[:15][] | [.user_property, .type // "unknown"] | @tsv' | column -t
+
+echo ""
+echo "=== Cohorts ==="
+curl -s $AUTH "$AMP_API/cohorts" \
+  | jq -r '.cohorts[:10][] | [.id, .name, .size, .lastComputed] | @tsv' | column -t
+
+echo ""
+echo "=== Charts / Dashboards ==="
+curl -s $AUTH "$AMP_API/charts" \
+  | jq -r '.charts[:10][] | [.id, .name, .chartType, .lastModified] | @tsv' | column -t
+```
+
+## Analysis Phase
+
+```bash
+#!/bin/bash
+
+AMP_API="https://amplitude.com/api/2"
+AUTH="-u $AMPLITUDE_API_KEY:$AMPLITUDE_SECRET_KEY"
+TODAY=$(date -u +%Y%m%d)
+WEEK_AGO=$(date -u -v-7d +%Y%m%d 2>/dev/null || date -u -d '7 days ago' +%Y%m%d)
+
+echo "=== Active Users (7 days) ==="
+curl -s $AUTH "$AMP_API/users/active?start=$WEEK_AGO&end=$TODAY" \
+  | jq -r '.data[] | [.date, .count] | @tsv' | column -t
+
+echo ""
+echo "=== Event Volume by Type (24h) ==="
+curl -s $AUTH "$AMP_API/events/segmentation?e=%7B%22event_type%22%3A%22_all%22%7D&start=$WEEK_AGO&end=$TODAY&m=totals" \
+  | jq -r '.data.series' | head -20
+
+echo ""
+echo "=== Event Volume Summary ==="
+curl -s $AUTH "$AMP_API/events/list" \
+  | jq -r '.data[:15][] | [.event_type, .totals.last_7_days // 0] | @tsv' \
+  | sort -t$'\t' -k2 -rn | column -t
+
+echo ""
+echo "=== Revenue Metrics (7 days) ==="
+curl -s $AUTH "$AMP_API/revenue/metrics?start=$WEEK_AGO&end=$TODAY" \
+  | jq '{revenue: .data.revenue, arppu: .data.arppu, paying_users: .data.payingUsers}' 2>/dev/null
+```
+
+## Output Format
+
+```
+TAXONOMY
+Event Type           Category         Description
+<event-type>         <category>       <description>
+
+ACTIVE USERS (7d)
+Date          Count
+<date>        <n>
+
+EVENT VOLUME (Top Events)
+Event Type           Last 7 Days
+<event-type>         <count>
+
+COHORTS
+ID       Name            Size      Last Computed
+<id>     <cohort-name>   <size>    <timestamp>
+```

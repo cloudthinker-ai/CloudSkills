@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/Browse%20Skills-cloudthinker.io%2Fskills-ec4899?style=for-the-badge" alt="Browse Skills" />
   </a>
   &nbsp;
-  <img src="https://img.shields.io/badge/skills-25-10b981?style=for-the-badge" alt="25 skills" />
+  <img src="https://img.shields.io/badge/skills-880+-10b981?style=for-the-badge" alt="880+ skills" />
   &nbsp;
   <img src="https://img.shields.io/badge/license-MIT-6366f1?style=for-the-badge" alt="MIT" />
   &nbsp;
@@ -37,59 +37,54 @@ Skills are composable, guardrailed, and ready to deploy. They encode tribal know
 
 ---
 
-## Cloud Connection Skills
+## Skill Categories
+
+### Cloud Connection Skills (728+)
 
 Skills that operate on your connected cloud infrastructure and services.
 
-### ☁️ Cloud Providers
+| Category | Examples | Count |
+|:---------|:---------|------:|
+| **Cloud Providers** | AWS, Azure, GCP, DigitalOcean, Hetzner, Oracle OCI, Linode, IBM Cloud, Alibaba, Vultr, Scaleway | 40+ |
+| **CI/CD & GitOps** | Jenkins, GitHub Actions, GitLab CI, ArgoCD, Flux, Tekton, Buildkite, CircleCI, Spinnaker | 25+ |
+| **Containers & Orchestration** | Docker, Helm, Istio, Linkerd, Cilium, Kustomize, Rancher, OpenShift, Podman | 30+ |
+| **Infrastructure as Code** | Terraform, Pulumi, Ansible, CloudFormation, CDK, Crossplane, Puppet, Chef | 30+ |
+| **Databases & Caches** | PostgreSQL, MySQL, MongoDB, Redis, Kafka, Elasticsearch, DynamoDB, Cassandra, ClickHouse, Pinecone, Weaviate | 60+ |
+| **Observability & Monitoring** | Datadog, Prometheus, Grafana, Splunk, New Relic, Dynatrace, Honeycomb, Zabbix, OpenTelemetry | 50+ |
+| **Security & Compliance** | Snyk, Trivy, Vault, Falco, CrowdStrike, Prisma Cloud, Drata, Vanta, Checkov | 60+ |
+| **Networking & CDN** | Nginx, Cloudflare, HAProxy, CoreDNS, Tailscale, Fastly, Akamai, Kong | 30+ |
+| **Data Engineering & Analytics** | Airflow, dbt, Spark, Flink, Snowflake, BigQuery, Segment, Mixpanel, Tableau | 40+ |
+| **AI/ML Platforms** | SageMaker, Vertex AI, MLflow, Kubeflow, Hugging Face, OpenAI, Anthropic | 25+ |
+| **Serverless & Edge** | Lambda, Cloud Functions, Cloudflare Workers, Vercel, Netlify, Fly.io, Deno Deploy | 30+ |
+| **Developer Tools** | SonarQube, Turborepo, Bazel, Codecov, Pre-commit, Renovate, Semantic Release | 30+ |
+| **Incident Management** | PagerDuty, OpsGenie, incident.io, FireHydrant, Rootly, Grafana OnCall | 25+ |
+| **IT Service Management** | ServiceNow, Zendesk, Freshservice, Jira Service Management, GLPI | 15+ |
+| **Feature Flags** | LaunchDarkly, Split.io, Flagsmith, Unleash, GrowthBook, Statsig | 12+ |
+| **Code Review** | GitHub PR Reviews, GitLab MRs, Gerrit, CodeRabbit, CodeScene, Sourcery | 15+ |
+| **Identity & Access** | Okta, Auth0, Keycloak, AWS IAM, Azure Entra, CyberArk | 15+ |
+| **Communication & Collaboration** | Slack, Teams, Discord, Notion, Confluence, Jira, Trello, Linear | 30+ |
+| **Workflow Automation** | Zapier, Temporal, n8n, Windmill, Pipedream, Power Automate | 20+ |
+| **Low-Code & CMS** | Appsmith, Retool, Strapi, Contentful, Sanity, Directus | 15+ |
+| **FinOps & Cost** | Kubecost, Infracost, Spot.io, Cast AI, Vantage, CloudHealth | 15+ |
+| **Storage & Backup** | MinIO, Ceph, Velero, S3, Cloudflare R2, Backblaze B2 | 15+ |
+| **Package Registries** | npm, PyPI, Cargo, NuGet, Docker Hub, Harbor, Artifactory | 15+ |
 
-| Skill | Description |
-|:------|:------------|
-| [aws](skills/connections/aws/SKILL.md) | AWS CLI with mandatory parallel execution patterns (30× speedup) |
-| [aws-billing](skills/connections/aws-billing/SKILL.md) | Analyze and break down AWS costs, billing trends, and anomaly detection |
-| [aws-idle-resources](skills/connections/aws-idle-resources/SKILL.md) | Detect unused EBS volumes, idle load balancers, stopped EC2 instances, and more |
-| [aws-pricing](skills/connections/aws-pricing/SKILL.md) | Query AWS on-demand pricing for cost estimates |
-| [aws-rightsizing](skills/connections/aws-rightsizing/SKILL.md) | Analyze EC2, RDS, EBS, and Lambda utilization for rightsizing opportunities |
-| [azure](skills/connections/azure/SKILL.md) | Azure CLI with parallel execution patterns and resource management |
-| [gcp](skills/connections/gcp/SKILL.md) | GCP CLI with cost anti-hallucination rules and parallel execution |
-| [gcp-idle-resources](skills/connections/gcp-idle-resources/SKILL.md) | Detect unused GCP resources incurring cost without providing value |
-| [gcp-rightsizing](skills/connections/gcp-rightsizing/SKILL.md) | Analyze Compute Engine, Cloud SQL, and Persistent Disk for rightsizing |
-| [k8s](skills/connections/k8s/SKILL.md) | Kubernetes with mandatory parallel patterns, kubectl, and Helm |
+### Template Skills (159+)
 
-### 💻 Code & DevOps
+Reusable workflow templates for common cloud engineering processes.
 
-| Skill | Description |
-|:------|:------------|
-| [github](skills/connections/github/SKILL.md) | GitHub repos, pull requests, issues, Actions, and code review |
-| [gitlab](skills/connections/gitlab/SKILL.md) | GitLab projects, merge requests, pipelines, and CI/CD |
-| [bitbucket](skills/connections/bitbucket/SKILL.md) | Bitbucket workspace, repos, PRs, and pipelines |
-| [analyzing-sonarqube](skills/connections/analyzing-sonarqube/SKILL.md) | SonarQube code quality, security hotspots, and technical debt |
-
-### 📊 Observability & Monitoring
-
-| Skill | Description |
-|:------|:------------|
-| [monitoring-grafana](skills/connections/monitoring-grafana/SKILL.md) | Grafana dashboards, panels, alerts, and datasources |
-| [monitoring-dynatrace](skills/connections/monitoring-dynatrace/SKILL.md) | Dynatrace observability, problem management, and DQL queries |
-| [monitoring-elasticsearch](skills/connections/monitoring-elasticsearch/SKILL.md) | Elasticsearch log analytics, cluster monitoring, and search |
-| [analytics-cloudflare](skills/connections/analytics-cloudflare/SKILL.md) | Cloudflare zone traffic, firewall events, and performance analytics |
-| [zabbix](skills/connections/zabbix/SKILL.md) | Zabbix hosts, templates, triggers, and alert management |
-
-### 🗄️ Databases
-
-| Skill | Description |
-|:------|:------------|
-| [analyzing-postgres](skills/connections/analyzing-postgres/SKILL.md) | PostgreSQL performance tuning, slow queries, and index analysis |
-| [managing-supabase](skills/connections/managing-supabase/SKILL.md) | Supabase databases, Edge Functions, storage, and auth |
-
-### 📋 Project & Operations
-
-| Skill | Description |
-|:------|:------------|
-| [tracking-jira](skills/connections/tracking-jira/SKILL.md) | Jira issue tracking, sprint management, and workflow automation |
-| [tracking-confluence](skills/connections/tracking-confluence/SKILL.md) | Confluence page management, space administration, and content |
-| [managing-hubspot](skills/connections/managing-hubspot/SKILL.md) | HubSpot CRM contacts, companies, deals, and pipelines |
-| [managing-notion](skills/connections/managing-notion/SKILL.md) | Notion pages, databases, blocks, and workspace management |
+| Category | Examples | Count |
+|:---------|:---------|------:|
+| **Deployment** | Deployment Checklist, Blue-Green, Canary, Zero-Downtime Migration | 15+ |
+| **Incident Response** | Incident Runbook, Severity Classification, War Room Protocol, Root Cause Analysis | 25+ |
+| **Security & Compliance** | Security Audit, SOC2, HIPAA, PCI-DSS, GDPR, CIS Benchmarks, Threat Modeling | 15+ |
+| **Code Review** | PR Review Checklist, Security Code Review, Performance Review, IaC Review | 15+ |
+| **IT HelpDesk** | Employee Onboarding/Offboarding, Access Requests, VPN Troubleshooting, Asset Management | 15+ |
+| **SRE & Reliability** | SLO Workshop, Error Budget Review, Chaos Engineering, Alert Fatigue Reduction | 15+ |
+| **Architecture & Design** | System Design Document, ADR Template, RFC Template, API Contract Review | 15+ |
+| **Cost Optimization** | Cost Optimization Report, FinOps Maturity Assessment, Capacity Planning | 10+ |
+| **Team & Process** | Sprint Retrospective, OKR Tracking, Onboarding Checklist, Knowledge Transfer | 15+ |
+| **Performance** | Load Testing Plan, Database Tuning, CDN Optimization, Caching Strategy Review | 10+ |
 
 ---
 
@@ -130,9 +125,13 @@ Step-by-step instructions for the AI agent...
 
 | Field | Required | Description |
 |:------|:--------:|:------------|
-| `name` | ✓ | Kebab-case identifier matching the directory name |
-| `description` | ✓ | Purpose and context for when to use this skill |
+| `name` | Yes | Kebab-case identifier matching the directory name |
+| `description` | Yes | Purpose and context for when to use this skill |
 | `connection_type` | — | Required cloud connection (e.g. `aws`, `k8s`, `github`) |
+
+**Connection skills** (`skills/connections/`) integrate with specific tools and services via API keys, CLI tools, or OAuth connections.
+
+**Template skills** (`skills/templates/`) provide structured workflows, checklists, and runbooks that guide agents through multi-step processes.
 
 See [SPEC.md](SPEC.md) for the full specification.
 
@@ -143,7 +142,7 @@ See [SPEC.md](SPEC.md) for the full specification.
 We welcome skills that encode real-world cloud engineering expertise.
 
 1. **Fork** this repository
-2. **Create** `skills/connections/<provider>/<your-skill>/SKILL.md`
+2. **Create** `skills/connections/<your-skill>/SKILL.md` or `skills/templates/<your-skill>/SKILL.md`
 3. **Open a pull request** — CI validates your skill automatically
 4. **After merge**, the skill appears on CloudThinker within 1 hour
 
@@ -157,5 +156,5 @@ MIT — see [LICENSE](LICENSE)
 
 <div align="center">
   <br />
-  <sub>Built with ❤️ by <a href="https://cloudthinker.io">CloudThinker</a></sub>
+  <sub>Built with care by <a href="https://cloudthinker.io">CloudThinker</a></sub>
 </div>
