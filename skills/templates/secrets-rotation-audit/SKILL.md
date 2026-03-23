@@ -2,7 +2,11 @@
 name: secrets-rotation-audit
 enabled: true
 description: |
-  Audits the rotation status of all secrets, credentials, API keys, and certificates across services and environments. This template identifies stale secrets, missing rotation policies, and non-compliant credential management practices, producing a remediation plan to strengthen secrets hygiene.
+  Use when performing secrets rotation audit — audits the rotation status of all
+  secrets, credentials, API keys, and certificates across services and
+  environments. This template identifies stale secrets, missing rotation
+  policies, and non-compliant credential management practices, producing a
+  remediation plan to strengthen secrets hygiene.
 required_connections:
   - prefix: vault
     label: "Secrets Manager"
@@ -90,6 +94,16 @@ For each non-compliant secret:
 3. - [ ] Verify service continuity after rotation
 4. - [ ] Enable automated rotation if not already configured
 5. - [ ] Document rotation procedure
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,10 @@
 name: incident-response-runbook
 enabled: true
 description: |
-  Structured incident response workflow that guides through detection, triage, investigation, mitigation, and resolution. Integrates with PagerDuty, Slack, Jira, or Confluence to coordinate response. Use when a production incident is declared or when validating incident response readiness.
+  Use when a production incident is declared, when investigating service degradation,
+  or when validating incident response readiness. Structured workflow covering detection,
+  triage, investigation, mitigation, resolution, and post-mortem. Integrates with
+  PagerDuty, Slack, Jira, and Confluence for coordinated response.
 required_connections:
   - prefix: slack
     label: "Slack (for incident bridge)"
@@ -28,29 +31,38 @@ features:
   - INCIDENT
 ---
 
-# Incident Response Runbook Skill
+# Incident Response Runbook
 
-Execute a structured incident response for: **{{ incident_title }}**
+Execute structured incident response for: **{{ incident_title }}**
 Severity: **{{ severity }}** | Service: **{{ affected_service }}**
+
+## Severity Decision Matrix
+
+| Signal | SEV1 | SEV2 | SEV3 | SEV4 |
+|--------|------|------|------|------|
+| User impact | >25% users | 5-25% users | <5% users | None |
+| Revenue impact | High / checkout broken | Medium / degraded | Low / workaround exists | None |
+| Data integrity | At risk | Not at risk | Not at risk | Not at risk |
+| Response | All-hands, immediate | Team, within 15 min | Individual, within 1h | Business hours |
+| Post-mortem | Required within 48h | Required within 48h | Brief review within 1 week | Ticket only |
+
+[Severity-specific playbooks with escalation matrices](./references/severity-playbooks.md)
 
 ## Workflow
 
-### Phase 1 — DETECT & DECLARE (0-5 minutes)
+### Phase 1 — DETECT & DECLARE (0-5 min)
 
-**Immediately upon detection:**
-
-1. **Confirm the incident is real** — not a monitoring false positive
-   - Check monitoring dashboard for corroborating signals
+1. **Confirm incident is real** — not a monitoring false positive
+   - Check dashboard for corroborating signals
    - Verify user impact exists (not just synthetic test failure)
-   - Check if other team members are already aware
 
 2. **Declare the incident**
-   - Assign Incident Commander (IC) — the single decision-maker
+   - Assign Incident Commander (IC) — single decision-maker
    - Open incident channel: `{{ incident_channel }}`
-   - Post initial broadcast to Slack:
+   - Post initial broadcast:
 
    ```
-   🚨 INCIDENT DECLARED — {{ severity }}
+   INCIDENT DECLARED — {{ severity }}
    Title: {{ incident_title }}
    Affected: {{ affected_service }}
    IC: [your name]
@@ -58,169 +70,139 @@ Severity: **{{ severity }}** | Service: **{{ affected_service }}**
    Status: INVESTIGATING
    ```
 
-3. **Page on-call if not already paged**
-   - Verify PagerDuty incident is open for the affected service
-   - Escalate to secondary if primary does not acknowledge within 5 min (SEV1) / 15 min (SEV2)
+3. **Page on-call** if not already paged
+   - Escalate to secondary if primary does not ACK within 5 min (SEV1) / 15 min (SEV2)
 
-### Phase 2 — TRIAGE (5-15 minutes)
+### Phase 2 — TRIAGE (5-15 min)
 
-**Determine blast radius — answer these questions:**
+Answer ALL five triage questions — do not skip any:
 
-```
-TRIAGE QUESTIONS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. WHAT is broken?
-   - Which service(s) / endpoints are affected?
-   - Error type: 5xx / timeout / data loss / security / availability?
+| # | Question | What to check |
+|---|----------|--------------|
+| 1 | **WHAT** is broken? | Services, endpoints, error type (5xx/timeout/data loss) |
+| 2 | **WHO** is impacted? | % users, segments, regions, internal vs customer-facing |
+| 3 | **HOW LONG?** | Start time, ongoing vs intermittent |
+| 4 | **WHAT CHANGED?** | Deployments (last 2h), infra changes, traffic patterns, third-party status |
+| 5 | **CAN WE MITIGATE NOW?** | Kill switch, feature flag, rollback, traffic reroute |
 
-2. WHO is impacted?
-   - % of users affected (0-100%)?
-   - Which customer segments / regions?
-   - Internal only or customer-facing?
+### Phase 3 — INVESTIGATE (15-60 min)
 
-3. HOW LONG?
-   - When did this start (approximate)?
-   - Is it ongoing or intermittent?
+Systematic investigation order:
+1. **Dashboards** — error rate, latency, throughput
+2. **Logs** — first error occurrence, error patterns
+3. **Recent changes** — deployment history, config changes
+4. **Dependencies** — database, cache, external API status
+5. **Capacity** — CPU, memory, disk, connection pool
 
-4. WHAT CHANGED?
-   - Recent deployments in last 2 hours?
-   - Infrastructure changes?
-   - Traffic pattern changes?
-   - Third-party service degradations?
-
-5. CAN WE MITIGATE NOW?
-   - Is there an immediate kill switch / feature flag?
-   - Can we roll back?
-   - Can we route traffic away from affected instances?
-```
-
-**Severity Matrix (adjust if needed):**
-| Severity | User Impact | Revenue Impact | Response Time |
-|----------|-------------|----------------|---------------|
-| SEV1 | >25% users, checkout broken | High | Immediate, all-hands |
-| SEV2 | 5-25% users, degraded | Medium | Within 15 min |
-| SEV3 | <5% users, minor degradation | Low | Within 1 hour |
-| SEV4 | No user impact, monitoring/infra | None | Business hours |
-
-### Phase 3 — INVESTIGATE (15-60 minutes)
-
-**Systematic investigation using available connections:**
-
-1. **Check dashboards** — error rate, latency, throughput (Grafana, Datadog, New Relic, CloudWatch)
-2. **Check logs** — look for first error occurrence and error patterns (Elasticsearch, CloudWatch Logs)
-3. **Check recent changes** — deployment history, infrastructure changes, config changes
-4. **Check dependencies** — database health, cache health, external API status pages
-5. **Check capacity** — CPU, memory, disk, connection pool exhaustion
-
-**Investigation Timeline Log** (IC maintains this):
+**Investigation log** (IC maintains):
 ```
 [HH:MM] SIGNAL: [what was observed]
 [HH:MM] ACTION: [what was tried]
 [HH:MM] RESULT: [what happened]
 [HH:MM] HYPOTHESIS: [current best guess]
+[HH:MM] REJECTED: [why hypothesis was wrong] ← capture failed hypotheses too
 ```
 
-**Status Updates** (post to {{ incident_channel }} every 15 minutes):
+**Status updates** (every 15 min to `{{ incident_channel }}`):
 ```
-⏱ STATUS UPDATE — {{ severity }}
-Time elapsed: [X] minutes
-Current status: INVESTIGATING / MITIGATING / MONITORING
-Current hypothesis: [one sentence]
+STATUS UPDATE — {{ severity }}
+Elapsed: [X] minutes
+Status: INVESTIGATING / MITIGATING / MONITORING
+Hypothesis: [one sentence]
 Next action: [what is being tried]
-ETA to resolution: [estimate or "unknown"]
+ETA: [estimate or "unknown"]
 ```
 
 ### Phase 4 — MITIGATE (variable)
 
-**Apply mitigation in order of risk (lowest risk first):**
+Apply mitigation in **risk-priority order** (lowest risk first):
 
-Priority order for mitigation:
-1. **Kill switch / feature flag** — toggle off broken feature (safest, reversible)
-2. **Traffic routing** — shift load to healthy region/instance
-3. **Rollback deployment** — revert to last known good version
-4. **Scale up** — add capacity if resource exhaustion is root cause
-5. **Infrastructure fix** — restart service, clear cache, release locks
-6. **Hotfix** — deploy targeted code fix (highest risk, takes longest)
+| Priority | Action | Risk | Reversibility |
+|----------|--------|------|---------------|
+| 1 | Kill switch / feature flag | Lowest | Instant |
+| 2 | Traffic routing to healthy region | Low | Fast |
+| 3 | Rollback deployment | Medium | Minutes |
+| 4 | Scale up capacity | Medium | Minutes |
+| 5 | Infrastructure fix (restart, clear cache) | Medium | Variable |
+| 6 | Hotfix deployment | Highest | Slow |
 
-**Mitigation Decision:**
+**Document the decision:**
 ```
-MITIGATION SELECTED: [describe action]
-Reason: [why this was chosen over alternatives]
+MITIGATION: [action]
+Reason: [why chosen over alternatives]
 Risk: [what could go wrong]
-Rollback of mitigation: [how to undo if it makes things worse]
-Approval: IC approved at [HH:MM]
+Rollback plan: [how to undo if it makes things worse]
+Approved by IC at [HH:MM]
 ```
 
 ### Phase 5 — RESOLVE
 
-**Incident is resolved when:**
-- Error rate back to baseline (< 1% or pre-incident level)
+**Incident is resolved when ALL conditions met:**
+- Error rate back to baseline (<1% or pre-incident level)
 - Latency back to baseline
 - All services reporting healthy
-- No customer complaints still coming in
+- No new customer complaints
 
 **Resolution announcement:**
 ```
-✅ INCIDENT RESOLVED — {{ severity }}
+INCIDENT RESOLVED — {{ severity }}
 Title: {{ incident_title }}
 Duration: [X hours Y minutes]
-Root Cause (preliminary): [one sentence]
+Root Cause: [one sentence]
 Resolution: [what fixed it]
-Next Steps: Post-mortem scheduled for [date]
+Post-mortem: Scheduled for [date]
 ```
 
-**Post-resolution actions:**
-- [ ] Update status page (if applicable)
+**Post-resolution checklist:**
+- [ ] Update status page
 - [ ] Notify customer success team
-- [ ] Create post-mortem issue in Jira/Linear
+- [ ] Create post-mortem ticket (Jira/Linear)
 - [ ] Schedule post-mortem meeting (within 48h for SEV1/SEV2)
 - [ ] Close PagerDuty incident
 
 ### Phase 6 — POST-MORTEM
 
-**Post-mortem document structure** (create within 48 hours for SEV1/SEV2):
+Create within 48h for SEV1/SEV2. Structure:
 
 ```
 INCIDENT POST-MORTEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Title: {{ incident_title }}
-Date: [incident date]
-Duration: [total duration]
-Severity: {{ severity }}
-Author(s): [list]
+Date: [date] | Duration: [total] | Severity: {{ severity }}
 
-IMPACT
-- Users affected: [number/percentage]
-- Features degraded: [list]
-- Revenue impact: [estimate if known]
+IMPACT: [users affected, features degraded, revenue impact]
+TIMELINE: [chronological key events]
+ROOT CAUSE: [technical cause — be specific, avoid blame]
+CONTRIBUTING FACTORS: [systemic issues]
+WHAT WENT WELL: [things that worked]
+WHAT TO IMPROVE: [things that slowed response]
 
-TIMELINE
-[chronological list of key events]
-
-ROOT CAUSE
-[technical root cause — be specific, avoid blame]
-
-CONTRIBUTING FACTORS
-[systemic issues that made this possible]
-
-WHAT WENT WELL
-[things that worked during response]
-
-WHAT COULD BE IMPROVED
-[things that slowed response or made impact worse]
-
-ACTION ITEMS
+ACTION ITEMS:
 | Action | Owner | Due Date | Priority |
 |--------|-------|----------|----------|
-| [action] | [name] | [date] | P1/P2/P3 |
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "Skip triage, we know what's wrong" | Complete all 5 triage questions | Triage reveals blast radius — you can't mitigate what you haven't measured |
+| "Just restart the service" | Investigate before restarting | Restart masks root cause, may cause data loss, and delays actual fix |
+| "We don't need an IC" | Always assign an IC | Without single decision-maker, conflicting actions extend the incident |
+| "Post-mortem can wait" | Schedule within 48h | Details fade quickly; action items lose urgency after a week |
+| "This is only SEV3, skip the process" | Adapt the process, don't skip it | SEV3s become SEV1s when unmanaged — the process scales down, not off |
+| "I'll check metrics later" | Check dashboards first in investigation | Silent failures are invisible without metrics; logs alone miss the big picture |
+| "The fix is obvious, skip investigation" | Document hypothesis before applying fix | "Obvious" fixes that are wrong make the incident worse and longer |
 
 ## Output Format
 
-Produce a real-time incident log with:
-1. **Incident header** (title, severity, IC, start time)
-2. **Triage answers** based on gathered information
-3. **Investigation findings** from connected tools
-4. **Mitigation decision** with reasoning
-5. **Resolution announcement** (once resolved)
-6. **Post-mortem draft** (on request)
+Produce a real-time incident log:
+1. **Header** — title, severity, IC, start time
+2. **Triage answers** — all 5 questions answered
+3. **Investigation findings** — signals, hypotheses, evidence
+4. **Mitigation decision** — action, reasoning, rollback plan
+5. **Resolution** — what fixed it, duration, next steps
+6. **Post-mortem draft** — on request
+
+## References
+
+- [Severity Playbooks — Escalation Matrices & Investigation Runbooks](./references/severity-playbooks.md)

@@ -2,7 +2,11 @@
 name: dependency-update-review
 enabled: true
 description: |
-  Dependency update PR review template covering CVE assessment, breaking change detection, license compliance, transitive dependency analysis, and upgrade risk evaluation. Provides a systematic framework for reviewing package updates from Dependabot, Renovate, or manual upgrades to ensure security and stability.
+  Use when performing dependency update review — dependency update PR review
+  template covering CVE assessment, breaking change detection, license
+  compliance, transitive dependency analysis, and upgrade risk evaluation.
+  Provides a systematic framework for reviewing package updates from Dependabot,
+  Renovate, or manual upgrades to ensure security and stability.
 required_connections:
   - prefix: github
     label: "GitHub"
@@ -94,6 +98,16 @@ STABILITY CHECK
 [ ] Build artifacts unchanged (no unexpected size changes): YES / NO
 [ ] Runtime tested in staging: YES / NO
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

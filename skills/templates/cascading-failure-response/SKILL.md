@@ -2,7 +2,11 @@
 name: cascading-failure-response
 enabled: true
 description: |
-  Response playbook for cascading and correlated failures across multiple services. Covers identification of the originating failure, blast radius mapping, circuit breaker activation, load shedding strategies, service isolation, dependency graph analysis, and coordinated multi-team recovery procedures.
+  Use when performing cascading failure response — response playbook for
+  cascading and correlated failures across multiple services. Covers
+  identification of the originating failure, blast radius mapping, circuit
+  breaker activation, load shedding strategies, service isolation, dependency
+  graph analysis, and coordinated multi-team recovery procedures.
 required_connections:
   - prefix: slack
     label: "Slack (for multi-team coordination)"
@@ -132,3 +136,14 @@ Recover services in dependency order — upstream first, downstream after.
 - [ ] Create service dependency dashboard
 - [ ] Add circuit breaker state monitoring
 - [ ] Implement distributed tracing for cross-service debugging
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

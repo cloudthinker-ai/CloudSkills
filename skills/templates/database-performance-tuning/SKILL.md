@@ -2,7 +2,10 @@
 name: database-performance-tuning
 enabled: true
 description: |
-  Provides a systematic approach to diagnosing and resolving database performance issues. Covers query analysis, index optimization, schema review, configuration tuning, connection management, and capacity planning for relational and NoSQL databases.
+  Use when performing database performance tuning — provides a systematic
+  approach to diagnosing and resolving database performance issues. Covers query
+  analysis, index optimization, schema review, configuration tuning, connection
+  management, and capacity planning for relational and NoSQL databases.
 required_connections:
   - prefix: database
     label: "Database Instance"
@@ -116,6 +119,16 @@ features:
 3. Implement query performance regression detection
 4. Schedule regular index maintenance
 5. Plan capacity based on growth trends
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Baseline Report**: Current performance metrics snapshot

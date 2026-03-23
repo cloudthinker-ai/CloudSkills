@@ -2,7 +2,11 @@
 name: ccpa-compliance-check
 enabled: true
 description: |
-  Evaluates organizational compliance with the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA). Covers consumer rights implementation, data inventory, privacy notice requirements, vendor management, opt-out mechanisms, and data protection assessments.
+  Use when performing ccpa compliance check — evaluates organizational
+  compliance with the California Consumer Privacy Act (CCPA) and California
+  Privacy Rights Act (CPRA). Covers consumer rights implementation, data
+  inventory, privacy notice requirements, vendor management, opt-out mechanisms,
+  and data protection assessments.
 required_connections:
   - prefix: grc-tool
     label: "GRC Platform"
@@ -113,6 +117,16 @@ features:
 3. Review data retention and deletion schedules
 4. Verify breach notification procedures
 5. Conduct risk assessment for high-risk processing (CPRA requirement)
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Applicability Determination**: Criteria met and entities in scope

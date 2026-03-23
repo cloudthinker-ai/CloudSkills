@@ -2,7 +2,11 @@
 name: microservices-decomposition
 enabled: true
 description: |
-  Template for analyzing monolithic applications and planning decomposition into microservices. Covers bounded context identification, domain-driven design analysis, service boundary definition, data ownership mapping, communication pattern selection, and incremental extraction strategy.
+  Use when performing microservices decomposition — template for analyzing
+  monolithic applications and planning decomposition into microservices. Covers
+  bounded context identification, domain-driven design analysis, service
+  boundary definition, data ownership mapping, communication pattern selection,
+  and incremental extraction strategy.
 required_connections:
   - prefix: github
     label: "GitHub"
@@ -145,6 +149,16 @@ Step 4 — Cleanup:
 [ ] Update documentation
 [ ] Archive migration tooling
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

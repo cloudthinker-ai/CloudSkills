@@ -2,7 +2,11 @@
 name: knowledge-transfer-plan
 enabled: true
 description: |
-  Structures a knowledge transfer plan for engineering teams facing team transitions, departures, or domain ownership changes. This template ensures critical knowledge about systems, processes, and tribal context is documented, transferred to receiving team members, and validated before the transition is complete.
+  Use when performing knowledge transfer plan — structures a knowledge transfer
+  plan for engineering teams facing team transitions, departures, or domain
+  ownership changes. This template ensures critical knowledge about systems,
+  processes, and tribal context is documented, transferred to receiving team
+  members, and validated before the transition is complete.
 required_connections:
   - prefix: collaboration
     label: "Collaboration Tool"
@@ -101,6 +105,16 @@ Verify the transfer is complete and the recipient is self-sufficient.
 - [ ] Source and recipient both sign off on completion
 - [ ] Manager approves transfer completion
 - [ ] Shadow period defined: ___ weeks
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

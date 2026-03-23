@@ -2,7 +2,11 @@
 name: soc2-compliance-check
 enabled: true
 description: |
-  Assess SOC2 Type II compliance readiness across Trust Service Criteria: security, availability, processing integrity, confidentiality, and privacy. Covers access controls, change management, monitoring, incident response, and vendor management. Use for audit preparation or continuous compliance monitoring.
+  Use when performing soc2 compliance check — assess SOC2 Type II compliance
+  readiness across Trust Service Criteria: security, availability, processing
+  integrity, confidentiality, and privacy. Covers access controls, change
+  management, monitoring, incident response, and vendor management. Use for
+  audit preparation or continuous compliance monitoring.
 required_connections:
   - prefix: github
     label: "GitHub (or version control)"
@@ -130,6 +134,16 @@ For each control, gather evidence:
 | Change Management | READY/GAP | [details] | [action] | P1/P2 | [name] |
 | Incident Response | READY/GAP | [details] | [action] | P1/P2 | [name] |
 | Risk Management | READY/GAP | [details] | [action] | P1/P2 | [name] |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

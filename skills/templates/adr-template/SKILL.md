@@ -2,7 +2,11 @@
 name: adr-template
 enabled: true
 description: |
-  Structures an Architecture Decision Record (ADR) to capture the context, decision, and consequences of significant architectural choices. This template ensures decisions are documented with sufficient detail for future teams to understand not just what was decided, but why.
+  Use when performing adr template — structures an Architecture Decision Record
+  (ADR) to capture the context, decision, and consequences of significant
+  architectural choices. This template ensures decisions are documented with
+  sufficient detail for future teams to understand not just what was decided,
+  but why.
 required_connections:
   - prefix: wiki
     label: "Documentation Platform"
@@ -95,6 +99,16 @@ Document the expected outcomes of this decision.
 - [ ] Migration plan (if replacing existing approach)
 - [ ] Timeline for implementation
 - [ ] Success metrics to validate the decision
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

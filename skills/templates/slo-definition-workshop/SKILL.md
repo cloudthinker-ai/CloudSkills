@@ -2,7 +2,10 @@
 name: slo-definition-workshop
 enabled: true
 description: |
-  SLO definition workflow covering SLI selection, target setting, error budget policy, alerting strategy, and stakeholder alignment. Use when establishing SLOs for a new service, revising existing targets, or implementing an SRE practice.
+  Use when performing slo definition workshop — sLO definition workflow covering
+  SLI selection, target setting, error budget policy, alerting strategy, and
+  stakeholder alignment. Use when establishing SLOs for a new service, revising
+  existing targets, or implementing an SRE practice.
 required_connections:
   - prefix: datadog
     label: "Datadog (or monitoring platform)"
@@ -194,6 +197,16 @@ SLO DOCUMENT
 [ ] Review cadence set: [monthly / quarterly]
 [ ] First review date: [date]
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

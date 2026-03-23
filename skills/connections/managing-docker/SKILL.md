@@ -1,7 +1,11 @@
 ---
 name: managing-docker
 description: |
-  Docker container lifecycle and image management. Covers container operations, image builds, volume/network inspection, Docker Compose orchestration, resource usage monitoring, and registry management. Use when managing containers, debugging container issues, inspecting images, or orchestrating multi-container applications.
+  Use when working with Docker — docker container lifecycle and image
+  management. Covers container operations, image builds, volume/network
+  inspection, Docker Compose orchestration, resource usage monitoring, and
+  registry management. Use when managing containers, debugging container issues,
+  inspecting images, or orchestrating multi-container applications.
 connection_type: docker
 preload: false
 ---
@@ -202,6 +206,42 @@ docker compose -f "${COMPOSE_DIR}/docker-compose.yml" logs --tail 20 --no-color 
 - **Never run** `docker rm`, `docker rmi`, `docker system prune` without explicit user confirmation
 - **Never expose** environment variables containing secrets from `docker inspect`
 - **Log limits**: Always use `--tail` to prevent unbounded log output
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Docker Report
+══════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Anti-Hallucination Rules
+
+1. **NEVER assume resource names** — always discover via CLI/API in Phase 1 before referencing in Phase 2.
+2. **NEVER fabricate metric names or dimensions** — verify against the service documentation or `--help` output.
+3. **NEVER mix CLI commands between service versions** — confirm which version/API you are targeting.
+4. **ALWAYS use the discovery → verify → analyze chain** — every resource referenced must have been discovered first.
+5. **ALWAYS handle empty results gracefully** — an empty response is valid data, not an error to retry.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 - **Dangling images accumulate**: Use `docker image prune` periodically but confirm first

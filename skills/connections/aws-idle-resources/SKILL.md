@@ -1,7 +1,11 @@
 ---
 name: aws-idle-resources
 description: |
-    Detect unused and idle AWS resources that incur cost without providing value. Covers detached EBS volumes, idle load balancers, unused Elastic IPs, stopped EC2 instances, idle NAT Gateways, old snapshots, and unused ENIs. Includes estimated monthly waste per resource and anti-hallucination rules for safe detection.
+  Use when working with Aws Idle Resources — detect unused and idle AWS
+  resources that incur cost without providing value. Covers detached EBS
+  volumes, idle load balancers, unused Elastic IPs, stopped EC2 instances, idle
+  NAT Gateways, old snapshots, and unused ENIs. Includes estimated monthly waste
+  per resource and anti-hallucination rules for safe detection.
 connection_type: aws
 preload: false
 ---
@@ -202,3 +206,32 @@ For resources not listed above, use `get_aws_cost` from the `aws-pricing/` skill
 | Snapshot count very high | Account has many automated backups | Use `--days` to filter by age, cross-ref AMIs |
 | NAT Gateway shows as idle but is needed | Used for private subnet egress | Check VPC route tables before flagging |
 | EIP shows as unused but is in use | Attached to network interface, not EC2 | Check `NetworkInterfaceId` association |
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Idle Resources Report
+═════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

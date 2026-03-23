@@ -2,7 +2,11 @@
 name: incident-bridge-facilitation
 enabled: true
 description: |
-  Guide for running an effective incident bridge call or war room, covering agenda structure, facilitation techniques, role assignments, information flow management, and decision-making frameworks. Ensures bridge calls remain focused, productive, and lead to faster incident resolution.
+  Use when performing incident bridge facilitation — guide for running an
+  effective incident bridge call or war room, covering agenda structure,
+  facilitation techniques, role assignments, information flow management, and
+  decision-making frameworks. Ensures bridge calls remain focused, productive,
+  and lead to faster incident resolution.
 required_connections:
   - prefix: slack
     label: "Slack (for incident channel)"
@@ -149,3 +153,14 @@ Thank you all for your response. Bridge is now closed."
 - **Debugging by committee** — assign specific investigation tracks to individuals
 - **Ignoring the clock** — track elapsed time and escalate if MTTR targets are at risk
 - **Verbal-only updates** — everything must also be written in the incident channel
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

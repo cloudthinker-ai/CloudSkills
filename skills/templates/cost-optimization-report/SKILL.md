@@ -2,7 +2,11 @@
 name: cost-optimization-report
 enabled: true
 description: |
-  Generate a comprehensive cloud cost optimization report by analyzing spending patterns, identifying waste, and recommending savings opportunities across AWS, GCP, or Azure. Covers idle resource detection, rightsizing, reserved instance/commitment analysis, and prioritized savings recommendations.
+  Use when performing cost optimization report — generate a comprehensive cloud
+  cost optimization report by analyzing spending patterns, identifying waste,
+  and recommending savings opportunities across AWS, GCP, or Azure. Covers idle
+  resource detection, rightsizing, reserved instance/commitment analysis, and
+  prioritized savings recommendations.
 required_connections:
   - prefix: aws
     label: "AWS"
@@ -222,6 +226,16 @@ NEXT STEPS
 • [Owner]: [Action] by [Date]
 • [Owner]: [Action] by [Date]
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

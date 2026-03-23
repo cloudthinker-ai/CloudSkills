@@ -2,7 +2,11 @@
 name: threat-model-template
 enabled: true
 description: |
-  Guides teams through a structured threat modeling exercise using the STRIDE methodology. This template helps identify threats, assess risks, and define mitigations for a system or feature, producing a comprehensive threat model document that satisfies security review requirements.
+  Use when performing threat model template — guides teams through a structured
+  threat modeling exercise using the STRIDE methodology. This template helps
+  identify threats, assess risks, and define mitigations for a system or
+  feature, producing a comprehensive threat model document that satisfies
+  security review requirements.
 required_connections:
   - prefix: wiki
     label: "Documentation Platform"
@@ -106,6 +110,16 @@ For each mitigation:
 - [ ] All high/critical risks have mitigations
 - [ ] Mitigations are testable and verifiable
 - [ ] Model reviewed by security team
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

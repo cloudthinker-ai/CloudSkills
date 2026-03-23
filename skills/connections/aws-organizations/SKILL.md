@@ -1,7 +1,11 @@
 ---
 name: aws-organizations
 description: |
-  AWS Organizations account management, OU structure analysis, SCP policy review, and service access control. Covers organizational hierarchy, account inventory, policy inheritance analysis, delegated administrator status, and service control boundary assessment.
+  Use when working with Aws Organizations — aWS Organizations account
+  management, OU structure analysis, SCP policy review, and service access
+  control. Covers organizational hierarchy, account inventory, policy
+  inheritance analysis, delegated administrator status, and service control
+  boundary assessment.
 connection_type: aws
 preload: false
 ---
@@ -182,6 +186,34 @@ wait
 3. **FullAWSAccess SCP** - Every OU and account has the FullAWSAccess SCP by default. Removing it without attaching a replacement denies ALL actions.
 4. **Policy types must be enabled** - SCPs, tag policies, backup policies, and AI services opt-out policies must be explicitly enabled in the organization.
 5. **Account status** - Valid statuses: ACTIVE, SUSPENDED, PENDING_CLOSURE. Suspended accounts still incur some charges.
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Organizations Report
+════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

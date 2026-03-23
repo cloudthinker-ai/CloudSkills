@@ -1,7 +1,12 @@
 ---
 name: managing-site24x7
 description: |
-  Site24x7 cloud monitoring platform for websites, servers, networks, applications, and cloud infrastructure. Covers monitor status, alert management, performance metrics, SLA reporting, and threshold configuration. Use when checking Site24x7 monitor status, investigating downtime, reviewing performance metrics, or managing monitor configurations and alert rules.
+  Use when working with Site24X7 — site24x7 cloud monitoring platform for
+  websites, servers, networks, applications, and cloud infrastructure. Covers
+  monitor status, alert management, performance metrics, SLA reporting, and
+  threshold configuration. Use when checking Site24x7 monitor status,
+  investigating downtime, reviewing performance metrics, or managing monitor
+  configurations and alert rules.
 connection_type: site24x7
 preload: false
 ---
@@ -90,3 +95,40 @@ s24_api GET "reports/sla_reports?period=3" | jq -r '.data[] | "\(.display_name)\
 - Monitor status: 0=DOWN, 1=UP, 2=TROUBLE, 5=MAINTENANCE, 7=SUSPENDED
 - Period values: 1=last 1h, 2=last 24h, 3=last 7d, 4=last 30d
 - Use `current_status` for real-time overview before querying individual monitors
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Site24X7 Report
+════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Anti-Hallucination Rules
+
+1. **NEVER assume resource names** — always discover via CLI/API in Phase 1 before referencing in Phase 2.
+2. **NEVER fabricate metric names or dimensions** — verify against the service documentation or `--help` output.
+3. **NEVER mix CLI commands between service versions** — confirm which version/API you are targeting.
+4. **ALWAYS use the discovery → verify → analyze chain** — every resource referenced must have been discovered first.
+5. **ALWAYS handle empty results gracefully** — an empty response is valid data, not an error to retry.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

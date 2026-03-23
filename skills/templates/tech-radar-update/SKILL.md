@@ -2,7 +2,11 @@
 name: tech-radar-update
 enabled: true
 description: |
-  Guides the process of creating or updating a technology radar that tracks the adoption status of technologies, tools, frameworks, and practices across the organization. Covers technology assessment, ring classification, team input collection, and communication of technology guidance.
+  Use when performing tech radar update — guides the process of creating or
+  updating a technology radar that tracks the adoption status of technologies,
+  tools, frameworks, and practices across the organization. Covers technology
+  assessment, ring classification, team input collection, and communication of
+  technology guidance.
 required_connections:
   - prefix: wiki
     label: "Documentation Platform"
@@ -129,6 +133,16 @@ features:
    - [ ] Notify teams affected by Hold recommendations
    - [ ] Plan migration support for Hold technologies
 2. Schedule next radar update cycle
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Tech Radar Visualization**: Interactive radar with all quadrants and rings

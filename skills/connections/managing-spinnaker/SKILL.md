@@ -1,7 +1,11 @@
 ---
 name: managing-spinnaker
 description: |
-  Spinnaker continuous delivery and infrastructure management. Covers application deployment, pipeline management, infrastructure views, server group operations, load balancer configuration, and canary analysis. Use when checking deployment status, managing pipelines, investigating rollback scenarios, or auditing Spinnaker applications.
+  Use when working with Spinnaker — spinnaker continuous delivery and
+  infrastructure management. Covers application deployment, pipeline management,
+  infrastructure views, server group operations, load balancer configuration,
+  and canary analysis. Use when checking deployment status, managing pipelines,
+  investigating rollback scenarios, or auditing Spinnaker applications.
 connection_type: spinnaker
 preload: false
 ---
@@ -212,6 +216,34 @@ spin_api GET "applications/${APP_NAME}/pipelines?limit=10" | jq -r '
 - NEVER disable server groups without user approval — causes outages
 - NEVER scale down to zero without confirming intent
 - NEVER modify pipeline configs without understanding all stages — stages may have side effects
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Spinnaker Report
+═════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 - **Gate URL**: All API calls go through Gate (Spinnaker's API gateway) — ensure correct URL

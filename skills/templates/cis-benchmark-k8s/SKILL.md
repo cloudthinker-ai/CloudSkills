@@ -2,7 +2,10 @@
 name: cis-benchmark-k8s
 enabled: true
 description: |
-  CIS Benchmark assessment for Kubernetes covering control plane configuration, worker node security, RBAC policies, pod security, network policies, and secrets management. Based on CIS Kubernetes Benchmark v1.8. Use for cluster hardening or compliance validation.
+  Use when performing cis benchmark k8s — cIS Benchmark assessment for
+  Kubernetes covering control plane configuration, worker node security, RBAC
+  policies, pod security, network policies, and secrets management. Based on CIS
+  Kubernetes Benchmark v1.8. Use for cluster hardening or compliance validation.
 required_connections:
   - prefix: kubernetes
     label: "Kubernetes Cluster"
@@ -140,6 +143,16 @@ NETWORK & SECRETS (Section 5)
 | 4. Pod Security | X | Y | Z | % |
 | 5. Network & Secrets | X | Y | Z | % |
 | **Overall** | **X** | **Y** | **Z** | **%** |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

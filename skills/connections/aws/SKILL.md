@@ -1,7 +1,9 @@
 ---
 name: aws
 description: |
-    MANDATORY parallel execution patterns (30x speedup), CloudWatch statistics syntax, Cost Explorer aggregation, output token limits, and common pitfalls
+  Use when working with Aws — mANDATORY parallel execution patterns (30x
+  speedup), CloudWatch statistics syntax, Cost Explorer aggregation, output
+  token limits, and common pitfalls.
 connection_type: aws
 preload: false
 ---
@@ -504,3 +506,22 @@ Before outputting ANY script, check every item:
 - **Network discovery**: Extract only essential fields (IDs, names, CIDR blocks) using --query; avoid returning entire nested structures
 - **Cost Explorer output explosion**: Using DAILY granularity for 30 days with SERVICE grouping produces 30 x N_services lines (~1000+ lines). ALWAYS aggregate with awk and limit with `| head -N`. Use MONTHLY granularity unless daily breakdown is specifically requested.
 - **CloudWatch `--output text` single-line trap**: `--output text --query 'Datapoints[*].Average'` outputs ALL values tab-separated on ONE line, not one per row. Awk scripts that expect `{sum+=$1; count++}` per-line will only process one "line" and produce wrong totals. Fix: use `--query 'Datapoints[*].[Timestamp,Average]'` (two-field projection gives one row per datapoint), or pipe through `tr '\t' '\n'` before awk.
+
+## Anti-Hallucination Rules
+
+1. **NEVER assume resource names** — always discover via CLI/API in Phase 1 before referencing in Phase 2.
+2. **NEVER fabricate metric names or dimensions** — verify against the service documentation or `--help` output.
+3. **NEVER mix CLI commands between service versions** — confirm which version/API you are targeting.
+4. **ALWAYS use the discovery → verify → analyze chain** — every resource referenced must have been discovered first.
+5. **ALWAYS handle empty results gracefully** — an empty response is valid data, not an error to retry.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

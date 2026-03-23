@@ -2,7 +2,11 @@
 name: queue-design-review
 enabled: true
 description: |
-  Reviews the design of message queue and event streaming architectures, covering queue topology, consumer design, ordering guarantees, dead letter handling, and capacity planning. This template helps teams design reliable asynchronous processing systems and avoid common messaging pitfalls.
+  Use when performing queue design review — reviews the design of message queue
+  and event streaming architectures, covering queue topology, consumer design,
+  ordering guarantees, dead letter handling, and capacity planning. This
+  template helps teams design reliable asynchronous processing systems and avoid
+  common messaging pitfalls.
 required_connections:
   - prefix: messaging
     label: "Messaging Platform"
@@ -101,6 +105,16 @@ Document the queue/topic architecture.
 - [ ] Max consumers bounded by partition count (Kafka) or concurrency limit
 - [ ] Backpressure mechanism defined
 - [ ] Capacity planning for peak load: ___ x normal throughput
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

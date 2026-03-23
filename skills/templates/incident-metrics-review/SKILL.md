@@ -2,7 +2,11 @@
 name: incident-metrics-review
 enabled: true
 description: |
-  Incident response metrics analysis framework covering MTTR (Mean Time to Resolve), MTTA (Mean Time to Acknowledge), MTBF (Mean Time Between Failures), and MTTD (Mean Time to Detect). Provides calculation methods, benchmarking guidance, trend analysis templates, and actionable improvement recommendations for each metric.
+  Use when performing incident metrics review — incident response metrics
+  analysis framework covering MTTR (Mean Time to Resolve), MTTA (Mean Time to
+  Acknowledge), MTBF (Mean Time Between Failures), and MTTD (Mean Time to
+  Detect). Provides calculation methods, benchmarking guidance, trend analysis
+  templates, and actionable improvement recommendations for each metric.
 required_connections:
   - prefix: slack
     label: "Slack (for metrics reporting)"
@@ -139,3 +143,14 @@ Industry benchmarks for reference (adjust based on your context):
 | Action | Impact on Metric | Effort | Owner | Target Date |
 |--------|-----------------|--------|-------|-------------|
 | _action_ | _MTTD/MTTA/MTTR/MTBF_ | _low/med/high_ | _name_ | _date_ |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

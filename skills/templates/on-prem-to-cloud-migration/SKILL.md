@@ -2,7 +2,10 @@
 name: on-prem-to-cloud-migration
 enabled: true
 description: |
-  Provides a comprehensive framework for migrating on-premises infrastructure to a cloud provider. Covers workload assessment, network connectivity, data migration, security posture translation, and phased cutover planning with minimal downtime targets.
+  Use when performing on prem to cloud migration — provides a comprehensive
+  framework for migrating on-premises infrastructure to a cloud provider. Covers
+  workload assessment, network connectivity, data migration, security posture
+  translation, and phased cutover planning with minimal downtime targets.
 required_connections:
   - prefix: cloud-provider
     label: "Target Cloud Provider"
@@ -78,6 +81,16 @@ features:
 3. Implement cloud-native monitoring and alerting
 4. Decommission on-premises hardware
 5. Update disaster recovery and backup procedures
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Asset Inventory**: Complete list of on-prem resources with cloud targets

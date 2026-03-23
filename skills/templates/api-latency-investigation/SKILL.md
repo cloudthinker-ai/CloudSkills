@@ -2,7 +2,11 @@
 name: api-latency-investigation
 enabled: true
 description: |
-  Provides a systematic investigation framework for diagnosing and resolving API latency issues. Covers distributed tracing analysis, bottleneck identification across the request path, database query impact, external dependency latency, and optimization recommendations with expected impact.
+  Use when performing api latency investigation — provides a systematic
+  investigation framework for diagnosing and resolving API latency issues.
+  Covers distributed tracing analysis, bottleneck identification across the
+  request path, database query impact, external dependency latency, and
+  optimization recommendations with expected impact.
 required_connections:
   - prefix: apm
     label: "APM / Tracing Platform"
@@ -126,6 +130,16 @@ features:
 3. Run load test at peak traffic levels
 4. Set up latency alerting and SLO monitoring
 5. Document findings for future reference
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Latency Profile**: Current vs. baseline by percentile

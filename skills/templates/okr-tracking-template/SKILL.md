@@ -2,7 +2,12 @@
 name: okr-tracking-template
 enabled: true
 description: |
-  Provides a structured template for defining, tracking, and grading OKRs (Objectives and Key Results) for engineering teams. This template covers objective setting, key result definition with measurable targets, progress tracking cadences, and end-of-cycle grading to help teams maintain focus and measure meaningful outcomes.
+  Use when performing okr tracking template — provides a structured template for
+  defining, tracking, and grading OKRs (Objectives and Key Results) for
+  engineering teams. This template covers objective setting, key result
+  definition with measurable targets, progress tracking cadences, and
+  end-of-cycle grading to help teams maintain focus and measure meaningful
+  outcomes.
 required_connections:
   - prefix: ticketing
     label: "Ticketing System"
@@ -115,6 +120,16 @@ Score each key result and calculate objective scores.
 - [ ] Were key results measurable and meaningful?
 - [ ] What should carry over to next cycle?
 - [ ] What did we learn about our planning accuracy?
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

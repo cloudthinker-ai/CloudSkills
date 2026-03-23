@@ -2,7 +2,11 @@
 name: deployment-checklist
 enabled: true
 description: |
-  Run a structured pre-deployment and post-deployment checklist for any service release. Guides through readiness gates (tests, migrations, feature flags, rollback plan), live health checks, and go/no-go decisions. Use during deployment planning or to validate a release is safe to proceed.
+  Use when performing deployment checklist — run a structured pre-deployment and
+  post-deployment checklist for any service release. Guides through readiness
+  gates (tests, migrations, feature flags, rollback plan), live health checks,
+  and go/no-go decisions. Use during deployment planning or to validate a
+  release is safe to proceed.
 required_connections:
   - prefix: github
     label: "GitHub (or GitLab / Bitbucket)"
@@ -158,6 +162,16 @@ Steps:
 4. Notify stakeholders of rollback
 5. Create post-mortem issue to investigate root cause
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

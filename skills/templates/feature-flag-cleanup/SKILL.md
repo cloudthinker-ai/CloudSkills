@@ -2,7 +2,11 @@
 name: feature-flag-cleanup
 enabled: true
 description: |
-  Template for systematically identifying and removing stale feature flags from codebases. Covers flag inventory, staleness analysis, dependency mapping, safe removal workflow, and verification to reduce technical debt and codebase complexity from accumulated feature flags.
+  Use when performing feature flag cleanup — template for systematically
+  identifying and removing stale feature flags from codebases. Covers flag
+  inventory, staleness analysis, dependency mapping, safe removal workflow, and
+  verification to reduce technical debt and codebase complexity from accumulated
+  feature flags.
 required_connections:
   - prefix: github
     label: "GitHub"
@@ -128,6 +132,16 @@ POST-CLEANUP VALIDATION
 [ ] Remaining flags: ___
 [ ] Next cleanup scheduled: ___
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,11 @@
 name: root-cause-analysis-template
 enabled: true
 description: |
-  Comprehensive root cause analysis framework combining 5-Whys analysis, Ishikawa (fishbone) diagrams, and fault tree analysis methods. Provides structured templates for identifying contributing factors, distinguishing root causes from symptoms, and generating actionable corrective and preventive actions.
+  Use when performing root cause analysis template — comprehensive root cause
+  analysis framework combining 5-Whys analysis, Ishikawa (fishbone) diagrams,
+  and fault tree analysis methods. Provides structured templates for identifying
+  contributing factors, distinguishing root causes from symptoms, and generating
+  actionable corrective and preventive actions.
 required_connections:
   - prefix: slack
     label: "Slack (for RCA collaboration)"
@@ -158,3 +162,14 @@ Classify the identified root cause(s):
 | Action | Owner | Priority | Due Date | Ticket |
 |--------|-------|----------|----------|--------|
 | _action_ | _name_ | _P1/P2/P3_ | _date_ | _link_ |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

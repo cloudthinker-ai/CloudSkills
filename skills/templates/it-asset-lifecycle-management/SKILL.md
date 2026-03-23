@@ -2,7 +2,11 @@
 name: it-asset-lifecycle-management
 enabled: true
 description: |
-  IT asset lifecycle tracking from procurement through disposal covering asset intake, deployment, maintenance, refresh planning, and secure decommissioning. Provides a framework for managing assets at every stage to optimize costs, ensure compliance, and maintain accurate inventory records.
+  Use when performing it asset lifecycle management — iT asset lifecycle
+  tracking from procurement through disposal covering asset intake, deployment,
+  maintenance, refresh planning, and secure decommissioning. Provides a
+  framework for managing assets at every stage to optimize costs, ensure
+  compliance, and maintain accurate inventory records.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -113,6 +117,16 @@ PROCUREMENT → INTAKE → DEPLOYMENT → ACTIVE USE → MAINTENANCE → REFRESH
   - **Auction/Sell**: Through approved surplus process
 - [ ] Update asset record to "Disposed" with disposal date and method
 - [ ] Retain disposal records for compliance (typically 7 years)
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

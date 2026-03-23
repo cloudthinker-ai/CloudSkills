@@ -2,7 +2,10 @@
 name: k8s-cluster-upgrade-runbook
 enabled: true
 description: |
-  Kubernetes cluster upgrade runbook covering pre-upgrade checks, API deprecation review, node upgrade procedure, validation tests, and rollback steps. Supports EKS, GKE, AKS, and self-managed clusters. Use for minor/major version upgrades.
+  Use when performing k8s cluster upgrade runbook — kubernetes cluster upgrade
+  runbook covering pre-upgrade checks, API deprecation review, node upgrade
+  procedure, validation tests, and rollback steps. Supports EKS, GKE, AKS, and
+  self-managed clusters. Use for minor/major version upgrades.
 required_connections:
   - prefix: kubernetes
     label: "Kubernetes Cluster"
@@ -179,6 +182,16 @@ All:
 [ ] Document reason for rollback
 [ ] Plan remediation before retry
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

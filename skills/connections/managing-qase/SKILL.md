@@ -1,7 +1,11 @@
 ---
 name: managing-qase
 description: |
-  Qase test management platform monitoring and analysis. Covers project organization, test case management, test run execution tracking, defect linking, shared step libraries, and environment configuration. Use when managing test cases in Qase, reviewing test run results, or tracking QA coverage and defects.
+  Use when working with Qase — qase test management platform monitoring and
+  analysis. Covers project organization, test case management, test run
+  execution tracking, defect linking, shared step libraries, and environment
+  configuration. Use when managing test cases in Qase, reviewing test run
+  results, or tracking QA coverage and defects.
 connection_type: qase
 preload: false
 ---
@@ -113,3 +117,32 @@ qase_api GET "environment/${PROJECT_CODE}" | jq -r '
 - NEVER create or delete test runs without explicit user confirmation
 - NEVER modify test cases without user approval
 - NEVER close defects without user consent
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Qase Report
+════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

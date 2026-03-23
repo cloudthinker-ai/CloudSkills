@@ -2,7 +2,10 @@
 name: runbook-dependency-upgrade
 enabled: true
 description: |
-  Dependency upgrade workflow covering compatibility check, testing, deployment, and monitoring. Use for library upgrades, framework version bumps, runtime updates, or security patch application.
+  Use when performing runbook dependency upgrade — dependency upgrade workflow
+  covering compatibility check, testing, deployment, and monitoring. Use for
+  library upgrades, framework version bumps, runtime updates, or security patch
+  application.
 required_connections: []
 config_fields:
   - key: dependency_name
@@ -187,6 +190,16 @@ CLEANUP (if upgrade successful)
 [ ] Plan removal of deprecated API usage (if deferred)
 [ ] Schedule next dependency review: ___
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

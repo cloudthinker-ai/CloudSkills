@@ -1,7 +1,11 @@
 ---
 name: managing-opa
 description: |
-  OPA/Gatekeeper policy engine management. Covers Rego policy authoring, constraint templates, constraint management, audit results, data queries, and policy testing. Use when managing Kubernetes admission policies with Gatekeeper, writing Rego rules, debugging policy violations, or querying OPA data.
+  Use when working with Opa — oPA/Gatekeeper policy engine management. Covers
+  Rego policy authoring, constraint templates, constraint management, audit
+  results, data queries, and policy testing. Use when managing Kubernetes
+  admission policies with Gatekeeper, writing Rego rules, debugging policy
+  violations, or querying OPA data.
 connection_type: opa
 preload: false
 ---
@@ -212,6 +216,42 @@ kubectl get config -n gatekeeper-system -o json 2>/dev/null | jq '
 - **Gatekeeper webhook failure** with `failurePolicy: Fail` blocks all admissions -- monitor pod health
 - **Config sync** copies cluster data into OPA -- be careful with sensitive data
 - **Rego policies must terminate** -- infinite loops can hang admission requests
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Opa Report
+═══════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Anti-Hallucination Rules
+
+1. **NEVER assume resource names** — always discover via CLI/API in Phase 1 before referencing in Phase 2.
+2. **NEVER fabricate metric names or dimensions** — verify against the service documentation or `--help` output.
+3. **NEVER mix CLI commands between service versions** — confirm which version/API you are targeting.
+4. **ALWAYS use the discovery → verify → analyze chain** — every resource referenced must have been discovered first.
+5. **ALWAYS handle empty results gracefully** — an empty response is valid data, not an error to retry.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

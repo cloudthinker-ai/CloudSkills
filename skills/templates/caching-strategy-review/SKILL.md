@@ -2,7 +2,11 @@
 name: caching-strategy-review
 enabled: true
 description: |
-  Reviews and designs caching strategies for services, evaluating cache placement, invalidation approaches, consistency trade-offs, and capacity planning. This template helps teams make informed decisions about what to cache, where to cache it, and how to handle cache lifecycle management.
+  Use when performing caching strategy review — reviews and designs caching
+  strategies for services, evaluating cache placement, invalidation approaches,
+  consistency trade-offs, and capacity planning. This template helps teams make
+  informed decisions about what to cache, where to cache it, and how to handle
+  cache lifecycle management.
 required_connections:
   - prefix: monitoring
     label: "Monitoring Platform"
@@ -102,6 +106,16 @@ Evaluate which data should be cached.
 - [ ] Circuit breaker on cache failures
 - [ ] Cache is not a single point of failure
 - [ ] Monitoring and alerting on hit ratio, latency, evictions
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,11 @@
 name: ai-ethics-review
 enabled: true
 description: |
-  Conducts an ethical review of AI/ML systems covering fairness, transparency, accountability, privacy, and safety. Evaluates potential harms, bias in training data and model outputs, explainability requirements, and produces an ethics impact assessment with mitigation recommendations.
+  Use when performing ai ethics review — conducts an ethical review of AI/ML
+  systems covering fairness, transparency, accountability, privacy, and safety.
+  Evaluates potential harms, bias in training data and model outputs,
+  explainability requirements, and produces an ethics impact assessment with
+  mitigation recommendations.
 required_connections:
   - prefix: ml-platform
     label: "ML Platform"
@@ -118,6 +122,16 @@ features:
    - [ ] Regulatory compliance verified (EU AI Act, etc.)
    - [ ] Model card published
 2. Define ongoing monitoring and review cadence
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Ethics Impact Assessment**: Comprehensive review across all dimensions

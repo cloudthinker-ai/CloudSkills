@@ -1,7 +1,12 @@
 ---
 name: monitoring-pingdom
 description: |
-  Pingdom uptime monitoring with check management, transaction checks, page speed analysis, alerting configuration, and performance reporting. Covers HTTP/TCP/UDP checks, real user monitoring, response time analysis, outage history, and contact management. Use when managing uptime checks, analyzing performance, reviewing outages, or configuring alerts via Pingdom API.
+  Use when working with Pingdom — pingdom uptime monitoring with check
+  management, transaction checks, page speed analysis, alerting configuration,
+  and performance reporting. Covers HTTP/TCP/UDP checks, real user monitoring,
+  response time analysis, outage history, and contact management. Use when
+  managing uptime checks, analyzing performance, reviewing outages, or
+  configuring alerts via Pingdom API.
 connection_type: pingdom
 preload: false
 ---
@@ -186,6 +191,34 @@ echo "=== Teams ==="
 pingdom_api GET "/teams" \
     | jq -r '.teams[] | "\(.id)\t\(.name)\t\(.members | length) members"' | head -10
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Monitoring Pingdom Report
+═════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

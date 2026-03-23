@@ -2,7 +2,11 @@
 name: major-incident-communication-it
 enabled: true
 description: |
-  IT-wide incident communication workflow for notifying end users and stakeholders during major IT outages or service disruptions. Covers initial impact notification, periodic status updates, resolution announcements, and post-incident summaries with templates for each communication stage.
+  Use when performing major incident communication it — iT-wide incident
+  communication workflow for notifying end users and stakeholders during major
+  IT outages or service disruptions. Covers initial impact notification,
+  periodic status updates, resolution announcements, and post-incident summaries
+  with templates for each communication stage.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -209,6 +213,16 @@ IT Operations Team
 - [ ] Close status page incident
 - [ ] Schedule post-incident review
 - [ ] Publish post-incident summary within 48 hours
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,11 @@
 name: alert-fatigue-reduction
 enabled: true
 description: |
-  Analyzes alerting configurations to identify noise, redundancy, and low-value alerts that contribute to on-call fatigue. This template walks teams through auditing their alert rules, measuring signal-to-noise ratios, and implementing changes to ensure every page is actionable and meaningful.
+  Use when performing alert fatigue reduction — analyzes alerting configurations
+  to identify noise, redundancy, and low-value alerts that contribute to on-call
+  fatigue. This template walks teams through auditing their alert rules,
+  measuring signal-to-noise ratios, and implementing changes to ensure every
+  page is actionable and meaningful.
 required_connections:
   - prefix: monitoring
     label: "Monitoring Platform"
@@ -89,6 +93,16 @@ For each alert requiring changes:
 3. - [ ] Test in non-paging mode for 1 week
 4. - [ ] Promote to paging after validation
 5. - [ ] Monitor for false negatives
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

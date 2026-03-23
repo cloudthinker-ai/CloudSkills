@@ -2,7 +2,11 @@
 name: monolith-to-serverless
 enabled: true
 description: |
-  Guides the decomposition of a monolithic application into serverless functions and managed services. Covers domain boundary identification, function extraction, event-driven architecture design, state management, and incremental migration using the strangler fig pattern.
+  Use when performing monolith to serverless — guides the decomposition of a
+  monolithic application into serverless functions and managed services. Covers
+  domain boundary identification, function extraction, event-driven architecture
+  design, state management, and incremental migration using the strangler fig
+  pattern.
 required_connections:
   - prefix: cloud-provider
     label: "Cloud Provider"
@@ -81,6 +85,16 @@ features:
 3. Implement cost monitoring per function
 4. Set up auto-scaling policies
 5. Decommission monolith after all domains extracted
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Domain Map**: Bounded contexts with dependencies and data ownership

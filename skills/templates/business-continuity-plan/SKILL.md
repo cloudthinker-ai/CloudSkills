@@ -2,7 +2,11 @@
 name: business-continuity-plan
 enabled: true
 description: |
-  Template for developing and validating business continuity plans for critical services. Covers business impact analysis, recovery strategy definition, team roles and communication plans, failover procedures, testing schedules, and plan maintenance to ensure operational resilience during disruptions.
+  Use when performing business continuity plan — template for developing and
+  validating business continuity plans for critical services. Covers business
+  impact analysis, recovery strategy definition, team roles and communication
+  plans, failover procedures, testing schedules, and plan maintenance to ensure
+  operational resilience during disruptions.
 required_connections:
   - prefix: pagerduty
     label: "PagerDuty (or alerting tool)"
@@ -131,6 +135,16 @@ BCP TESTING
 [ ] Plan version: ___
 [ ] Distribution list updated: [ ] YES
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

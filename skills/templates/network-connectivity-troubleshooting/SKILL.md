@@ -2,7 +2,12 @@
 name: network-connectivity-troubleshooting
 enabled: true
 description: |
-  Network issue diagnosis decision tree covering WiFi connectivity, wired LAN problems, DNS resolution failures, DHCP issues, and general internet access troubleshooting. Guides helpdesk agents through systematic network diagnosis from physical layer up through application layer to identify and resolve connectivity issues.
+  Use when performing network connectivity troubleshooting — network issue
+  diagnosis decision tree covering WiFi connectivity, wired LAN problems, DNS
+  resolution failures, DHCP issues, and general internet access troubleshooting.
+  Guides helpdesk agents through systematic network diagnosis from physical
+  layer up through application layer to identify and resolve connectivity
+  issues.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -147,6 +152,16 @@ Escalate to network team if:
 - DNS server not responding
 - VLAN or firewall configuration change needed
 - Infrastructure hardware issue
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

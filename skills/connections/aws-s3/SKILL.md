@@ -1,7 +1,10 @@
 ---
 name: aws-s3
 description: |
-  AWS S3 bucket analysis, storage class distribution, lifecycle policies, access patterns, and cost optimization. Covers bucket inventory, object metrics, versioning status, encryption audit, public access analysis, and intelligent tiering evaluation.
+  Use when working with Aws S3 — aWS S3 bucket analysis, storage class
+  distribution, lifecycle policies, access patterns, and cost optimization.
+  Covers bucket inventory, object metrics, versioning status, encryption audit,
+  public access analysis, and intelligent tiering evaluation.
 connection_type: aws
 preload: false
 ---
@@ -176,6 +179,34 @@ aws s3api list-objects-v2 --bucket "$BUCKET" --max-items 5000 \
 3. **LocationConstraint null = us-east-1** - `get-bucket-location` returns null/None for us-east-1 buckets. Handle this case explicitly.
 4. **Storage class defaults to STANDARD** - Objects without an explicit StorageClass are STANDARD. The API may return null for these.
 5. **Versioning cannot be disabled** - Once enabled, versioning can only be suspended (not disabled). Suspended buckets still retain existing versions.
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws S3 Report
+═════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

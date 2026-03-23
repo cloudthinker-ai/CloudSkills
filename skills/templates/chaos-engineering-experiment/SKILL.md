@@ -2,7 +2,11 @@
 name: chaos-engineering-experiment
 enabled: true
 description: |
-  Chaos engineering experiment template covering hypothesis definition, blast radius containment, experiment execution, observation, and learning. Supports Chaos Monkey, Litmus, Gremlin, and manual fault injection. Use for resilience validation and failure mode discovery.
+  Use when performing chaos engineering experiment — chaos engineering
+  experiment template covering hypothesis definition, blast radius containment,
+  experiment execution, observation, and learning. Supports Chaos Monkey,
+  Litmus, Gremlin, and manual fault injection. Use for resilience validation and
+  failure mode discovery.
 required_connections:
   - prefix: datadog
     label: "Datadog (or monitoring platform)"
@@ -192,6 +196,16 @@ NEXT STEPS
 [ ] Update runbooks based on findings
 [ ] Consider automating this experiment for continuous validation
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

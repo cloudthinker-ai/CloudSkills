@@ -1,8 +1,12 @@
 ---
 name: gcp-idle-resources
 description: |
-  Detect unused and idle GCP resources that incur cost without providing value.
-  Covers unattached Persistent Disks, unused external IPs, stopped VMs, idle Cloud NAT, idle load balancers, old snapshots, idle Cloud SQL instances, abandoned GKE node pools, unused VPC connectors, and orphaned Filestore instances. Includes estimated monthly waste per resource and anti-hallucination rules for safe detection.
+  Use when working with Gcp Idle Resources — detect unused and idle GCP
+  resources that incur cost without providing value. Covers unattached
+  Persistent Disks, unused external IPs, stopped VMs, idle Cloud NAT, idle load
+  balancers, old snapshots, idle Cloud SQL instances, abandoned GKE node pools,
+  unused VPC connectors, and orphaned Filestore instances. Includes estimated
+  monthly waste per resource and anti-hallucination rules for safe detection.
 connection_type: gcp
 preload: false
 ---
@@ -276,3 +280,32 @@ Quick reference for the gcloud CLI commands used to detect each idle resource ty
 | Cloud NAT shows as idle but is needed | Used for private subnet egress | Check VPC route tables before flagging |
 | GKE node pool false positive | Pool uses autoscaler with min=0 | Check `autoscaling.enabled` before flagging (Rule 9) |
 | VPC connector shows 0 throughput | Connector created but service uses Direct VPC Egress | Check Cloud Run/Functions config |
+
+## Output Format
+
+Present results as a structured report:
+```
+Gcp Idle Resources Report
+═════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

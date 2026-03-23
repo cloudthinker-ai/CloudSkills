@@ -2,7 +2,11 @@
 name: multi-cloud-cost-comparison
 enabled: true
 description: |
-  Provides a structured framework for comparing costs across multiple cloud providers for equivalent workloads. Covers service-level price comparison, TCO analysis, hidden cost identification, discount program evaluation, and recommendation generation for optimal cloud placement.
+  Use when performing multi cloud cost comparison — provides a structured
+  framework for comparing costs across multiple cloud providers for equivalent
+  workloads. Covers service-level price comparison, TCO analysis, hidden cost
+  identification, discount program evaluation, and recommendation generation for
+  optimal cloud placement.
 required_connections:
   - prefix: cloud-billing
     label: "Cloud Billing Accounts"
@@ -104,6 +108,16 @@ features:
 3. Evaluate multi-cloud strategy if beneficial
 4. Consider non-cost factors (features, ecosystem, expertise)
 5. Generate final recommendation with justification
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Service Mapping Table**: Equivalent services across providers

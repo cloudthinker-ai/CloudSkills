@@ -1,7 +1,12 @@
 ---
 name: monitoring-datadog
 description: |
-  Datadog observability platform for metrics, logs, traces, dashboards, monitors, and alerts. Covers APM, infrastructure monitoring, log analytics, synthetic monitoring, SLOs, incident management, and cost analysis. Use when querying Datadog metrics, investigating monitors/alerts, analyzing application performance, reviewing logs, or managing Datadog resources via API.
+  Use when working with Datadog — datadog observability platform for metrics,
+  logs, traces, dashboards, monitors, and alerts. Covers APM, infrastructure
+  monitoring, log analytics, synthetic monitoring, SLOs, incident management,
+  and cost analysis. Use when querying Datadog metrics, investigating
+  monitors/alerts, analyzing application performance, reviewing logs, or
+  managing Datadog resources via API.
 connection_type: datadog
 preload: false
 ---
@@ -285,6 +290,34 @@ echo "=== Host Count Trend ==="
 dd_api GET "/api/v1/usage/hosts?start_hr=$(date -d '7 days ago' +%Y-%m-%dT%H:00:00Z)&end_hr=$(date +%Y-%m-%dT%H:00:00Z)" \
     | jq -r '.usage[] | "\(.hour[0:10])\t\(.host_count // 0)"' | head -10
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Monitoring Datadog Report
+═════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

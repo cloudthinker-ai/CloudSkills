@@ -1,0 +1,133 @@
+name: Validate Skills
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**/*.md'
+      - 'registry.json'
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**/*.md'
+      - 'registry.json'
+
+jobs:
+  validate-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate SKILL.md frontmatter
+        run: |
+          errors=0
+          for skill_file in $(find skills -name "SKILL.md" -type f); do
+            dir_name=$(basename $(dirname "$skill_file"))
+
+            # Check frontmatter exists
+            if ! head -1 "$skill_file" | grep -q '^---$'; then
+              echo "ERROR: $skill_file missing frontmatter"
+              errors=$((errors + 1))
+              continue
+            fi
+
+            # Extract frontmatter
+            frontmatter=$(sed -n '/^---$/,/^---$/p' "$skill_file")
+
+            # Check name field exists and matches directory
+            name=$(echo "$frontmatter" | grep '^name:' | head -1 | sed 's/name: *//')
+            if [ -z "$name" ]; then
+              echo "ERROR: $skill_file missing 'name' field"
+              errors=$((errors + 1))
+            elif [ "$name" != "$dir_name" ]; then
+              echo "ERROR: $skill_file name '$name' does not match directory '$dir_name'"
+              errors=$((errors + 1))
+            fi
+
+            # Check name format (kebab-case)
+            if ! echo "$name" | grep -qE '^[a-z0-9]([a-z0-9-]*[a-z0-9])?$'; then
+              echo "ERROR: $skill_file name '$name' is not valid kebab-case"
+              errors=$((errors + 1))
+            fi
+
+            # Check description field exists
+            if ! echo "$frontmatter" | grep -q '^description:'; then
+              echo "ERROR: $skill_file missing 'description' field"
+              errors=$((errors + 1))
+            fi
+
+            # Check description length (warn if over 1024 chars)
+            desc_length=$(sed -n '/^description:/,/^[a-z_]*:/p' "$skill_file" | wc -c)
+            if [ "$desc_length" -gt 1024 ]; then
+              echo "WARN: $skill_file description exceeds 1024 characters ($desc_length chars)"
+            fi
+
+            # Check file size (warn if over 500 lines)
+            line_count=$(wc -l < "$skill_file")
+            if [ "$line_count" -gt 500 ]; then
+              echo "WARN: $skill_file has $line_count lines (target: <500). Consider moving detail to references/"
+            fi
+
+          done
+
+          if [ $errors -gt 0 ]; then
+            echo "Validation failed with $errors error(s)"
+            exit 1
+          fi
+          echo "All skills validated successfully"
+
+      - name: Validate registry.json
+        run: |
+          if [ -f registry.json ]; then
+            python3 -c "
+          import json, sys
+          with open('registry.json') as f:
+              data = json.load(f)
+          skills = data.get('skills', [])
+          print(f'Registry contains {len(skills)} skills')
+
+          # Check for duplicate IDs
+          ids = [s['id'] for s in skills]
+          dupes = set(x for x in ids if ids.count(x) > 1)
+          if dupes:
+              print(f'ERROR: Duplicate skill IDs: {dupes}')
+              sys.exit(1)
+
+          # Check required fields
+          required = ['id', 'description', 'category', 'section']
+          for skill in skills:
+              missing = [f for f in required if f not in skill]
+              if missing:
+                  print(f\"ERROR: Skill '{skill.get('id', 'unknown')}' missing fields: {missing}\")
+                  sys.exit(1)
+
+          # Validate categories
+          valid_categories = {'code', 'operational', 'security', 'observability', 'database', 'cost', 'performance'}
+          for skill in skills:
+              cat = skill.get('category')
+              if cat and cat not in valid_categories:
+                  print(f\"WARN: Skill '{skill['id']}' has unknown category: '{cat}'\")
+
+          print('Registry validation passed')
+          "
+          fi
+
+      - name: Check for broken internal links
+        run: |
+          errors=0
+          for skill_file in $(find skills -name "SKILL.md" -type f); do
+            skill_dir=$(dirname "$skill_file")
+            # Find relative links in markdown
+            links=$(grep -oE '\]\(\./[^)]+\)' "$skill_file" | sed 's/\](\.\///;s/)$//' || true)
+            for link in $links; do
+              if [ ! -f "$skill_dir/$link" ]; then
+                echo "ERROR: $skill_file has broken link: ./$link"
+                errors=$((errors + 1))
+              fi
+            done
+          done
+
+          if [ $errors -gt 0 ]; then
+            echo "Found $errors broken internal link(s)"
+            exit 1
+          fi
+          echo "All internal links valid"

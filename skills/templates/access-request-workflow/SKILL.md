@@ -2,7 +2,11 @@
 name: access-request-workflow
 enabled: true
 description: |
-  Standardized access request process with multi-level approval chain for granting system, application, and data access. Covers request submission, manager approval, security review, provisioning, and access certification to ensure least-privilege compliance and audit trail documentation.
+  Use when performing access request workflow — standardized access request
+  process with multi-level approval chain for granting system, application, and
+  data access. Covers request submission, manager approval, security review,
+  provisioning, and access certification to ensure least-privilege compliance
+  and audit trail documentation.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -98,6 +102,16 @@ Required Approvals by Risk:
 - [ ] Update access matrix / entitlement records
 - [ ] Schedule access review date (quarterly or per {{ duration }})
 - [ ] Close access request ticket
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

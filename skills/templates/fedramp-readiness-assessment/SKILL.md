@@ -2,7 +2,11 @@
 name: fedramp-readiness-assessment
 enabled: true
 description: |
-  Assesses an organization's readiness for FedRAMP authorization, covering the 325+ NIST 800-53 controls required at Low, Moderate, or High baselines. Includes system boundary definition, control implementation status, POA&M development, and 3PAO assessment preparation.
+  Use when performing fedramp readiness assessment — assesses an organization's
+  readiness for FedRAMP authorization, covering the 325+ NIST 800-53 controls
+  required at Low, Moderate, or High baselines. Includes system boundary
+  definition, control implementation status, POA&M development, and 3PAO
+  assessment preparation.
 required_connections:
   - prefix: grc-tool
     label: "GRC Platform"
@@ -126,6 +130,16 @@ features:
 3. Plan annual security assessment schedule
 4. Set up monthly POA&M reporting
 5. Define significant change process
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Readiness Scorecard**: Per-family compliance percentage

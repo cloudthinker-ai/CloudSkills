@@ -1,7 +1,10 @@
 ---
 name: aws-cloudwatch-logs
 description: |
-  AWS CloudWatch Logs group management, Logs Insights query execution, metric filter analysis, retention policy review, and subscription filter management. Covers log group inventory, storage cost optimization, query patterns, and cross-account log aggregation.
+  Use when working with Aws Cloudwatch Logs — aWS CloudWatch Logs group
+  management, Logs Insights query execution, metric filter analysis, retention
+  policy review, and subscription filter management. Covers log group inventory,
+  storage cost optimization, query patterns, and cross-account log aggregation.
 connection_type: aws
 preload: false
 ---
@@ -167,6 +170,34 @@ wait
 3. **Insights query is async** - `start-query` returns a query ID. You must poll `get-query-results` until status is "Complete". Allow 3-5 seconds for simple queries.
 4. **Insights query limits** - Maximum 20 concurrent queries per account/region. Results limited to 10,000 rows. Queries time out after 60 minutes.
 5. **Metric filter pattern syntax** - Metric filter patterns are NOT regex. They use a specific pattern syntax with spaces for AND, quotes for exact match, and brackets for JSON fields.
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Cloudwatch Logs Report
+══════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

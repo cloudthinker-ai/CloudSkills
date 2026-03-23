@@ -1,7 +1,11 @@
 ---
 name: managing-google-cloud-dns
 description: |
-  Google Cloud DNS management covering managed zones, record sets, DNSSEC configuration, DNS policies, and peering. Use when managing GCP Cloud DNS zones, configuring DNS records, enabling DNSSEC, setting up DNS forwarding or peering, or troubleshooting DNS resolution within Google Cloud.
+  Use when working with Google Cloud Dns — google Cloud DNS management covering
+  managed zones, record sets, DNSSEC configuration, DNS policies, and peering.
+  Use when managing GCP Cloud DNS zones, configuring DNS records, enabling
+  DNSSEC, setting up DNS forwarding or peering, or troubleshooting DNS
+  resolution within Google Cloud.
 connection_type: gcp
 preload: false
 ---
@@ -98,6 +102,42 @@ gcloud dns record-sets changes list --zone="$ZONE" --sort-order=descending --lim
 - **Never delete record sets** without explicit confirmation -- causes outages
 - **DNSSEC disabling** can break resolution if DS records exist at registrar
 - **Policy changes** affect all networks attached to the policy
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Google Cloud Dns Report
+════════════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Anti-Hallucination Rules
+
+1. **NEVER assume resource names** — always discover via CLI/API in Phase 1 before referencing in Phase 2.
+2. **NEVER fabricate metric names or dimensions** — verify against the service documentation or `--help` output.
+3. **NEVER mix CLI commands between service versions** — confirm which version/API you are targeting.
+4. **ALWAYS use the discovery → verify → analyze chain** — every resource referenced must have been discovered first.
+5. **ALWAYS handle empty results gracefully** — an empty response is valid data, not an error to retry.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 - **Zone names vs DNS names**: Zone name is a resource identifier, DNS name is the domain

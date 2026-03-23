@@ -2,7 +2,11 @@
 name: load-testing-plan
 enabled: true
 description: |
-  Designs a comprehensive load testing plan covering test scenario definition, workload modeling, environment preparation, tool selection, execution strategy, and results analysis. Supports stress testing, soak testing, spike testing, and capacity planning for web applications and APIs.
+  Use when performing load testing plan — designs a comprehensive load testing
+  plan covering test scenario definition, workload modeling, environment
+  preparation, tool selection, execution strategy, and results analysis.
+  Supports stress testing, soak testing, spike testing, and capacity planning
+  for web applications and APIs.
 required_connections:
   - prefix: monitoring
     label: "Monitoring Platform"
@@ -119,6 +123,16 @@ features:
 | Stress | | ms | % | req/s | |
 | Soak | | ms | % | req/s | |
 | Spike | | ms | % | req/s | |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Test Plan Document**: Scenarios, workload model, acceptance criteria

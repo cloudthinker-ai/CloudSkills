@@ -2,7 +2,11 @@
 name: hotfix-emergency-review
 enabled: true
 description: |
-  Expedited review process template for production hotfixes covering incident correlation, minimal change verification, rollback readiness, regression risk assessment, and post-incident follow-up tracking. Provides a streamlined but thorough review framework for emergency fixes that balances speed with safety.
+  Use when performing hotfix emergency review — expedited review process
+  template for production hotfixes covering incident correlation, minimal change
+  verification, rollback readiness, regression risk assessment, and
+  post-incident follow-up tracking. Provides a streamlined but thorough review
+  framework for emergency fixes that balances speed with safety.
 required_connections:
   - prefix: github
     label: "GitHub"
@@ -106,6 +110,16 @@ FOLLOW-UP ITEMS
     [ ] Alert tuning needed: YES / NO
 [ ] Hotfix to be cherry-picked to: ___
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

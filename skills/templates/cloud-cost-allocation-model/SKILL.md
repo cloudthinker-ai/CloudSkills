@@ -2,7 +2,11 @@
 name: cloud-cost-allocation-model
 enabled: true
 description: |
-  Designs a cost allocation and chargeback model for cloud spending across teams, projects, and environments. Covers tagging strategy, allocation rules for shared services, showback/chargeback reporting, and budgeting integration to drive accountability and optimize spending.
+  Use when performing cloud cost allocation model — designs a cost allocation
+  and chargeback model for cloud spending across teams, projects, and
+  environments. Covers tagging strategy, allocation rules for shared services,
+  showback/chargeback reporting, and budgeting integration to drive
+  accountability and optimize spending.
 required_connections:
   - prefix: cloud-billing
     label: "Cloud Billing Account"
@@ -89,6 +93,16 @@ features:
 3. Implement approval workflows for budget overruns
 4. Create quarterly budget review cadence
 5. Feed allocation data into financial planning tools
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Tagging Policy Document**: Required and optional tags with enforcement rules

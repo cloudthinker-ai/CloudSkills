@@ -2,7 +2,11 @@
 name: cloud-commitment-calculator
 enabled: true
 description: |
-  Calculates the optimal mix of reserved instances, savings plans, and committed use discounts based on historical usage data. Produces a purchase plan that maximizes savings while maintaining flexibility for workload changes, including break-even analysis and risk assessment.
+  Use when performing cloud commitment calculator — calculates the optimal mix
+  of reserved instances, savings plans, and committed use discounts based on
+  historical usage data. Produces a purchase plan that maximizes savings while
+  maintaining flexibility for workload changes, including break-even analysis
+  and risk assessment.
 required_connections:
   - prefix: cloud-billing
     label: "Cloud Billing Account"
@@ -97,6 +101,16 @@ features:
 3. Flag commitments below utilization threshold
 4. Queue renewal analysis 90 days before expiration
 5. Adjust strategy based on usage trend changes
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Usage Analysis**: Historical patterns and baseline calculations

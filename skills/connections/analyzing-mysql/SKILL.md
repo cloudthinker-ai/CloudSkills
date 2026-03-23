@@ -1,7 +1,10 @@
 ---
 name: analyzing-mysql
 description: |
-  MySQL and MariaDB database analysis, performance tuning, query optimization, and health monitoring. Covers slow query investigation, index analysis, table statistics, replication health, InnoDB status, connection pool analysis, and schema inspection. You MUST read this skill before any MySQL operations — it enforces two-phase execution, anti-hallucination rules, and read-only safety constraints.
+  Use when working with Mysql — mySQL and MariaDB database analysis, performance
+  tuning, query optimization, and health monitoring. Covers slow query
+  investigation, index analysis, table statistics, replication health, InnoDB
+  status, connection pool analysis, and schema inspection.
 connection_type: mysql
 preload: false
 ---
@@ -312,6 +315,34 @@ echo ""
 echo "=== EXPLAIN ANALYZE (MySQL 8+) ==="
 mysql_cmd "EXPLAIN ANALYZE $QUERY" "$DB_NAME" 2>/dev/null || echo "EXPLAIN ANALYZE requires MySQL 8.0+"
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Analyzing Mysql Report
+══════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

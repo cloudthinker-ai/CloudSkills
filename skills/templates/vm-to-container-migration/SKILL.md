@@ -2,7 +2,11 @@
 name: vm-to-container-migration
 enabled: true
 description: |
-  Provides a structured approach for migrating VM-based workloads to containers, covering application analysis, Dockerfile creation, orchestration setup, storage and networking adaptation, and progressive rollout strategies. Targets Kubernetes or similar container platforms.
+  Use when performing vm to container migration — provides a structured approach
+  for migrating VM-based workloads to containers, covering application analysis,
+  Dockerfile creation, orchestration setup, storage and networking adaptation,
+  and progressive rollout strategies. Targets Kubernetes or similar container
+  platforms.
 required_connections:
   - prefix: container-registry
     label: "Container Registry"
@@ -89,6 +93,16 @@ features:
 3. Monitor error rates and latency
 4. Gradually increase traffic to containers
 5. Decommission VM workload after stabilization
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Application Profile**: Dependencies, ports, storage, config summary

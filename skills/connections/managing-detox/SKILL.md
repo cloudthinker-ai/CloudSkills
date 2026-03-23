@@ -1,7 +1,11 @@
 ---
 name: managing-detox
 description: |
-  Detox React Native testing management and analysis. Covers test configuration review, device and simulator management, build configuration analysis, test result parsing, artifact collection, and test runner integration. Use when managing Detox test suites, investigating mobile test failures, or reviewing React Native E2E testing configurations.
+  Use when working with Detox — detox React Native testing management and
+  analysis. Covers test configuration review, device and simulator management,
+  build configuration analysis, test result parsing, artifact collection, and
+  test runner integration. Use when managing Detox test suites, investigating
+  mobile test failures, or reviewing React Native E2E testing configurations.
 connection_type: detox
 preload: false
 ---
@@ -103,3 +107,32 @@ fi
 - NEVER build or run tests without user confirmation — builds take significant time
 - NEVER delete artifacts without explicit user approval
 - NEVER modify Detox configuration without user consent
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Detox Report
+═════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

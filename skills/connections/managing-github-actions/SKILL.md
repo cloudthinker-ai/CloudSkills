@@ -1,7 +1,11 @@
 ---
 name: managing-github-actions
 description: |
-  GitHub Actions workflow and runner management. Covers workflow run status, job analysis, usage billing, secret management, runner administration, and artifact retrieval. Use when checking CI status, investigating workflow failures, managing self-hosted runners, or auditing Actions usage costs.
+  Use when working with Github Actions — gitHub Actions workflow and runner
+  management. Covers workflow run status, job analysis, usage billing, secret
+  management, runner administration, and artifact retrieval. Use when checking
+  CI status, investigating workflow failures, managing self-hosted runners, or
+  auditing Actions usage costs.
 connection_type: github
 preload: false
 ---
@@ -214,6 +218,34 @@ gh_repo_api "actions/runs/${RUN_ID}/artifacts" | jq -r '
 - NEVER cancel or re-run workflows without user approval
 - NEVER remove runners without confirming they are idle
 - Secret creation requires the public key — fetch it first via the API
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Github Actions Report
+══════════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 - **gh CLI vs API**: `gh run list` is simpler for basic queries; API gives more control

@@ -2,7 +2,11 @@
 name: accessibility-audit
 enabled: true
 description: |
-  Comprehensive accessibility audit template following WCAG 2.1 guidelines. Covers automated scanning, manual testing, keyboard navigation, screen reader compatibility, color contrast analysis, and remediation planning to ensure digital products are usable by people with disabilities.
+  Use when performing accessibility audit — comprehensive accessibility audit
+  template following WCAG 2.1 guidelines. Covers automated scanning, manual
+  testing, keyboard navigation, screen reader compatibility, color contrast
+  analysis, and remediation planning to ensure digital products are usable by
+  people with disabilities.
 required_connections:
   - prefix: github
     label: "GitHub"
@@ -161,6 +165,16 @@ LOW      | ___                    | ___            | ___
 Estimated total remediation effort: ___
 Target completion date: ___
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

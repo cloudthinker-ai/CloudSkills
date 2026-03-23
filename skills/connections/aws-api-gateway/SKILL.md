@@ -1,7 +1,10 @@
 ---
 name: aws-api-gateway
 description: |
-  AWS API Gateway REST and HTTP API management, stage analysis, usage plans, throttling configuration, and deployment tracking. Covers API inventory, endpoint metrics, latency analysis, authorization configuration, and integration health.
+  Use when working with AWS API Gateway — analyzing REST or HTTP APIs, debugging
+  latency or 5xx errors, auditing throttling and stage configuration, reviewing
+  usage plans, or checking authorization setup. Covers API inventory, CloudWatch
+  metrics, stage audits, and integration health for both REST (v1) and HTTP (v2) APIs.
 connection_type: aws
 preload: false
 ---
@@ -10,110 +13,52 @@ preload: false
 
 Analyze AWS API Gateway REST and HTTP APIs with parallel execution and anti-hallucination guardrails.
 
-**Relationship to other AWS skills:**
+## Decision Matrix: REST vs HTTP API
 
-- `aws-api-gateway/` → API Gateway-specific analysis (REST/HTTP APIs, stages, usage plans)
-- `aws/` → "How to execute" (parallel patterns, throttling, output format)
+| Need | Use | Why |
+|------|-----|-----|
+| Usage plans / API keys | REST API | HTTP APIs don't support usage plans |
+| Request validation / WAF | REST API | Not available in HTTP API |
+| Execution logging / X-Ray | REST API | HTTP API only supports access logging |
+| Lowest cost | HTTP API | $1/M vs $3.50/M requests |
+| WebSocket support | HTTP API (v2) | Only v2 supports WebSocket protocol |
+| Auto-deploy | HTTP API | REST requires explicit deployment |
+| Simple proxy to Lambda | HTTP API | Simpler, cheaper, auto-deploy |
 
-## CRITICAL: Parallel Execution Requirement
+[Full feature comparison](./references/rest-vs-http.md)
 
-**ALL independent operations MUST run in parallel using background jobs (&) and wait.**
+## Phase 1 — Discovery
 
-```bash
-#!/bin/bash
-export AWS_PAGER=""
-
-for api_id in $apis; do
-  get_api_details "$api_id" &
-done
-wait
-```
-
-## Helper Functions
+**CRITICAL:** Discover both REST and HTTP APIs in parallel. NEVER assume API names or IDs.
 
 ```bash
 #!/bin/bash
 export AWS_PAGER=""
 
-# List REST APIs
-list_rest_apis() {
-  aws apigateway get-rest-apis \
-    --output text \
-    --query 'items[].[id,name,createdDate,endpointConfiguration.types[0]]'
-}
-
-# List HTTP APIs (API Gateway v2)
-list_http_apis() {
-  aws apigatewayv2 get-apis \
-    --output text \
-    --query 'Items[].[ApiId,Name,ProtocolType,CreatedDate,ApiEndpoint]'
-}
-
-# Get REST API stages
-get_rest_stages() {
-  local api_id=$1
-  aws apigateway get-stages --rest-api-id "$api_id" \
-    --output text \
-    --query 'item[].[stageName,deploymentId,lastUpdatedDate,cacheClusterEnabled,cacheClusterSize]'
-}
-
-# Get HTTP API stages
-get_http_stages() {
-  local api_id=$1
-  aws apigatewayv2 get-stages --api-id "$api_id" \
-    --output text \
-    --query 'Items[].[StageName,DeploymentId,LastUpdatedDate,DefaultRouteSettings.ThrottlingBurstLimit,DefaultRouteSettings.ThrottlingRateLimit]'
-}
-
-# Get usage plan details
-get_usage_plans() {
-  aws apigateway get-usage-plans \
-    --output text \
-    --query 'items[].[id,name,throttle.burstLimit,throttle.rateLimit,quota.limit,quota.period]'
-}
-
-# Get API metrics
-get_api_metrics() {
-  local api_name=$1 stage=$2 days=${3:-7}
-  local end_time start_time
-  end_time=$(date -u +"%Y-%m-%dT%H:%M:%S")
-  start_time=$(date -u -d "$days days ago" +"%Y-%m-%dT%H:%M:%S" 2>/dev/null || date -u -v-${days}d +"%Y-%m-%dT%H:%M:%S")
-
-  aws cloudwatch get-metric-statistics \
-    --namespace AWS/ApiGateway --metric-name Count \
-    --dimensions Name=ApiName,Value="$api_name" Name=Stage,Value="$stage" \
-    --start-time "$start_time" --end-time "$end_time" \
-    --period $((days * 86400)) --statistics Sum \
-    --output text --query 'Datapoints[0].Sum'
-}
-```
-
-## Common Operations
-
-### 1. API Inventory (REST + HTTP)
-
-```bash
-#!/bin/bash
-export AWS_PAGER=""
-echo "=== REST APIs ==="
+echo "=== REST APIs (apigateway) ==="
 aws apigateway get-rest-apis \
   --output text \
   --query 'items[].[id,name,endpointConfiguration.types[0]]' &
 
-echo "=== HTTP APIs ==="
+echo "=== HTTP APIs (apigatewayv2) ==="
 aws apigatewayv2 get-apis \
   --output text \
   --query 'Items[].[ApiId,Name,ProtocolType]' &
 wait
 ```
 
-### 2. Latency and Error Analysis
+## Phase 2 — Analysis
 
+Run ALL independent operations in parallel using `&` and `wait`.
+
+### Latency & Error Analysis
 ```bash
 #!/bin/bash
 export AWS_PAGER=""
 END=$(date -u +"%Y-%m-%dT%H:%M:%S")
 START=$(date -u -d "7 days ago" +"%Y-%m-%dT%H:%M:%S" 2>/dev/null || date -u -v-7d +"%Y-%m-%dT%H:%M:%S")
+
+# REST APIs: use ApiName dimension
 APIS=$(aws apigateway get-rest-apis --output text --query 'items[].[name]')
 for api in $APIS; do
   {
@@ -123,38 +68,39 @@ for api in $APIS; do
       --start-time "$START" --end-time "$END" \
       --period 604800 --statistics Average Maximum \
       --output text --query 'Datapoints[0].[Average,Maximum]')
-    errors5xx=$(aws cloudwatch get-metric-statistics \
+    errors=$(aws cloudwatch get-metric-statistics \
       --namespace AWS/ApiGateway --metric-name 5XXError \
       --dimensions Name=ApiName,Value="$api" \
       --start-time "$START" --end-time "$END" \
       --period 604800 --statistics Sum \
       --output text --query 'Datapoints[0].Sum')
-    printf "%s\tLatency:%s\t5xx:%s\n" "$api" "$latency" "${errors5xx:-0}"
+    printf "REST\t%s\tLatency:%s\t5xx:%s\n" "$api" "$latency" "${errors:-0}"
   } &
 done
-wait
-```
 
-### 3. Usage Plan and API Key Analysis
-
-```bash
-#!/bin/bash
-export AWS_PAGER=""
-PLANS=$(aws apigateway get-usage-plans --output text --query 'items[].id')
-for plan_id in $PLANS; do
+# HTTP APIs: use ApiId dimension and lowercase metric names
+HTTP_APIS=$(aws apigatewayv2 get-apis --output text --query 'Items[].[ApiId,Name]')
+echo "$HTTP_APIS" | while read api_id api_name; do
   {
-    plan_info=$(aws apigateway get-usage-plan --usage-plan-id "$plan_id" \
-      --output text --query '[name,throttle.burstLimit,throttle.rateLimit,quota.limit,quota.period]')
-    key_count=$(aws apigateway get-usage-plan-keys --usage-plan-id "$plan_id" \
-      --output text --query 'length(items)')
-    printf "%s\t%s\tKeys:%s\n" "$plan_id" "$plan_info" "$key_count"
+    latency=$(aws cloudwatch get-metric-statistics \
+      --namespace AWS/ApiGateway --metric-name Latency \
+      --dimensions Name=ApiId,Value="$api_id" \
+      --start-time "$START" --end-time "$END" \
+      --period 604800 --statistics Average Maximum \
+      --output text --query 'Datapoints[0].[Average,Maximum]')
+    errors=$(aws cloudwatch get-metric-statistics \
+      --namespace AWS/ApiGateway --metric-name 5xx \
+      --dimensions Name=ApiId,Value="$api_id" \
+      --start-time "$START" --end-time "$END" \
+      --period 604800 --statistics Sum \
+      --output text --query 'Datapoints[0].Sum')
+    printf "HTTP\t%s(%s)\tLatency:%s\t5xx:%s\n" "$api_name" "$api_id" "$latency" "${errors:-0}"
   } &
 done
 wait
 ```
 
-### 4. Stage Configuration Audit
-
+### Stage Configuration Audit
 ```bash
 #!/bin/bash
 export AWS_PAGER=""
@@ -167,36 +113,67 @@ done
 wait
 ```
 
-### 5. Throttling Configuration Review
-
+### Throttling Review
 ```bash
 #!/bin/bash
 export AWS_PAGER=""
-# Account-level throttle limits
-aws apigateway get-account --output text --query '[throttleSettings.burstLimit,throttleSettings.rateLimit]'
+# Account-level limits
+aws apigateway get-account \
+  --output text --query '[throttleSettings.burstLimit,throttleSettings.rateLimit]'
 
-# Per-API stage throttle settings
-APIS=$(aws apigateway get-rest-apis --output text --query 'items[].[id,name]')
-echo "$APIS" | while read api_id api_name; do
-  aws apigateway get-stages --rest-api-id "$api_id" \
-    --output text \
-    --query "item[].[\"$api_name\",stageName,methodSettings.*.throttlingBurstLimit,methodSettings.*.throttlingRateLimit]" &
-done
-wait
+# Usage plans (REST only)
+aws apigateway get-usage-plans \
+  --output text \
+  --query 'items[].[id,name,throttle.burstLimit,throttle.rateLimit,quota.limit,quota.period]'
 ```
 
 ## Anti-Hallucination Rules
 
-1. **REST API vs HTTP API** - These are different services with different CLI commands: `apigateway` (REST/v1) vs `apigatewayv2` (HTTP/WebSocket). Never mix them.
-2. **CloudWatch metric names differ** - REST APIs use `ApiName` dimension; HTTP APIs use `ApiId` dimension. Check which type you are querying.
-3. **Stage is required for metrics** - API Gateway metrics require the Stage dimension for accurate per-stage analysis.
-4. **Usage plans are REST API only** - HTTP APIs do not support usage plans. They use throttling on routes directly.
-5. **Integration latency vs total latency** - `Latency` includes API Gateway overhead. `IntegrationLatency` is backend-only time.
+| Rule | Detail |
+|------|--------|
+| REST vs HTTP CLI | `apigateway` (REST/v1) vs `apigatewayv2` (HTTP/WebSocket). **NEVER mix.** |
+| CloudWatch dimensions | REST uses `ApiName`; HTTP uses `ApiId`. Wrong dimension = empty results. |
+| Metric name casing | REST: `5XXError`; HTTP: `5xx`. Check API type before querying. |
+| Usage plans | REST API only. HTTP APIs use route-level throttling. |
+| Latency metrics | `Latency` = total (including APIGW overhead). `IntegrationLatency` = backend only. |
+| Stage requirement | Metrics require Stage dimension for per-stage accuracy. |
+| Deployment | REST: changes require new deployment. HTTP: auto-deploy by default. |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll just check REST APIs" | Always discover both REST and HTTP APIs | HTTP APIs are increasingly common; missing them gives incomplete picture |
+| "Metrics aren't needed for health check" | Always check CloudWatch metrics | APIs can return 200 while silently failing on a subset of requests |
+| "Default stage config is fine" | Audit stage config explicitly | Defaults leave execution logging, tracing, and caching disabled |
+| "Usage plans aren't relevant" | Review if REST API has external consumers | Unthrottled APIs cause cascading failures under load |
+| "The API is responding, so it's healthy" | Check error rates AND latency percentiles | p50 may be fine while p99 is unacceptable |
+
+## Output Format
+
+```
+API Gateway Health Report
+═══════════════════════════
+REST APIs: [count] | HTTP APIs: [count]
+
+API          Type  Stage  Latency(avg/max)  5xx(7d)  Cache  Logging  Tracing
+─────────────────────────────────────────────────────────────────────────────
+my-api       REST  prod   45ms/230ms        12       ON     ERROR    ON
+payment-api  HTTP  $def   22ms/89ms         0        N/A    ACCESS   N/A
+
+Throttling: Account [burst/rate] | Plans: [count]
+Issues: [list of findings with severity]
+```
 
 ## Common Pitfalls
 
-- **Endpoint types**: REGIONAL, EDGE, or PRIVATE. Edge endpoints use CloudFront automatically. Do not confuse with standalone CloudFront distributions.
-- **API key != authentication**: API keys are for usage tracking/throttling, not security. Use authorizers (Lambda, Cognito, IAM) for auth.
-- **Deployment required**: Changes to REST APIs require a new deployment to take effect. HTTP APIs auto-deploy by default.
+- **Endpoint types**: REGIONAL, EDGE, or PRIVATE. Edge uses CloudFront automatically — don't confuse with standalone distributions.
+- **API key ≠ authentication**: API keys track usage/throttling only. Use authorizers (Lambda, Cognito, IAM) for auth.
 - **CloudWatch statistics syntax**: Use spaces not commas: `--statistics Average Maximum`.
-- **WebSocket APIs**: Use `apigatewayv2` with ProtocolType=WEBSOCKET. Different metric dimensions apply.
+- **WebSocket APIs**: Use `apigatewayv2` with `ProtocolType=WEBSOCKET`. Different metric dimensions.
+- **Cross-platform date**: macOS uses `-v-7d`, Linux uses `-d "7 days ago"`. Scripts handle both.
+
+## References
+
+- [REST vs HTTP API — Full Comparison](./references/rest-vs-http.md)
+- [Troubleshooting Guide — Diagnostic Decision Trees](./references/troubleshooting.md)

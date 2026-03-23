@@ -2,7 +2,12 @@
 name: data-loss-incident-response
 enabled: true
 description: |
-  Data loss and data corruption incident response playbook covering immediate containment, impact assessment, recovery procedures from backups and replicas, data integrity verification, customer notification, and preventive measures. Guides teams through the critical decisions required when data is lost, corrupted, or inadvertently modified.
+  Use when performing data loss incident response — data loss and data
+  corruption incident response playbook covering immediate containment, impact
+  assessment, recovery procedures from backups and replicas, data integrity
+  verification, customer notification, and preventive measures. Guides teams
+  through the critical decisions required when data is lost, corrupted, or
+  inadvertently modified.
 required_connections:
   - prefix: slack
     label: "Slack (for incident coordination)"
@@ -157,3 +162,14 @@ System: **{{ database_system }}**
 - [ ] Enable PITR if not already active
 - [ ] Implement cross-region backup replication
 - [ ] Add backup integrity monitoring
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

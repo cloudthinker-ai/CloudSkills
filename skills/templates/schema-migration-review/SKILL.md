@@ -2,7 +2,11 @@
 name: schema-migration-review
 enabled: true
 description: |
-  Reviews database schema migrations for safety, performance impact, and backward compatibility. This template ensures migrations are evaluated for lock contention, data integrity, rollback capability, and deployment sequencing before execution in production environments.
+  Use when performing schema migration review — reviews database schema
+  migrations for safety, performance impact, and backward compatibility. This
+  template ensures migrations are evaluated for lock contention, data integrity,
+  rollback capability, and deployment sequencing before execution in production
+  environments.
 required_connections:
   - prefix: database
     label: "Database Platform"
@@ -101,6 +105,16 @@ Document all changes in this migration.
 - [ ] Connection pool capacity sufficient
 - [ ] Statement timeout configured
 - [ ] Lock timeout configured
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

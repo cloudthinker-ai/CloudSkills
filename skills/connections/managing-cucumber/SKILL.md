@@ -1,7 +1,11 @@
 ---
 name: managing-cucumber
 description: |
-  Cucumber BDD testing management and analysis. Covers feature file organization, step definition mapping, scenario tagging, Gherkin syntax validation, test report parsing, and step reuse analysis. Use when managing Cucumber test suites, investigating BDD scenario failures, or reviewing feature file coverage.
+  Use when working with Cucumber — cucumber BDD testing management and analysis.
+  Covers feature file organization, step definition mapping, scenario tagging,
+  Gherkin syntax validation, test report parsing, and step reuse analysis. Use
+  when managing Cucumber test suites, investigating BDD scenario failures, or
+  reviewing feature file coverage.
 connection_type: cucumber
 preload: false
 ---
@@ -106,3 +110,32 @@ fi
 - NEVER modify feature files or step definitions without user confirmation
 - NEVER delete test reports without user approval
 - NEVER change tag configurations without user consent
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Cucumber Report
+════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

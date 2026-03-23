@@ -2,7 +2,11 @@
 name: change-management-process
 enabled: true
 description: |
-  Template for managing infrastructure and application changes through a structured change management process. Covers change classification, risk assessment, approval workflows, implementation planning, rollback procedures, and post-implementation review aligned with ITIL best practices.
+  Use when performing change management process — template for managing
+  infrastructure and application changes through a structured change management
+  process. Covers change classification, risk assessment, approval workflows,
+  implementation planning, rollback procedures, and post-implementation review
+  aligned with ITIL best practices.
 required_connections:
   - prefix: jira
     label: "Jira (or project tracker)"
@@ -143,6 +147,16 @@ POST-CHANGE REVIEW
     - ___
 [ ] Change record closed: [ ] YES
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

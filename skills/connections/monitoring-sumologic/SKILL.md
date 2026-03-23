@@ -1,7 +1,11 @@
 ---
 name: monitoring-sumologic
 description: |
-  Sumo Logic cloud-native log analytics, metrics queries, monitors, dashboards, and content management. Covers log search, metrics exploration, alerting rules, folder/content management, and data ingestion health. Use when searching logs, querying metrics, managing monitors, or analyzing Sumo Logic resources via API.
+  Use when working with Sumologic — sumo Logic cloud-native log analytics,
+  metrics queries, monitors, dashboards, and content management. Covers log
+  search, metrics exploration, alerting rules, folder/content management, and
+  data ingestion health. Use when searching logs, querying metrics, managing
+  monitors, or analyzing Sumo Logic resources via API.
 connection_type: sumologic
 preload: false
 ---
@@ -189,6 +193,34 @@ echo "=== Ingestion Volume ==="
 sumo_search "_index=sumologic_volume | sum(_size) by _sourceCategory | sort by _sum desc | limit 15" "-24h" \
     | jq -r '.messages[].map | "\(._sourcecategory)\t\(._sum)"'
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Monitoring Sumologic Report
+═══════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

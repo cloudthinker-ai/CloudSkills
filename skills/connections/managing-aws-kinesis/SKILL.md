@@ -1,7 +1,9 @@
 ---
 name: managing-aws-kinesis
 description: |
-  AWS Kinesis stream management, shard analysis, consumer lag monitoring, enhanced fan-out configuration, and throughput analysis. You MUST read this skill before executing any Kinesis operations — it contains mandatory two-phase execution, anti-hallucination rules, and safety constraints.
+  Use when working with Aws Kinesis — aWS Kinesis stream management, shard
+  analysis, consumer lag monitoring, enhanced fan-out configuration, and
+  throughput analysis.
 connection_type: aws
 preload: false
 ---
@@ -162,6 +164,34 @@ echo ""
 echo "=== Put Latency ==="
 kinesis_metric "$STREAM" "PutRecord.Latency" "Average" 60 | jq -r '.Datapoints | sort_by(.Timestamp) | .[-5:][] | "\(.Timestamp)\t\(.Average)ms"'
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Aws Kinesis Report
+═══════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

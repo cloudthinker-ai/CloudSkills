@@ -1,7 +1,10 @@
 ---
 name: aws-cloudtrail
 description: |
-  AWS CloudTrail event analysis, trail management, insight event investigation, and organization trail configuration. Covers API activity analysis, security event investigation, resource change tracking, unauthorized access detection, and event history querying.
+  Use when working with Aws Cloudtrail — aWS CloudTrail event analysis, trail
+  management, insight event investigation, and organization trail configuration.
+  Covers API activity analysis, security event investigation, resource change
+  tracking, unauthorized access detection, and event history querying.
 connection_type: aws
 preload: false
 ---
@@ -180,6 +183,34 @@ wait
 3. **CloudTrailEvent field is JSON string** - The `CloudTrailEvent` field in lookup-events results is a JSON string, not parsed JSON. Use `jq` with `fromjson` to parse it.
 4. **Read-only vs write-only** - Event selectors can filter by ReadWriteType: All, ReadOnly, WriteOnly. Check this before assuming all events are captured.
 5. **Organization trails** - Organization trails log events for all accounts. But member account users may not have access to query the trail.
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Cloudtrail Report
+═════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

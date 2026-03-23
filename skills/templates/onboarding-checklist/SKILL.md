@@ -2,7 +2,11 @@
 name: onboarding-checklist
 enabled: true
 description: |
-  Provides a comprehensive onboarding checklist for new engineering team members covering environment setup, access provisioning, codebase orientation, team introductions, and ramp-up milestones. This template helps teams deliver a consistent, thorough onboarding experience that gets new engineers productive quickly.
+  Use when performing onboarding checklist — provides a comprehensive onboarding
+  checklist for new engineering team members covering environment setup, access
+  provisioning, codebase orientation, team introductions, and ramp-up
+  milestones. This template helps teams deliver a consistent, thorough
+  onboarding experience that gets new engineers productive quickly.
 required_connections:
   - prefix: ticketing
     label: "Ticketing System"
@@ -92,6 +96,16 @@ Complete before the new team member arrives.
 | Onboarding feedback submitted | Day 30 | |
 | 1:1 check-in with skip-level manager | Day 60 | |
 | Full team contributor | Day 90 | |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,11 @@
 name: connection-pool-tuning
 enabled: true
 description: |
-  Guides the analysis and optimization of connection pools for databases, HTTP clients, and message brokers. Covers pool sizing calculations, timeout configuration, leak detection, monitoring setup, and performance validation to eliminate connection-related bottlenecks.
+  Use when performing connection pool tuning — guides the analysis and
+  optimization of connection pools for databases, HTTP clients, and message
+  brokers. Covers pool sizing calculations, timeout configuration, leak
+  detection, monitoring setup, and performance validation to eliminate
+  connection-related bottlenecks.
 required_connections:
   - prefix: monitoring
     label: "Monitoring Platform"
@@ -136,6 +140,16 @@ features:
    - [ ] Connection creation errors
 3. Validate changes under load test
 4. Document final configuration
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Pool Assessment**: Current metrics and health status

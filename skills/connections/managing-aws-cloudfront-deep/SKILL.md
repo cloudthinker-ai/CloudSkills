@@ -1,7 +1,11 @@
 ---
 name: managing-aws-cloudfront-deep
 description: |
-  Advanced AWS CloudFront management covering distribution lifecycle, behavior configuration, Lambda@Edge functions, origin groups for failover, real-time logs, field-level encryption, and cache policy optimization. Use for deep CloudFront troubleshooting, performance tuning, advanced origin configuration, or Lambda@Edge debugging.
+  Use when working with Aws Cloudfront Deep — advanced AWS CloudFront management
+  covering distribution lifecycle, behavior configuration, Lambda@Edge
+  functions, origin groups for failover, real-time logs, field-level encryption,
+  and cache policy optimization. Use for deep CloudFront troubleshooting,
+  performance tuning, advanced origin configuration, or Lambda@Edge debugging.
 connection_type: aws
 preload: false
 ---
@@ -117,6 +121,42 @@ cf_config "$DIST_ID" | jq '
 - **Distribution updates take 15-20 min** to deploy globally
 - **Never delete distributions** without disabling first and confirming
 - **Lambda@Edge changes** propagate to all edge locations -- test thoroughly
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Aws Cloudfront Deep Report
+═══════════════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Anti-Hallucination Rules
+
+1. **NEVER assume resource names** — always discover via CLI/API in Phase 1 before referencing in Phase 2.
+2. **NEVER fabricate metric names or dimensions** — verify against the service documentation or `--help` output.
+3. **NEVER mix CLI commands between service versions** — confirm which version/API you are targeting.
+4. **ALWAYS use the discovery → verify → analyze chain** — every resource referenced must have been discovered first.
+5. **ALWAYS handle empty results gracefully** — an empty response is valid data, not an error to retry.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 - **All API calls route to us-east-1** regardless of configured region

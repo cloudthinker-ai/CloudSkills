@@ -1,7 +1,12 @@
 ---
 name: managing-logstash
 description: |
-  Logstash pipeline management with input/filter/output analysis, pipeline statistics, event processing metrics, and queue monitoring. Covers pipeline health, plugin performance, JVM stats, hot threads analysis, and configuration review. Use when managing Logstash pipelines, analyzing throughput, reviewing filter performance, or troubleshooting event processing.
+  Use when working with Logstash — logstash pipeline management with
+  input/filter/output analysis, pipeline statistics, event processing metrics,
+  and queue monitoring. Covers pipeline health, plugin performance, JVM stats,
+  hot threads analysis, and configuration review. Use when managing Logstash
+  pipelines, analyzing throughput, reviewing filter performance, or
+  troubleshooting event processing.
 connection_type: logstash
 preload: false
 ---
@@ -179,6 +184,34 @@ echo ""
 echo "=== Pipeline Workers ==="
 logstash_stats "pipelines" | jq -r '.pipelines | to_entries[] | "\(.key)\tworkers:\(.value.workers)\tbatch_size:\(.value.batch_size)"'
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Logstash Report
+════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

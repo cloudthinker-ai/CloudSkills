@@ -1,7 +1,10 @@
 ---
 name: aws-xray
 description: |
-  AWS X-Ray trace analysis, service map generation, fault and error analysis, sampling rule management, and latency investigation. Covers trace summaries, segment analysis, annotation-based filtering, and group configuration.
+  Use when working with Aws Xray — aWS X-Ray trace analysis, service map
+  generation, fault and error analysis, sampling rule management, and latency
+  investigation. Covers trace summaries, segment analysis, annotation-based
+  filtering, and group configuration.
 connection_type: aws
 preload: false
 ---
@@ -149,6 +152,34 @@ aws xray get-service-graph \
 3. **Trace retention** - X-Ray retains trace data for 30 days. Trace summaries are available for 30 days. Full trace data beyond this requires export to S3.
 4. **Service graph time range** - Maximum time range for `get-service-graph` is 6 hours per call. For longer periods, make multiple calls and aggregate.
 5. **Sampling affects completeness** - X-Ray samples traces. A 5% sampling rate means you see ~5% of actual requests. Do not report trace counts as request counts.
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Xray Report
+═══════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

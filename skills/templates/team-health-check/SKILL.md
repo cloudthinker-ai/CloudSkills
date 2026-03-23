@@ -2,7 +2,11 @@
 name: team-health-check
 enabled: true
 description: |
-  Provides a structured framework for assessing engineering team health across key dimensions including delivery pace, code quality, collaboration, well-being, and technical practices. This template helps engineering managers and team leads identify areas of strength and opportunities for improvement through regular pulse checks.
+  Use when performing team health check — provides a structured framework for
+  assessing engineering team health across key dimensions including delivery
+  pace, code quality, collaboration, well-being, and technical practices. This
+  template helps engineering managers and team leads identify areas of strength
+  and opportunities for improvement through regular pulse checks.
 required_connections:
   - prefix: collaboration
     label: "Collaboration Tool"
@@ -75,6 +79,16 @@ For dimensions rated 4-5, identify what is working and how to sustain it.
 - [ ] Limit to 2-3 improvement initiatives per quarter
 - [ ] Each initiative has a measurable target
 - [ ] Progress is reviewed in regular 1:1s and team meetings
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

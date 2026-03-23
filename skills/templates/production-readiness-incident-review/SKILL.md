@@ -2,7 +2,12 @@
 name: production-readiness-incident-review
 enabled: true
 description: |
-  Production readiness validation focused on incident response preparedness before launching a new service or major feature. Reviews on-call coverage, runbook completeness, monitoring and alerting setup, escalation paths, rollback procedures, and communication plans to ensure the team can effectively respond to incidents.
+  Use when performing production readiness incident review — production
+  readiness validation focused on incident response preparedness before
+  launching a new service or major feature. Reviews on-call coverage, runbook
+  completeness, monitoring and alerting setup, escalation paths, rollback
+  procedures, and communication plans to ensure the team can effectively respond
+  to incidents.
 required_connections:
   - prefix: slack
     label: "Slack (for review coordination)"
@@ -123,3 +128,14 @@ This review validates that the team is prepared to detect, respond to, and resol
 
 ### Reviewer: ___________
 ### Date: ___________
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

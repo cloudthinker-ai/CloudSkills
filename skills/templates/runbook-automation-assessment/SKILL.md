@@ -2,7 +2,12 @@
 name: runbook-automation-assessment
 enabled: true
 description: |
-  Evaluates existing runbooks for automation potential, assessing each procedure's complexity, frequency, and risk to determine which runbooks should be automated first. This template produces a prioritized automation backlog and identifies the tooling needed to convert manual runbooks into automated remediation workflows.
+  Use when performing runbook automation assessment — evaluates existing
+  runbooks for automation potential, assessing each procedure's complexity,
+  frequency, and risk to determine which runbooks should be automated first.
+  This template produces a prioritized automation backlog and identifies the
+  tooling needed to convert manual runbooks into automated remediation
+  workflows.
 required_connections:
   - prefix: wiki
     label: "Documentation Platform"
@@ -83,6 +88,16 @@ For each candidate:
 - [ ] Identify gaps in tooling
 - [ ] Recommend new tools or platform investments if needed
 - [ ] Estimate total investment for automation program
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -1,7 +1,11 @@
 ---
 name: managing-flux
 description: |
-  Flux CD GitOps management for Kubernetes. Covers source reconciliation, Kustomization status, HelmRelease management, image automation, notification configuration, and drift detection. Use when checking GitOps sync status, investigating reconciliation failures, managing Flux sources, or auditing Kustomization health.
+  Use when working with Flux — flux CD GitOps management for Kubernetes. Covers
+  source reconciliation, Kustomization status, HelmRelease management, image
+  automation, notification configuration, and drift detection. Use when checking
+  GitOps sync status, investigating reconciliation failures, managing Flux
+  sources, or auditing Kustomization health.
 connection_type: flux
 preload: false
 ---
@@ -224,6 +228,34 @@ kubectl get imageupdateautomations.image.toolkit.fluxcd.io -A -o json 2>/dev/nul
 - NEVER delete sources or Kustomizations without understanding dependencies
 - NEVER force reconciliation in production without user approval
 - Prune-enabled Kustomizations will DELETE resources removed from Git — flag when `prune: true`
+
+## Output Format
+
+Present results as a structured report:
+```
+Managing Flux Report
+════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 - **CRD naming**: Flux Kustomization CRD is `kustomizations.kustomize.toolkit.fluxcd.io`, not `kustomizations` (conflicts with kustomize.config.k8s.io)

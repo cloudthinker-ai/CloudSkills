@@ -2,7 +2,10 @@
 name: cdn-optimization-review
 enabled: true
 description: |
-  Reviews and optimizes CDN configuration for maximum cache hit ratio, minimal latency, and cost efficiency. Covers cache policy tuning, origin shield configuration, edge function optimization, security headers, and geographic performance analysis.
+  Use when performing cdn optimization review — reviews and optimizes CDN
+  configuration for maximum cache hit ratio, minimal latency, and cost
+  efficiency. Covers cache policy tuning, origin shield configuration, edge
+  function optimization, security headers, and geographic performance analysis.
 required_connections:
   - prefix: cdn
     label: "CDN Provider"
@@ -118,6 +121,16 @@ features:
 | Europe | ms | ms | % | | |
 | Asia Pacific | ms | ms | % | | |
 | Other | ms | ms | % | | |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Performance Baseline**: Current metrics by region and content type

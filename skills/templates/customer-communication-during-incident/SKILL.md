@@ -2,7 +2,11 @@
 name: customer-communication-during-incident
 enabled: true
 description: |
-  Customer-facing incident communication templates for status page updates, email notifications, social media responses, and support team talking points. Provides tone guidelines, timing recommendations, and templates for each phase of an incident from initial acknowledgment through resolution and follow-up.
+  Use when performing customer communication during incident — customer-facing
+  incident communication templates for status page updates, email notifications,
+  social media responses, and support team talking points. Provides tone
+  guidelines, timing recommendations, and templates for each phase of an
+  incident from initial acknowledgment through resolution and follow-up.
 required_connections:
   - prefix: slack
     label: "Slack (for internal coordination)"
@@ -180,3 +184,14 @@ Provide these to customer support during the incident:
 - **Workaround:** [describe if available]
 - **Escalation path:** [do not escalate individual tickets during active incident, refer to status page]
 - **What NOT to say:** Do not speculate on root cause, do not provide technical details, do not commit to specific timelines unless confirmed by IC
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

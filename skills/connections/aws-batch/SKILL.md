@@ -1,7 +1,10 @@
 ---
 name: aws-batch
 description: |
-  AWS Batch compute environment management, job queue analysis, scheduling policy review, and array job monitoring. Covers compute resource utilization, job status tracking, failure investigation, Fargate vs EC2 comparison, and queue priority analysis.
+  Use when working with Aws Batch — aWS Batch compute environment management,
+  job queue analysis, scheduling policy review, and array job monitoring. Covers
+  compute resource utilization, job status tracking, failure investigation,
+  Fargate vs EC2 comparison, and queue priority analysis.
 connection_type: aws
 preload: false
 ---
@@ -164,6 +167,34 @@ aws batch describe-job-definitions --status ACTIVE \
 3. **Job status flow** - SUBMITTED -> PENDING -> RUNNABLE -> STARTING -> RUNNING -> SUCCEEDED/FAILED. Jobs do not skip states.
 4. **vCPU units** - `minvCpus`, `maxvCpus`, `desiredvCpus` are in vCPU units, not instance counts. The scheduler maps vCPUs to instance types.
 5. **Array job indexing** - Array job indices are 0-based. An array of size 100 has indices 0-99. Each index runs as a separate container.
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Batch Report
+════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

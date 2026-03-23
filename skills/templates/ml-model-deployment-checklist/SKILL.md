@@ -2,7 +2,11 @@
 name: ml-model-deployment-checklist
 enabled: true
 description: |
-  Provides a comprehensive checklist for deploying machine learning models to production, covering model validation, infrastructure setup, serving configuration, monitoring, A/B testing, and rollback procedures. Ensures models are reliable, observable, and maintainable in production environments.
+  Use when performing ml model deployment checklist — provides a comprehensive
+  checklist for deploying machine learning models to production, covering model
+  validation, infrastructure setup, serving configuration, monitoring, A/B
+  testing, and rollback procedures. Ensures models are reliable, observable, and
+  maintainable in production environments.
 required_connections:
   - prefix: ml-platform
     label: "ML Platform"
@@ -145,6 +149,16 @@ features:
    - [ ] Archive previous model version (keep for rollback)
    - [ ] Schedule model retraining pipeline
    - [ ] Set up data pipeline for ground truth collection
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Model Card**: Performance, limitations, and intended use

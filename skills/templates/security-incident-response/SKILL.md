@@ -2,7 +2,12 @@
 name: security-incident-response
 enabled: true
 description: |
-  Security-specific incident response playbook covering breach detection, compromised credentials response, data leak containment, evidence preservation, regulatory notification requirements, forensic investigation coordination, and communication protocols. Provides structured workflows for security incidents distinct from operational incidents.
+  Use when performing security incident response — security-specific incident
+  response playbook covering breach detection, compromised credentials response,
+  data leak containment, evidence preservation, regulatory notification
+  requirements, forensic investigation coordination, and communication
+  protocols. Provides structured workflows for security incidents distinct from
+  operational incidents.
 required_connections:
   - prefix: slack
     label: "Slack (for secure incident coordination)"
@@ -155,3 +160,14 @@ If credentials are compromised:
 - [ ] Update incident response playbook with lessons learned
 - [ ] Schedule penetration test to validate fixes
 - [ ] Review and update security monitoring rules
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

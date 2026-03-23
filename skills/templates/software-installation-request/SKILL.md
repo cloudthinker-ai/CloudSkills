@@ -2,7 +2,11 @@
 name: software-installation-request
 enabled: true
 description: |
-  Software request, approval, licensing check, and deployment workflow covering the full lifecycle from user request through procurement, license validation, security review, installation, and verification. Ensures software installations comply with licensing agreements and security policies.
+  Use when performing software installation request — software request,
+  approval, licensing check, and deployment workflow covering the full lifecycle
+  from user request through procurement, license validation, security review,
+  installation, and verification. Ensures software installations comply with
+  licensing agreements and security policies.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -108,6 +112,16 @@ If BLOCKED: deny request with explanation and suggest alternative
 - [ ] Update ITSM ticket with installation details
 - [ ] Provide {{ requester_name }} with getting-started documentation if available
 - [ ] Close ticket
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

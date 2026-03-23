@@ -2,7 +2,11 @@
 name: vpn-troubleshooting-guide
 enabled: true
 description: |
-  VPN connectivity troubleshooting decision tree covering common VPN client issues, authentication failures, split tunneling problems, performance degradation, and DNS resolution failures. Guides helpdesk agents through systematic diagnosis of VPN connectivity issues for remote workers.
+  Use when performing vpn troubleshooting guide — vPN connectivity
+  troubleshooting decision tree covering common VPN client issues,
+  authentication failures, split tunneling problems, performance degradation,
+  and DNS resolution failures. Guides helpdesk agents through systematic
+  diagnosis of VPN connectivity issues for remote workers.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -125,6 +129,16 @@ Escalate to network/infrastructure team if:
 - Issue persists after all client-side troubleshooting
 - Certificate infrastructure issues
 - Firewall rule changes needed
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,10 @@
 name: cloud-billing-alert-setup
 enabled: true
 description: |
-  Configures comprehensive billing alerts and budget notifications across cloud accounts. Covers budget threshold alerts, anomaly detection, per-service spending limits, team-level notifications, and escalation procedures to prevent unexpected cloud costs.
+  Use when performing cloud billing alert setup — configures comprehensive
+  billing alerts and budget notifications across cloud accounts. Covers budget
+  threshold alerts, anomaly detection, per-service spending limits, team-level
+  notifications, and escalation procedures to prevent unexpected cloud costs.
 required_connections:
   - prefix: cloud-billing
     label: "Cloud Billing Account"
@@ -97,6 +100,16 @@ features:
 | Warning | 4 hours | Team lead | Investigate | Review resources |
 | Critical | 1 hour | Manager | Approve changes | Stop non-essential |
 | Emergency | 30 minutes | Director | Budget increase | Scale down immediately |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Budget Configuration**: All budgets with amounts and owners

@@ -1,7 +1,12 @@
 ---
 name: monitoring-thanos
 description: |
-  Thanos long-term Prometheus storage with store gateway health, compactor status, query frontend analysis, sidecar management, and ruler evaluation. Covers PromQL queries via Thanos Query, block management, deduplication, downsampling status, and multi-cluster federation. Use when querying Thanos metrics, monitoring compaction, analyzing store health, or managing Thanos components.
+  Use when working with Thanos — thanos long-term Prometheus storage with store
+  gateway health, compactor status, query frontend analysis, sidecar management,
+  and ruler evaluation. Covers PromQL queries via Thanos Query, block
+  management, deduplication, downsampling status, and multi-cluster federation.
+  Use when querying Thanos metrics, monitoring compaction, analyzing store
+  health, or managing Thanos components.
 connection_type: thanos
 preload: false
 ---
@@ -198,6 +203,34 @@ thanos_query '(1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) 
     | jq -r '.data.result[] | "\(.metric.cluster // .metric.instance)\t\(.value[1] | tonumber | round)%"' \
     | sort -t$'\t' -k2 -rn | head -15
 ```
+
+## Output Format
+
+Present results as a structured report:
+```
+Monitoring Thanos Report
+════════════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
 ## Common Pitfalls
 

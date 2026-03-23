@@ -2,7 +2,12 @@
 name: cloud-provider-outage-response
 enabled: true
 description: |
-  Response playbook for regional or service-level outages from major cloud providers (AWS, GCP, Azure). Covers impact assessment, multi-region failover procedures, customer communication during provider outages, SLA credit documentation, and architectural resilience improvements to reduce dependency on single cloud regions or services.
+  Use when performing cloud provider outage response — response playbook for
+  regional or service-level outages from major cloud providers (AWS, GCP,
+  Azure). Covers impact assessment, multi-region failover procedures, customer
+  communication during provider outages, SLA credit documentation, and
+  architectural resilience improvements to reduce dependency on single cloud
+  regions or services.
 required_connections:
   - prefix: slack
     label: "Slack (for incident coordination)"
@@ -168,3 +173,14 @@ You can track the provider's status at: [status page URL]
 - [ ] Do we need additional regions or providers?
 - [ ] Should we adopt multi-cloud for critical services?
 - [ ] Review and update disaster recovery plan
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

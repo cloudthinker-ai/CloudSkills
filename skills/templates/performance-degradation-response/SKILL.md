@@ -2,7 +2,11 @@
 name: performance-degradation-response
 enabled: true
 description: |
-  Response playbook for latency spikes, throughput degradation, and performance incidents. Covers systematic investigation of application, database, infrastructure, and network layers, with decision frameworks for mitigation strategies including scaling, traffic shedding, and targeted optimization.
+  Use when performing performance degradation response — response playbook for
+  latency spikes, throughput degradation, and performance incidents. Covers
+  systematic investigation of application, database, infrastructure, and network
+  layers, with decision frameworks for mitigation strategies including scaling,
+  traffic shedding, and targeted optimization.
 required_connections:
   - prefix: slack
     label: "Slack (for incident coordination)"
@@ -139,3 +143,14 @@ Is the degradation caused by a recent change?
 - [ ] No elevated resource utilization
 - [ ] Monitoring stable for 30+ minutes
 - [ ] Remove any temporary mitigations (rate limits, extra scaling)
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

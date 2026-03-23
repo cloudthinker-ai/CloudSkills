@@ -2,7 +2,12 @@
 name: chaos-engineering-incident-drill
 enabled: true
 description: |
-  Planned failure injection exercise framework with observation checklists, hypothesis definition, blast radius controls, rollback procedures, and post-drill analysis. Guides teams through designing, executing, and learning from controlled chaos experiments to validate incident response readiness and system resilience.
+  Use when performing chaos engineering incident drill — planned failure
+  injection exercise framework with observation checklists, hypothesis
+  definition, blast radius controls, rollback procedures, and post-drill
+  analysis. Guides teams through designing, executing, and learning from
+  controlled chaos experiments to validate incident response readiness and
+  system resilience.
 required_connections:
   - prefix: slack
     label: "Slack (for drill coordination)"
@@ -144,3 +149,14 @@ Stop the experiment immediately if:
 - Suggested next experiment: ___
 - Environment upgrade needed: ___
 - Tooling improvements: ___
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

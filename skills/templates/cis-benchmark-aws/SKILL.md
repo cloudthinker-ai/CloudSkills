@@ -2,7 +2,10 @@
 name: cis-benchmark-aws
 enabled: true
 description: |
-  CIS Benchmark assessment for AWS covering identity and access management, logging, monitoring, networking, and storage controls. Based on CIS AWS Foundations Benchmark v3.0. Use for security baseline validation or hardening projects.
+  Use when performing cis benchmark aws — cIS Benchmark assessment for AWS
+  covering identity and access management, logging, monitoring, networking, and
+  storage controls. Based on CIS AWS Foundations Benchmark v3.0. Use for
+  security baseline validation or hardening projects.
 required_connections:
   - prefix: aws
     label: "AWS"
@@ -136,6 +139,16 @@ Run CIS AWS Foundations Benchmark v3.0 assessment for account **{{ account_alias
 | 4. Networking | X/4 | Y | Z% |
 | 5. Storage | X/4 | Y | Z% |
 | **Overall** | **X/53** | **Y** | **Z%** |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

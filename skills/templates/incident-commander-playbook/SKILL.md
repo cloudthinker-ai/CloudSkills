@@ -2,7 +2,11 @@
 name: incident-commander-playbook
 enabled: true
 description: |
-  Comprehensive incident commander (IC) playbook covering IC responsibilities, communication cadence, escalation decision frameworks, delegation patterns, and handoff procedures. Guides the IC through each phase of incident response from declaration through resolution and post-incident review.
+  Use when performing incident commander playbook — comprehensive incident
+  commander (IC) playbook covering IC responsibilities, communication cadence,
+  escalation decision frameworks, delegation patterns, and handoff procedures.
+  Guides the IC through each phase of incident response from declaration through
+  resolution and post-incident review.
 required_connections:
   - prefix: slack
     label: "Slack (for incident coordination)"
@@ -134,3 +138,14 @@ Post-incident review: [scheduled date/time]
 - **Do NOT skip updates** — stakeholders assume the worst in silence
 - **Do NOT make unilateral changes** — announce actions before executing
 - **Do NOT let the incident run without a timer** — track duration actively
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

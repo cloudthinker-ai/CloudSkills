@@ -2,7 +2,11 @@
 name: third-party-outage-response
 enabled: true
 description: |
-  Response playbook for when a third-party vendor or external dependency experiences an outage. Covers impact assessment, customer communication, workaround activation, vendor status monitoring, internal coordination, and post-outage follow-up actions to minimize blast radius from upstream failures.
+  Use when performing third party outage response — response playbook for when a
+  third-party vendor or external dependency experiences an outage. Covers impact
+  assessment, customer communication, workaround activation, vendor status
+  monitoring, internal coordination, and post-outage follow-up actions to
+  minimize blast radius from upstream failures.
 required_connections:
   - prefix: slack
     label: "Slack (for coordination)"
@@ -135,3 +139,14 @@ Next update: [time]
 - [ ] Update SLAs/contracts with vendor if needed
 - [ ] Add vendor outage scenario to chaos engineering drills
 - [ ] Review circuit breaker and timeout configurations
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
+

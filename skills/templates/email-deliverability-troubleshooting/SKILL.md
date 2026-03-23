@@ -2,7 +2,11 @@
 name: email-deliverability-troubleshooting
 enabled: true
 description: |
-  Email delivery issues investigation workflow covering bounce analysis, spam filter diagnosis, SPF/DKIM/DMARC validation, mail flow tracing, and mailbox quota management. Guides helpdesk agents through systematic diagnosis of email delivery failures for both sending and receiving issues.
+  Use when performing email deliverability troubleshooting — email delivery
+  issues investigation workflow covering bounce analysis, spam filter diagnosis,
+  SPF/DKIM/DMARC validation, mail flow tracing, and mailbox quota management.
+  Guides helpdesk agents through systematic diagnosis of email delivery failures
+  for both sending and receiving issues.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -118,6 +122,16 @@ Escalate to email/messaging team if:
 - Domain is blacklisted
 - Transport rules need modification
 - Multiple users affected simultaneously
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

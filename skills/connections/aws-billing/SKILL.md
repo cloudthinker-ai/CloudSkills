@@ -1,7 +1,12 @@
 ---
 name: aws-billing
 description: |
-    Analyze, break down, and report AWS costs and bills. Covers cost breakdown by service, account, or usage type; monthly/daily billing trends; cost anomaly detection; RI/SP utilization; cost forecasting; credit/discount analysis; and multi-account cost comparison. Uses anti-hallucination rules, mandatory currency/credit detection workflow, and reusable Cost Explorer functions.
+  Use when working with Aws Billing — analyze, break down, and report AWS costs
+  and bills. Covers cost breakdown by service, account, or usage type;
+  monthly/daily billing trends; cost anomaly detection; RI/SP utilization; cost
+  forecasting; credit/discount analysis; and multi-account cost comparison. Uses
+  anti-hallucination rules, mandatory currency/credit detection workflow, and
+  reusable Cost Explorer functions.
 connection_type: aws
 preload: false
 ---
@@ -463,3 +468,32 @@ Cost Explorer API charges **per paginated request** ($0.01/request). Cache resul
 | Costs seem 0 but account is active                | Account on Free Tier or full credit coverage       | Run `aws_billing_credits` to check discount_ratio                   |
 | Forecast returns error for long period            | Exceeds forecast limit (3mo daily, 18mo monthly)   | Reduce forecast period or switch to MONTHLY granularity             |
 | RI utilization shows only EC2                     | `get-reservation-utilization` defaults to EC2      | Pass `--filter` with SERVICE dimension for RDS/ElastiCache/Redshift |
+
+## Output Format
+
+Present results as a structured report:
+```
+Aws Billing Report
+══════════════════
+Resources discovered: [count]
+
+Resource       Status    Key Metric    Issues
+──────────────────────────────────────────────
+[name]         [ok/warn] [value]       [findings]
+
+Summary: [total] resources | [ok] healthy | [warn] warnings | [crit] critical
+Action Items: [list of prioritized findings]
+```
+
+Target ≤50 lines of output. Use tables for multi-resource comparisons.
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "I'll skip discovery and check known resources" | Always run Phase 1 discovery first | Resource names change, new resources appear — assumed names cause errors |
+| "The user only asked for a quick check" | Follow the full discovery → analysis flow | Quick checks miss critical issues; structured analysis catches silent failures |
+| "Default configuration is probably fine" | Audit configuration explicitly | Defaults often leave logging, security, and optimization features disabled |
+| "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
+| "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
+

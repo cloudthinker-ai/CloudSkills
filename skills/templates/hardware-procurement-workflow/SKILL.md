@@ -2,7 +2,11 @@
 name: hardware-procurement-workflow
 enabled: true
 description: |
-  Hardware request through procurement, setup, and deployment covering the full lifecycle from initial request and budget approval through vendor selection, purchase order processing, hardware configuration, and delivery to the end user. Ensures hardware procurement follows organizational policies and budget controls.
+  Use when performing hardware procurement workflow — hardware request through
+  procurement, setup, and deployment covering the full lifecycle from initial
+  request and budget approval through vendor selection, purchase order
+  processing, hardware configuration, and delivery to the end user. Ensures
+  hardware procurement follows organizational policies and budget controls.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -135,6 +139,16 @@ Peripherals Kit:      Keyboard, mouse, headset
 - [ ] Update budget tracking with actual cost
 - [ ] Close procurement ticket in ITSM
 - [ ] Notify {{ requester_name }} and manager of completion
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

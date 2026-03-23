@@ -2,7 +2,11 @@
 name: llm-evaluation-framework
 enabled: true
 description: |
-  Provides a structured framework for evaluating large language models (LLMs) for production use. Covers task-specific benchmarking, safety testing, cost analysis, latency measurement, prompt engineering evaluation, and comparison across models to select the optimal LLM for a given use case.
+  Use when performing llm evaluation framework — provides a structured framework
+  for evaluating large language models (LLMs) for production use. Covers
+  task-specific benchmarking, safety testing, cost analysis, latency
+  measurement, prompt engineering evaluation, and comparison across models to
+  select the optimal LLM for a given use case.
 required_connections:
   - prefix: llm-provider
     label: "LLM API Provider"
@@ -134,6 +138,16 @@ features:
 | Model | Quality | Latency | Cost | Safety | Reliability | Weighted Score | Rank |
 |-------|---------|---------|------|--------|-------------|---------------|------|
 |       | /100    | /100    | /100 | /100   | /100        | /100          |      |
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Evaluation Dataset**: Test cases with ground truth

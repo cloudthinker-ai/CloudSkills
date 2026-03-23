@@ -2,7 +2,10 @@
 name: gdpr-data-audit
 enabled: true
 description: |
-  GDPR data audit covering personal data mapping, lawful basis assessment, consent management, data retention policies, DSAR processes, and cross-border transfer compliance. Use for annual data audits, new system assessments, or regulatory preparation.
+  Use when performing gdpr data audit — gDPR data audit covering personal data
+  mapping, lawful basis assessment, consent management, data retention policies,
+  DSAR processes, and cross-border transfer compliance. Use for annual data
+  audits, new system assessments, or regulatory preparation.
 required_connections:
   - prefix: github
     label: "GitHub (for data schema review)"
@@ -127,6 +130,16 @@ SECURITY & BREACH
 [ ] Breach response team identified
 [ ] Breach log maintained (even for non-reportable breaches)
 ```
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,12 @@
 name: new-employee-onboarding-it
 enabled: true
 description: |
-  IT onboarding checklist for new employees covering account provisioning, hardware setup, access permissions, software installation, and initial training. Generates a comprehensive onboarding task list that tracks progress through each phase from pre-arrival preparation to first-week orientation, ensuring no critical IT setup steps are missed.
+  Use when performing new employee onboarding it — iT onboarding checklist for
+  new employees covering account provisioning, hardware setup, access
+  permissions, software installation, and initial training. Generates a
+  comprehensive onboarding task list that tracks progress through each phase
+  from pre-arrival preparation to first-week orientation, ensuring no critical
+  IT setup steps are missed.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -103,6 +108,16 @@ Start Date: **{{ start_date }}** | Location: {{ location }} | Manager: {{ manage
 - [ ] Check in with {{ manager_name }} for any additional IT needs
 - [ ] Close onboarding ticket in ITSM system
 - [ ] Update asset management records with assignment
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

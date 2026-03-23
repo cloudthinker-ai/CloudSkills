@@ -2,7 +2,11 @@
 name: cmmc-readiness-check
 enabled: true
 description: |
-  Assesses organizational readiness for Cybersecurity Maturity Model Certification (CMMC 2.0) at the target level. Covers CUI identification, NIST SP 800-171 control implementation, gap analysis against CMMC practices, and preparation for third-party assessment at Level 2 or self-assessment at Level 1.
+  Use when performing cmmc readiness check — assesses organizational readiness
+  for Cybersecurity Maturity Model Certification (CMMC 2.0) at the target level.
+  Covers CUI identification, NIST SP 800-171 control implementation, gap
+  analysis against CMMC practices, and preparation for third-party assessment at
+  Level 2 or self-assessment at Level 1.
 required_connections:
   - prefix: grc-tool
     label: "GRC Platform"
@@ -120,6 +124,16 @@ features:
 3. Engage C3PAO for Level 2 assessment (if applicable)
 4. Prepare staff for assessor interviews
 5. Submit self-assessment to SPRS (Level 1) or schedule C3PAO visit
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Scope Documentation**: CUI boundary and data flow diagrams

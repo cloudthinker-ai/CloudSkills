@@ -2,7 +2,11 @@
 name: nist-csf-assessment
 enabled: true
 description: |
-  Conducts an assessment against the NIST Cybersecurity Framework (CSF 2.0), evaluating organizational maturity across all six core functions: Govern, Identify, Protect, Detect, Respond, and Recover. Produces a current state profile, target profile, and prioritized gap remediation plan.
+  Use when performing nist csf assessment — conducts an assessment against the
+  NIST Cybersecurity Framework (CSF 2.0), evaluating organizational maturity
+  across all six core functions: Govern, Identify, Protect, Detect, Respond, and
+  Recover. Produces a current state profile, target profile, and prioritized gap
+  remediation plan.
 required_connections:
   - prefix: grc-tool
     label: "GRC Platform"
@@ -99,6 +103,16 @@ features:
 3. Develop remediation roadmap with quick wins and long-term initiatives
 4. Estimate resource requirements per initiative
 5. Define success metrics and milestones
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Current State Profile**: Maturity score per function and category

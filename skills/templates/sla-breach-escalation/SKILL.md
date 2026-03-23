@@ -2,7 +2,11 @@
 name: sla-breach-escalation
 enabled: true
 description: |
-  SLA breach detection and escalation procedure covering proactive SLA monitoring, breach notification workflows, escalation matrices, and remediation tracking. Ensures SLA breaches are identified early, stakeholders are notified promptly, and corrective actions are documented to prevent recurrence.
+  Use when performing sla breach escalation — sLA breach detection and
+  escalation procedure covering proactive SLA monitoring, breach notification
+  workflows, escalation matrices, and remediation tracking. Ensures SLA breaches
+  are identified early, stakeholders are notified promptly, and corrective
+  actions are documented to prevent recurrence.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -116,6 +120,16 @@ When documenting the breach, identify which factor contributed:
 - [ ] Review ticket routing rules for accuracy
 - [ ] Cross-train agents on common escalation topics
 - [ ] Schedule periodic SLA compliance reviews (weekly/monthly)
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

@@ -2,7 +2,11 @@
 name: password-reset-procedure
 enabled: true
 description: |
-  Self-service and assisted password reset workflow covering identity verification, reset execution across multiple systems, MFA recovery, and account lockout resolution. Provides step-by-step procedures for end users to reset passwords independently or with helpdesk assistance while maintaining security and audit compliance.
+  Use when performing password reset procedure — self-service and assisted
+  password reset workflow covering identity verification, reset execution across
+  multiple systems, MFA recovery, and account lockout resolution. Provides
+  step-by-step procedures for end users to reset passwords independently or with
+  helpdesk assistance while maintaining security and audit compliance.
 required_connections:
   - prefix: itsm
     label: "ITSM Tool (ServiceNow, Freshservice, etc.)"
@@ -118,6 +122,16 @@ Lockout:        5 failed attempts = 15-minute lockout
 - [ ] Advise {{ user_name }} to update saved passwords in password manager
 - [ ] If password was potentially compromised: force reset on all linked systems
 - [ ] Close ticket
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 

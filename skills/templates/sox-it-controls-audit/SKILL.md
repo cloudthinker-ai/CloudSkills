@@ -2,7 +2,11 @@
 name: sox-it-controls-audit
 enabled: true
 description: |
-  Conducts an IT general controls audit for Sarbanes-Oxley (SOX) compliance, covering access management, change management, computer operations, and program development controls for systems involved in financial reporting. Includes ITGC testing procedures and deficiency classification.
+  Use when performing sox it controls audit — conducts an IT general controls
+  audit for Sarbanes-Oxley (SOX) compliance, covering access management, change
+  management, computer operations, and program development controls for systems
+  involved in financial reporting. Includes ITGC testing procedures and
+  deficiency classification.
 required_connections:
   - prefix: grc-tool
     label: "GRC Platform"
@@ -113,6 +117,16 @@ features:
 2. Develop remediation recommendations
 3. Prepare management response for each finding
 4. Report to audit committee
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Scoping Document**: In-scope systems and control objectives

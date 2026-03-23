@@ -2,7 +2,11 @@
 name: data-quality-assessment
 enabled: true
 description: |
-  Conducts a systematic assessment of data quality across key dimensions including completeness, accuracy, consistency, timeliness, uniqueness, and validity. Identifies data quality issues, quantifies their business impact, and produces a remediation plan with automated quality monitoring.
+  Use when performing data quality assessment — conducts a systematic assessment
+  of data quality across key dimensions including completeness, accuracy,
+  consistency, timeliness, uniqueness, and validity. Identifies data quality
+  issues, quantifies their business impact, and produces a remediation plan with
+  automated quality monitoring.
 required_connections:
   - prefix: data-platform
     label: "Data Platform"
@@ -122,6 +126,16 @@ features:
    - [ ] Alerting when quality drops below threshold
    - [ ] Quality trend reporting (weekly/monthly)
 2. Define quality SLAs per domain
+
+## Counter-Rationalizations
+
+| Shortcut | Counter | Why |
+|----------|---------|-----|
+| "We can skip some steps for this case" | Adapt the workflow steps, don't skip them | Skipped steps are where incidents and oversights originate |
+| "The user seems to already know what to do" | Complete all workflow phases with the user | The workflow catches blind spots that experience alone misses |
+| "This is a minor case, full process is overkill" | Scale the process down, don't turn it off | Minor cases become major when unstructured; the process scales, not disappears |
+| "I'll fill in the details later" | Complete each section before moving on | Deferred details are forgotten; real-time capture is more accurate |
+| "The template output isn't necessary" | Always produce the structured output format | Structured output enables comparison, audit trails, and handoff to other teams |
 
 ## Output Format
 - **Data Profile Report**: Statistical profile of all assessed datasets
