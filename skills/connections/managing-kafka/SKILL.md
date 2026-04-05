@@ -197,6 +197,23 @@ Target ≤50 lines of output. Use tables for multi-resource comparisons.
 | "Metrics aren't needed for this" | Always check relevant metrics when available | API/CLI responses show current state; metrics reveal trends and intermittent issues |
 | "I don't have access to that" | Try the command and report the actual error | Assumed permission failures prevent useful investigation; actual errors are informative |
 
+## Decision Matrix
+
+| Scenario | Tool | Command |
+|----------|------|---------|
+| List all topics | kafka-topics.sh | `--list` |
+| Check partition health | kafka-topics.sh | `--describe --under-replicated-partitions` |
+| Consumer group lag | kafka-consumer-groups.sh | `--describe --group GROUP` |
+| Disk usage per broker | kafka-log-dirs.sh | `--describe` |
+| Topic retention config | kafka-configs.sh | `--entity-type topics --describe` |
+| Broker API versions | kafka-broker-api-versions.sh | `--bootstrap-server` |
+| KRaft quorum status | kafka-metadata-quorum.sh | `describe --status` |
+| Partition offsets | kafka-get-offsets.sh | `--topic TOPIC` |
+| Active transactions | kafka-transactions.sh | `list` |
+| Hanging transactions | kafka-transactions.sh | `find-hanging` |
+| Replica consistency | kafka-replica-verification.sh | `--broker-list --topics-include` |
+| Reset consumer offsets | kafka-consumer-groups.sh | `--reset-offsets --dry-run` first! |
+
 ## Common Pitfalls
 
 - **Consumer lag vs latency**: High offset lag may be acceptable if consumers process in batches
@@ -206,3 +223,9 @@ Target ≤50 lines of output. Use tables for multi-resource comparisons.
 - **Log compaction**: Compacted topics retain latest key — do not confuse with retention-based deletion
 - **Consumer group rebalancing**: Frequent rebalances cause lag spikes — check for unstable consumers
 - **ISR shrink**: In-sync replica set shrinking means followers cannot keep up
+- **KRaft vs ZooKeeper**: Commands differ — `kafka-metadata-quorum.sh` only works with KRaft clusters
+- **Offset reset**: ALWAYS use `--dry-run` before `--execute` — offset reset is irreversible
+
+## References
+
+- [Kafka CLI Tools Reference](./references/kafka-cli-tools.md) — Complete command reference for all Kafka CLI tools with examples

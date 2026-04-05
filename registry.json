@@ -1,6 +1,6 @@
 {
   "version": "1.0.1",
-  "updated_at": "2026-03-14",
+  "updated_at": "2026-03-30",
   "skills": [
     {
       "id": "monitoring-datadog",
@@ -18032,6 +18032,52 @@
       "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/templates/waste-elimination-sprint",
       "is_featured": false,
       "published_at": "2026-03-14T00:00:00Z"
+    },
+    {
+      "id": "managing-diagrams",
+      "display_name": "Diagrams (Architecture as Code)",
+      "description": "Generate cloud architecture diagrams programmatically using Python Diagrams library. Supports AWS, Azure, GCP, Kubernetes, on-premises, and SaaS provider nodes with Graphviz rendering.",
+      "category": "operational",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "diagrams",
+        "architecture",
+        "visualization",
+        "aws",
+        "azure",
+        "gcp",
+        "kubernetes",
+        "python"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/managing-diagrams/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/managing-diagrams",
+      "is_featured": true,
+      "published_at": "2026-03-30T00:00:00Z"
+    },
+    {
+      "id": "optimizing-bedrock-costs",
+      "display_name": "Optimize AWS Bedrock Costs",
+      "description": "Generate actionable Bedrock cost optimization recommendations with estimated savings. Covers model tiering (Opus to Sonnet/Haiku), cache efficiency tuning, batch inference candidates, cross-region cost arbitrage, token efficiency analysis, and prioritized recommendations with USD savings estimates.",
+      "category": "cost",
+      "section": "connections",
+      "author": "cloudthinker",
+      "version": "1.0.0",
+      "tags": [
+        "aws",
+        "bedrock",
+        "cost-optimization",
+        "llm",
+        "claude",
+        "ai",
+        "prompt-caching",
+        "savings"
+      ],
+      "skill_md_url": "https://raw.githubusercontent.com/cloudthinker-ai/CloudSkills/main/skills/connections/optimizing-bedrock-costs/SKILL.md",
+      "repo_url": "https://github.com/cloudthinker-ai/CloudSkills/tree/main/skills/connections/optimizing-bedrock-costs",
+      "is_featured": true,
+      "published_at": "2026-03-30T00:00:00Z"
     }
   ]
 }
